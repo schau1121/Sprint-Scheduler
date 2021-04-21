@@ -19,7 +19,7 @@
 
 ## Project Description
 > ### User Experience
-> We plan on building a task management application where a user can create and view personal tasks and events. Users will be able to transfer their >event and task lists made in our application to their personal Google Calendar.
+> We plan on building a task management application where a user can create and view personal tasks and events. Users will be able to transfer their event and task lists made in our application to their personal Google Calendar.
 
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  >   * [toolname](link) - Short description
