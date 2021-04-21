@@ -22,6 +22,12 @@
 > We plan on building a task management application where a user can create and view personal tasks and events. Users will be able to transfer their event and task lists made in our application to their personal Google Calendar.
 > ### Importance
 > We find this project really important because it is a very practical application for us as college students. With classes, clubs, and our careers, it becomes increasingly difficult to manage our time, and we are sure that plenty of people can relate. Additionally, we are interested in familiarizing ourselves with an API and since the documentation is very thorough, we thought this project would be a great opportunity to learn.
+> ### Tools and Technology
+> *C++ -  An object-oriented programming language 
+> *Google’s Calendar API - An API that allows for application integration into Google Calendar
+> *Valgrind - A programming tool used for code profiling and debugging
+> *Gtest - A unit and integration testing library for C++
+
 
 
  > ## Phase II
