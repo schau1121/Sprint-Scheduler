@@ -29,6 +29,9 @@
 > * Gtest - A unit and integration testing library for C++
 
 
+### Application Input / Output
+> The user will be able to create customized tasks inside an event by including: a string used for a short title, a string for a task description, a string for a classification tag, an integer determining the task’s priority, an integer for estimated task duration in hours, and a datetime string labeling the event time. Depending on the component that the user is creating (event/task) there will be different prompts for the user's input. For example, if a user creates an event, they will be prompted to input a datetime to schedule. Our application will output a list of tasks and events including their details, events will be prioritized based on their deadlines while tasks will be prioritized based on their rank in the priority queue. Additionally, our application will output a call to the Google Calendar API where the user should be able to see their scheduled event.
+
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
