@@ -18,8 +18,9 @@
 > * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group.
 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include
- > * Why is it important or interesting to you?
+> User Experience
+> We plan on building a task management application where a user can create and view personal tasks and events. Users will be able to transfer their >event and task lists made in our application to their personal Google Calendar.
+
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  >   * [toolname](link) - Short description
  > * What will be the input/output of your project?
