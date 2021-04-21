@@ -20,6 +20,8 @@
 ## Project Description
 > ### User Experience
 > We plan on building a task management application where a user can create and view personal tasks and events. Users will be able to transfer their event and task lists made in our application to their personal Google Calendar.
+> ### Importance
+> We find this project really important because it is a very practical application for us as college students. With classes, clubs, and our careers, it becomes increasingly difficult to manage our time, and we are sure that plenty of people can relate. Additionally, we are interested in familiarizing ourselves with an API and since the documentation is very thorough, we thought this project would be a great opportunity to learn.
 
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  >   * [toolname](link) - Short description
