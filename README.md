@@ -19,18 +19,9 @@
  * Strategy
    * The strategy design pattern will be used to sort the priority queues within our application. Our task manager will consist of at least two different objects: tasks and events and possibly a task list in the future. This design pattern allows us to sort a user's task list by either priority or due date, depending on what the user prefers. An issue we plan on encountering with the composite design pattern is differentiating the functionality of the interface depending on component at runtime, however, with the strategy design pattern, this should be easily solved. As the user defines how he/she would like to sort their task list at runtime, our application will have the capability to sort by the specified strategy without issues. 
 
- > ## Phase II
- > In addition to completing the "Class Diagram" section below, you will need to 
- > * Set up your GitHub project board as a Kanban board for the project. It should have columns that map roughly to 
- >   * Backlog, TODO, In progress, In testing, Done
- >   * You can change these or add more if you'd like, but we should be able to identify at least these.
- > * There is no requirement for automation in the project board but feel free to explore those options.
- > * Create an "Epic" (note) for each feature and each design pattern and assign them to the appropriate team member. Place these in the `Backlog` column
- > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.
- >   * Create smaller development tasks as issues and assign them to team members. Place these in the `TODO` column.
- >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
 ## Class Diagram
  ![CS100 Final Project (1)](https://user-images.githubusercontent.com/46959736/117373457-19fd2700-ae80-11eb-9ecf-a1209d9947c0.png)
+ In our class diagram, we utilize the composite and strategy design patterns. Our application consists of 7 classes, 2 abstract and 5 concrete. For the composite design pattern, we have a base class which contains the pure virtual functions that make up the user interface. These functions are display, edit, delete, and add. Additionally, we have another function called setStrategy, which sets which sorting algorithm the user wants to utilize when displaying their tasks. From there, we have three objects which inherit from Base: Task, TaskList, and Event. These three objects maintain the same interface of display, edit, delete, and add, but additionally, they also contain specific data members unique to themselves. For example, a Task contains information about priority, completion, and a due date, while an Event contains duration, date, and time. Here we utilize the composite design pattern since TaskList and Event aggregate the base class in order to contain a priority queue of subtasks (which could be tasks, events, or task lists). Next, our application also utilizes the strategy pattern through our SortStrategy classes. We have two strategies which inherit from this base SortStrategy class: SortByPriority and SortByDate. These two classes contain a sort function which will sort the priority queue by either priority or due date.
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
