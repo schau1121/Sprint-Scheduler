@@ -4,7 +4,7 @@ SET(CMAKE_CXX_STANDARD 11)
 
 ADD_SUBDIRECTORY(googletest)
 
-ADD_EXECUTABLE(taskScheduler main.cpp)
+ADD_EXECUTABLE(taskScheduler src/main.cpp)
 ADD_EXECUTABLE(test tests/test.cpp)
 
 TARGET_LINK_LIBRARIES(test gtest)
