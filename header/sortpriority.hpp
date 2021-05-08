@@ -5,7 +5,7 @@
 
 class SortByPriority : public SortStrategy {
 public:
-    virtual Base* sort(Base* priorityQueue, int numSubTasks);
+    virtual vector<Base*> sort(vector<Base*> priorityQueue, int numSubTasks);
 };
 
 #endif

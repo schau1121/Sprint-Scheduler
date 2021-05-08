@@ -9,7 +9,7 @@ protected:
     string date;
     string time;
     double duration; //number of hours
-    Base** priorityQueue;
+    vector<Base*> priorityQueue;
     int numSubTasks;
 public:
     Event(string name, string date, string time, string details, double duration);
@@ -21,12 +21,22 @@ public:
 
 
 //this mock is initialized with a task list containing 2 tasks
-class EventMock : public Event {
+class EventMock : public Base {
+protected:
+    string date;
+    string time;
+    double duration; //number of hours
+    vector<Base*> priorityQueue;
+    int numSubTasks;
 public:
-    EventMock() : Event("Event 1", "05/15/20", "12:00 PM", "event details", 2.5) {
+    EventMock() {
+        name = "Event 1";
+        date = "05/15/20";
+        time = "12:00 PM";
+        details = "event details";
+        duration = 2.5;
         numSubTasks = 1;
-        priorityQueue = new Base* [numSubTasks];
-        priorityQueue[0] = new TaskListMock();
+        priorityQueue.push_back(new TaskListMock());
     };
 };
 
