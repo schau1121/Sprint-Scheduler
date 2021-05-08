@@ -5,7 +5,8 @@
 
 class SortByDate : public SortStrategy {
 public:
-    virtual std::vector<Base*> sort(vector<Base*> priorityQueue, int numSubTasks);
+    SortByDate() {};
+    virtual vector<Base*> sort(vector<Base*> priorityQueue, int numSubTasks);
 };
 
 #endif

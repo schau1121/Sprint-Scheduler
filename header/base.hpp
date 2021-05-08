@@ -17,6 +17,7 @@ protected:
 	string name;
 	string details;
 public:
+	Base() {};
 	virtual void edit() = 0;
 	virtual void display() const = 0;
 	virtual void del() = 0; //calling this del since delete is a keyword

@@ -5,7 +5,8 @@
 
 class SortByPriority : public SortStrategy {
 public:
-    virtual std::vector<Base*> sort(vector<Base*> priorityQueue, int numSubTasks);
+    SortByPriority() {};
+    virtual vector<Base*> sort(vector<Base*> priorityQueue, int numSubTasks);
 };
 
 #endif
