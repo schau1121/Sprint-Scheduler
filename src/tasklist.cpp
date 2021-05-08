@@ -11,7 +11,7 @@ TaskList::TaskList(string name, string details, int priority) {
     this->numSubTasks = 0;
 }
 
-TaskList::addSubTask(Base* task) {
+void TaskList::addSubTask(Base* task) {
     priorityQueue.push_back(task);
     numSubTasks++;
 }
