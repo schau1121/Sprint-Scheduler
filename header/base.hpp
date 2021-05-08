@@ -5,6 +5,7 @@
 #include <string>
 #include <stdexcept> //contains std::invalid_argument exception
 #include <iosfwd> //contains std::ostream
+#include <vector>
 
 #include "sortstrategy.hpp"
 
