@@ -8,16 +8,17 @@
 
 #include "sortstrategy.hpp"
 
+using namespace std;
+
 class Base {
-private:
+protected:
 	SortStrategy* strategy;
 	string name;
 	string details;
 public:
-	virtual void display() const = 0;
 	virtual void edit() = 0;
+	virtual void display() const = 0;
 	virtual void del() = 0; //calling this del since delete is a keyword
-	virtual void addSubTask(Base* task) = 0;
 	void setStrategy(SortStrategy* strat) {
 		this->strategy = strat;
 	}
