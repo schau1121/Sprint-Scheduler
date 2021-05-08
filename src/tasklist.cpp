@@ -1,7 +1,7 @@
 #ifndef __TASKLIST_CPP__
 #define __TASKLIST_CPP__
 
-#include "tasklist.hpp"
+#include "../header/tasklist.hpp"
 
 TaskList::TaskList(string name, string details, int priority) {
     this->name = name;
