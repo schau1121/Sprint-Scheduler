@@ -12,7 +12,7 @@ protected:
     Base** priorityQueue;
     int numSubTasks;
 public:
-    Event(string name, string, string date, string time, string details, double duration);
+    Event(string name, string date, string time, string details, double duration);
     virtual void display() const;
     virtual void del();
     virtual void edit();
