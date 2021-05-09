@@ -1,13 +1,16 @@
 #ifndef __EVENT_HPP__
 #define __EVENT_HPP__
 
+#include <string>
 #include "base.hpp"
 #include "tasklist.hpp"
 
 class Event : public Base {
 protected:
+    string name;
     string date;
     string time;
+    string details;
     double duration; //number of hours
     vector<Base*> priorityQueue;
     int numSubTasks;
