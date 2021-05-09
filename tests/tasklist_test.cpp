@@ -35,7 +35,7 @@ TEST(TaskList_addSubTask_test, multi_task_size) {
     Base* mock1 = new TaskMock1();
     Base* mock2 = new TaskMock2();
     Base* mock3 = new TaskMock1();
-    Base* mock4 = nullptr
+    Base* mock4 = nullptr;
     currList->addSubTask(mock1);
     currList->addSubTask(mock2);
     currList->addSubTask(mock3);
