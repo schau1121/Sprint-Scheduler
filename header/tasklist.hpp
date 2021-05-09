@@ -18,8 +18,10 @@ public:
     virtual void del() {};
     virtual void edit() {};
     void addSubTask(Base* task);
+    //getters
     bool isCompleted() { return true; };
     vector<Base*> getQueue() const { return priorityQueue; };
+    int getNumTasks() const { return numSubTasks; };
 };
 
 //this task list is initialized with two task mocks
