@@ -17,7 +17,7 @@ TEST(TaskList_addSubTask_test, multi_task) {
     currList->addSubTask(mock1);
     currList->addSubTask(mock2);
     vector<Base*> expected = {mock1, mock2};
-    for(int i = 0; i < currList->getQueue().size(), i++) {
+    for(int i = 0; i < currList->getQueue().size(); i++) {
         EXPECT_EQ(expected.at(i), currList->getQueue().at(i));
     }
 }
