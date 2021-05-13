@@ -7,9 +7,9 @@ class Task : public Base {
 public:
     Task(string name, string dueDate, string details, int priority);
     ~Task();
-    virtual void display() const;
-    virtual void edit();
-    virtual void del();
+    virtual void display() const {};
+    virtual void edit() {};
+    virtual void del() {};
     void setCompleted(bool isComplete);
     bool isCompleted() const { return completed; }
     bool isAssigned() const { return assigned; }

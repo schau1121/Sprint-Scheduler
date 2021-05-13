@@ -2,9 +2,9 @@
 #include <vector>
 #include "../header/base.hpp"
 #include "../header/sortstrategy.hpp"
-#include "../header/task.hpp"
 #include "../header/event.hpp"
 #include "tasklist.cpp"
+#include "task.cpp"
 
 using namespace std;
 

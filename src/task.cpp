@@ -26,4 +26,7 @@ void Task::setAssigned(bool isAssigned) {
     assigned = isAssigned;
 }
 
+Task::~Task() {
+    delete this;
+}
 #endif
