@@ -37,7 +37,7 @@ class client {
 		void view();
 		void printAll(); 
 		void printTasks();
-		void printLists()
+		void printLists();
 		void printEvents(); 
 
 		//sort function
