@@ -14,6 +14,7 @@ public:
     bool isCompleted() const { return completed; }
     bool isAssigned() const { return assigned; }
     void setAssigned(bool isAssigned);
+    string getDate() const { return dueDate; } 
 protected:
     int priority;
     bool completed;
@@ -29,14 +30,20 @@ public:
         this->details = "some details";
         this->priority = 2;
         this->completed = false; 
-    };
+    }
     virtual void display() const {
         cout << name << endl;
         cout << dueDate << endl;
         cout << details << endl;
-    };
-    virtual void edit() {};
-    virtual void del() {};
+    }
+    virtual void edit() {}
+    virtual void del() {}
+    virtual void setCompleted(bool isComplete) {}
+	virtual void setAssigned(bool isAssigned) {}
+	virtual bool isAssigned() const { return true; }
+	virtual bool isCompleted() const { return true; }
+	virtual string getDate() const { return dueDate; }
+    virtual void addSubTask(Base* task) {}
 private:
     string dueDate;
     bool completed;
@@ -51,14 +58,20 @@ public:
         this->details = "more details";
         this->priority = 4;
         this->completed = false; 
-    };
+    }
     virtual void display() const {
         cout << name << endl;
         cout << dueDate << endl;
         cout << details << endl;
-    };
-    virtual void edit() {};
-    virtual void del() {};
+    }
+    virtual void edit() {}
+    virtual void del() {}
+    virtual void setCompleted(bool isComplete) {}
+	virtual void setAssigned(bool isAssigned) {}
+	virtual bool isAssigned() const { return true; }
+	virtual bool isCompleted() const { return true; }
+	virtual string getDate() const { return dueDate; } 
+    virtual void addSubTask(Base* task) {}
 private:
     string dueDate;
     bool completed;

@@ -7,7 +7,7 @@ Task::Task(string name, string dueDate = "", string details = "", int priority =
     if(name == "") {
         throw invalid_argument("Empty name passed into task constructor");
     }
-    if(dueDate[2] != '/' || dueDate[5] != '/') {
+    if(dueDate != "" && (dueDate[2] != '/' || dueDate[5] != '/')) {
         throw invalid_argument("Wrong date format passed into task constructor");
     }
     this->name = name;
