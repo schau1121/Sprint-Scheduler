@@ -55,6 +55,7 @@ public:
 	virtual bool isAssigned() const { return true; }
 	virtual bool isCompleted() const { return true; }
 	virtual string getDate() const { return dueDate; }
+    virtual void addSubTask(Base* task) {}
 };
 
 #endif

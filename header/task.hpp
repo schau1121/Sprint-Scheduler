@@ -15,6 +15,7 @@ public:
     bool isAssigned() const { return assigned; }
     void setAssigned(bool isAssigned);
     string getDate() const { return dueDate; } 
+    virtual void addSubTask(Base* task) {}
 protected:
     int priority;
     bool completed;
