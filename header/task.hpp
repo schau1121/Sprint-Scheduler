@@ -5,22 +5,20 @@
 
 class Task : public Base {
 public:
-    Task(string name, string dueDate, string details, int priority) {
-        this->name = name;
-        this->dueDate = dueDate;
-        this->details = details;
-        this->priority = priority;
-        this->completed = false;
-    };
+    Task(string name, string dueDate, string details, int priority);
     ~Task();
     virtual void display() const;
     virtual void edit();
     virtual void del();
     void setCompleted(bool isComplete);
+    bool isCompleted() const { return completed; }
+    bool isAssigned() const { return assigned; }
+    void setAssigned(bool isAssigned);
 protected:
     int priority;
     bool completed;
     string dueDate;
+    bool assigned;
 };
 
 class TaskMock1 : public Base {
