@@ -35,9 +35,12 @@ class client {
 
 		//print functions
 		void view();
-		void printAll(); 
+		void printAll();
+		//print all unassigned tasks 
 		void printTasks();
+		//print all unassigned taskLists and their queues
 		void printLists();
+		//print all events
 		void printEvents(); 
 
 		//sort function

@@ -25,3 +25,12 @@ void client::createTask() {
     cout << "\nCreated!" << endl;
 }
 
+void client::printTasks() {
+    for(int i = 0; i < allTasks.size(); i++) {
+        if(!allTasks[i]->isAssigned()) {
+            cout << i+1 << ". ";
+            allTasks[i]->display();
+        }
+    }
+}
+
