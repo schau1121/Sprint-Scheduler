@@ -5,7 +5,13 @@
 
 class Task : public Base {
 public:
-    Task(string name, string dueDate, string details, int priority);
+    Task(string name, string dueDate, string details, int priority) {
+        this->name = name;
+        this->dueDate = dueDate;
+        this->details = details;
+        this->priority = priority;
+        this->completed = false;
+    };
     ~Task();
     virtual void display() const {};
     virtual void edit() {};

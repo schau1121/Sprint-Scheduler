@@ -10,3 +10,6 @@ taskScheduler
 googletest
 test.exe
 taskScheduler.exe
+bin/
+.vscode/
+googletest
