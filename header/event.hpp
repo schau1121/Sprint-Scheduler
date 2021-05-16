@@ -20,6 +20,7 @@ public:
     virtual void del();
     virtual void edit();
     void addSubTask(Base* task);
+    void createEvent();
 };
 
 
