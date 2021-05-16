@@ -8,13 +8,11 @@ TaskList::TaskList(string name, string details, int priority) {
     this->details = details;
     this->priority = priority;
     this->completed = false;
-    this->numSubTasks = 0;
 }
 
 void TaskList::addSubTask(Base* task) {
     if(task != nullptr) {
         priorityQueue.push_back(task);
-        numSubTasks++;
     }
 }
 

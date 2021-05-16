@@ -13,15 +13,16 @@ public:
         this->completed = false;
     };
     ~Task();
-    virtual void display() const {};
-    virtual void edit() {};
-    virtual void del() {};
-    void setCompleted(bool isComplete);
-    bool isCompleted() const { return completed; }
-    bool isAssigned() const { return assigned; }
-    void setAssigned(bool isAssigned);
-    string getDate() const { return dueDate; } 
-    virtual void addSubTask(Base* task) {}
+    virtual void edit();
+	virtual void display();
+	virtual void del();
+	virtual void setCompleted(bool isComplete);
+	virtual void setAssigned(bool isAssigned);
+	virtual bool isAssigned();
+	virtual bool isCompleted();
+	virtual string getDate();
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return {}; }
 protected:
     int priority;
     bool completed;
@@ -47,10 +48,11 @@ public:
     virtual void del() {}
     virtual void setCompleted(bool isComplete) {}
 	virtual void setAssigned(bool isAssigned) {}
-	virtual bool isAssigned() const { return true; }
-	virtual bool isCompleted() const { return true; }
-	virtual string getDate() const { return dueDate; }
-    virtual void addSubTask(Base* task) {}
+	virtual bool isAssigned() { return true; }
+	virtual bool isCompleted() { return true; }
+	virtual string getDate() { return ""; }
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return {}; }
 private:
     string dueDate;
     bool completed;
@@ -75,10 +77,11 @@ public:
     virtual void del() {}
     virtual void setCompleted(bool isComplete) {}
 	virtual void setAssigned(bool isAssigned) {}
-	virtual bool isAssigned() const { return true; }
-	virtual bool isCompleted() const { return true; }
-	virtual string getDate() const { return dueDate; } 
-    virtual void addSubTask(Base* task) {}
+	virtual bool isAssigned() { return true; }
+	virtual bool isCompleted() { return true; }
+	virtual string getDate() { return ""; }
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return {}; }
 private:
     string dueDate;
     bool completed;
