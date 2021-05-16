@@ -13,10 +13,16 @@ public:
         this->completed = false;
     };
     ~Task();
-    virtual void display() const;
     virtual void edit();
-    virtual void del();
-    void setCompleted(bool isComplete);
+	virtual void display();
+	virtual void del();
+	virtual void setCompleted(bool isComplete);
+	virtual void setAssigned(bool isAssigned);
+	virtual bool isAssigned();
+	virtual bool isCompleted();
+	virtual string getDate();
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return {}; }
 protected:
     int priority;
     bool completed;
@@ -37,8 +43,15 @@ public:
         cout << dueDate << endl;
         cout << details << endl;
     };
-    virtual void edit() {};
-    virtual void del() {};
+    virtual void edit() {}
+    virtual void del() {}
+    virtual void setCompleted(bool isComplete) {}
+	virtual void setAssigned(bool isAssigned) {}
+	virtual bool isAssigned() { return true; }
+	virtual bool isCompleted() { return true; }
+	virtual string getDate() { return ""; }
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return {}; }
 private:
     string dueDate;
     bool completed;
@@ -59,8 +72,15 @@ public:
         cout << dueDate << endl;
         cout << details << endl;
     };
-    virtual void edit() {};
-    virtual void del() {};
+    virtual void edit() {}
+    virtual void del() {}
+    virtual void setCompleted(bool isComplete) {}
+	virtual void setAssigned(bool isAssigned) {}
+	virtual bool isAssigned() { return true; }
+	virtual bool isCompleted() { return true; }
+	virtual string getDate() { return ""; }
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return {}; }
 private:
     string dueDate;
     bool completed;

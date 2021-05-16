@@ -20,10 +20,20 @@ public:
 	Base() {};
 	virtual void edit() = 0;
 	virtual void display() const = 0;
-	virtual void del() = 0; //calling this del since delete is a keyword
+	virtual void del() = 0;
+	virtual void setCompleted(bool isComplete) = 0;
+	virtual void setAssigned(bool isAssigned) = 0;
+	virtual bool isAssigned() const = 0;
+	virtual bool isCompleted() const = 0;
+	virtual string getDate() const = 0;
+	virtual void addSubTask(Base* task) = 0;
+	virtual vector<Base*> getQueue() const = 0;
 	void setStrategy(SortStrategy* strat) {
 		this->strategy = strat;
 	}
+	string getName() const { return name; }
+    string getDetails() const { return details; }
+
 };
 
 #endif

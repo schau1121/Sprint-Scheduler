@@ -17,6 +17,12 @@ public:
     virtual void del();
     virtual void edit();
     void addSubTask(Base* task);
+    virtual void setCompleted(bool isComplete);
+	virtual void setAssigned (bool isAssigned);
+	virtual bool isAssigned();
+	virtual bool isCompleted();
+	virtual string getDate();
+    virtual vector<Base*> getQueue() const;
 };
 
 
@@ -38,6 +44,16 @@ public:
         numSubTasks = 1;
         priorityQueue.push_back(new TaskListMock());
     };
+    virtual void display() const {};
+    virtual void edit() {}
+    virtual void del() {}
+    virtual void setCompleted(bool isComplete) {}
+	virtual void setAssigned(bool isAssigned) {}
+	virtual bool isAssigned() { return true; }
+	virtual bool isCompleted() { return true; }
+	virtual string getDate() { return ""; }
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return priorityQueue; }
 };
 
 #endif
