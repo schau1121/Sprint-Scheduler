@@ -15,7 +15,7 @@ TEST(sortByDate_test, simple_test_tasks1) {
     }
 }
 
-TEST(sortByDate_test, simple_test_tasks1) {
+TEST(sortByDate_test, simple_test_tasks2) {
     vector<Base*> queue;
     SortByDate sortingStrategy;
     queue.push_back(new Task("Task 1", "05/21/21", "", 4));
