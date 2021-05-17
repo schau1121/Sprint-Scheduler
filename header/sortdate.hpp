@@ -27,7 +27,7 @@ struct greaterThanDate {
 class SortByDate : public SortStrategy {
 public:
     SortByDate() {};
-    virtual vector<Base*> sort(vector<Base*> priorityQueue, int numSubTasks);
+    virtual vector<Base*> sort(vector<Base*> priorityQueue);
 };
 
 #endif
