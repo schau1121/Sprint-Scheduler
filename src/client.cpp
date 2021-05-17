@@ -9,9 +9,10 @@ void client::createTask() {
     cout << "Creating a task..." << endl;
     cout << "Enter a name: ";
     cin >> name;
-    if(name == "") {
+    while(name == "") {
         cout << "ERROR: NEED TASK NAME" << endl;
-        return;
+        cout << "Enter a name: ";
+        cin >> name;
     }
     cout << "\nEnter a due date as MM/DD/YY: ";
     cin >> date;
