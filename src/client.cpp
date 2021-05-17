@@ -10,7 +10,7 @@ using namespace std;
 
 
 
-client::displayMenu() {
+void client::displayMenu() {
 	char userInput = ' ';
 
  	do {
