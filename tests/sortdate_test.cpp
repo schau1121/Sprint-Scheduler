@@ -1,3 +1,6 @@
+#ifndef __SORTDATE_TEST__
+#define __SORTDATE_TEST__
+
 #include "gtest/gtest.h"
 #include "../src/task.cpp"
 #include "../src/tasklist.cpp"
@@ -41,3 +44,5 @@ TEST(sortByDate_test, taskList_test1) {
         EXPECT_EQ(test->getQueue()[i]->getName(), expected[i]) << "vectors differ at " << i;
     }
 }
+
+#endif
