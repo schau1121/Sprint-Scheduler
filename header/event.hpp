@@ -23,6 +23,7 @@ public:
 	virtual bool isCompleted() const ;
 	virtual string getDate() const ;
     virtual vector<Base*> getQueue() const;
+    virtual int getPriority() const { return 6; }
 };
 
 
@@ -54,6 +55,7 @@ public:
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return priorityQueue; }
+    virtual int getPriority() const { return 6; }
 };
 
 #endif

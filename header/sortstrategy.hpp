@@ -1,6 +1,7 @@
 #ifndef __SORTSTRATEGY_HPP__
 #define __SORTSTRATEGY_HPP__
 
+#include <algorithm>
 #include "base.hpp"
 
 using namespace std;

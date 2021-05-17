@@ -43,6 +43,7 @@ public:
 	//for task return empty list
 	//for taskList and event return priorityQueue
 	virtual vector<Base*> getQueue() const = 0;
+	virtual int getPriority() const = 0;
 	void setStrategy(SortStrategy* strat) {
 		this->strategy = strat;
 	}

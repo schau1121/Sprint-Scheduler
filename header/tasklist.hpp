@@ -24,6 +24,7 @@ public:
 	virtual bool isCompleted() const ;
 	virtual string getDate() const ;
     virtual vector<Base*> getQueue() const;
+    virtual int getPriority() const { return priority; }
 };
 
 //this task list is initialized with two task mocks
@@ -55,6 +56,7 @@ public:
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return priorityQueue; }
+    virtual int getPriority() const { return priority; }
 };
 
 #endif
