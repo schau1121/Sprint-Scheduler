@@ -23,6 +23,7 @@ public:
     void createEvent();
 };
 
+    ~Event();
 
 //this mock is initialized with a task list containing 2 tasks
 class EventMock : public Base {
