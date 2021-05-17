@@ -23,7 +23,7 @@ public:
 	virtual bool isAssigned() const { return assigned; }
 	virtual bool isCompleted() const { return completed; }
 	virtual string getDate() const { return dueDate; }
-    virtual vector<Base*> getQueue() const { return priorityQueue; }
+    virtual vector<Base*> getQueue() const { return strategy->sort(priorityQueue); }
     virtual int getPriority() const { return priority; }
 };
 
