@@ -16,6 +16,13 @@ void TaskList::addSubTask(Base* task) {
     }
 }
 
+void TaskList::setCompleted(bool isComplete) {
+    completed = isComplete;
+}
+
+void TaskList::setAssigned(bool isAssigned) {
+    assigned = isAssigned;
+}
 
 
 #endif

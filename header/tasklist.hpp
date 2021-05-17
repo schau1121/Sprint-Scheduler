@@ -14,16 +14,16 @@ protected:
     bool assigned;
 public:
     TaskList(string name, string details, int priority);
-    virtual void display() const;
-    virtual void del();
-    virtual void edit();
+    virtual void display() const {}
+    virtual void del() {}
+    virtual void edit() {}
     void addSubTask(Base* task);
     virtual void setCompleted(bool isComplete);
 	virtual void setAssigned (bool isAssigned);
-	virtual bool isAssigned() const ;
-	virtual bool isCompleted() const ;
-	virtual string getDate() const ;
-    virtual vector<Base*> getQueue() const;
+	virtual bool isAssigned() const { return assigned; }
+	virtual bool isCompleted() const { return completed; }
+	virtual string getDate() const { return dueDate; }
+    virtual vector<Base*> getQueue() const { return priorityQueue; }
     virtual int getPriority() const { return priority; }
 };
 
