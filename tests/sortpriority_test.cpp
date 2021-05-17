@@ -32,5 +32,17 @@ TEST(sortByPriority_test, simple_test_tasks2) {
     }
 }
 
+TEST(sortByPriority_test, taskList_test1) {
+    Base* test = new TaskList("Homework", "", 4);
+    test->setStrategy(new SortByPriority());
+    test->addSubTask(new Task("math homework", "05/20/21", "ch. 1-3", 3));
+    test->addSubTask(new Task("english homework", "05/18/21", "read books", 2));
+    test->addSubTask(new Task("history homework", "05/18/21", "flashcards", 1));
+    test->addSubTask(new Task("cs100 homework", "05/17/21", "final project sprint", 5));
+    vector<string> expected = {"cs100 homework", "math homework", "english homework", "history homework"};
+    for(int i = 0; i < expected.size(); i++) {
+        EXPECT_EQ(test->getQueue()[i]->getName(), expected[i]) << "vectors differ at " << i;
+    }
+}
 
 #endif
