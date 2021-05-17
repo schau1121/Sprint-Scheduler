@@ -7,11 +7,7 @@
 using namespace std;
 
 
-//constructor
-client::client() {
-	this->sortingMethod = "priority";
 
-}
 
 
 client::displayMenu() {
