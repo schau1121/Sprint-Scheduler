@@ -8,3 +8,8 @@ CMakeCache.txt
 taskScheduler
 .vscode/
 googletest
+test.exe
+taskScheduler.exe
+bin/
+.vscode/
+googletest
