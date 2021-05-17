@@ -5,8 +5,6 @@
 
 using namespace std;
 
-class Base;
-
 class SortStrategy {
 public:
 	SortStrategy() {};
