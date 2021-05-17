@@ -21,7 +21,7 @@ public:
 	virtual void setAssigned (bool isAssigned);
 	virtual bool isAssigned() const ;
 	virtual bool isCompleted() const ;
-	virtual string getDate() const ;
+	virtual string getDate() const { return date; }
     virtual vector<Base*> getQueue() const;
     virtual int getPriority() const { return 6; }
 };
