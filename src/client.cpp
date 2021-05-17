@@ -30,6 +30,10 @@ void client::displayMenu() {
 			case 'c':
 				cout << "FIXME: Call create function" << endl;
 				break;
+			case 'Q':
+			case 'q':
+				cout << "Quitting..." << endl;
+				break;
 			default:
 				cout << "ERROR: Invalid Input, please try again or press 'q' to quit" << endl;
 				break;
