@@ -2,31 +2,37 @@
 #define __EVENT_HPP__
 
 #include "base.hpp"
-#include "tasklist.hpp"
+#include "../src/sortdate.cpp"
+#include "../src/sortpriority.cpp"
+#include "../src/tasklist.cpp"
 
 class Event : public Base {
 protected:
     string date;
     string time;
-    double duration;
-    vector<Base*> priorityQueue;
+    double duration; //number of hours
+    vector<TaskList> priorityQueue;
     int numSubTasks;
+    SortStrategy* strat;
 public:
     Event(string name, string date, string time, string details, double duration);
     virtual void display() const;
     virtual void del();
     virtual void edit();
-    void addSubTask(Base* task);
-    virtual void setCompleted(bool isComplete);
-	virtual void setAssigned (bool isAssigned);
-	virtual bool isAssigned() const ;
-	virtual bool isCompleted() const ;
-	virtual string getDate() const { return date; }
-    virtual vector<Base*> getQueue() const { return strategy->sort(priorityQueue); }
-    virtual int getPriority() const { return 6; }
+    void addSubTask(TaskList list);
+    virtual void setCompleted(bool isComplete) {};
+	virtual void setAssigned (bool isAssigned) {};
+	virtual bool isAssigned() const { return false; }
+	virtual bool isCompleted() const { return false; }
+	virtual string getDate() const { return (date + "\n" + time + "\n"); }
+    vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
+    void setStrategy(SortStrategy* strat) {
+		this->strat = strat;
+	}
+    
 };
 
-
+/*
 //this mock is initialized with a task list containing 2 tasks
 class EventMock : public Base {
 protected:
@@ -50,12 +56,13 @@ public:
     virtual void del() {}
     virtual void setCompleted(bool isComplete) {}
 	virtual void setAssigned(bool isAssigned) {}
-	virtual bool isAssigned() const { return true; }
-	virtual bool isCompleted() const { return true; }
+	virtual bool isAssigned() const { return false; }
+	virtual bool isCompleted() const { return false; }
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return priorityQueue; }
     virtual int getPriority() const { return 6; }
 };
+*/
 
 #endif

@@ -2,32 +2,40 @@
 #define __TASKLIST_HPP__
 
 #include "base.hpp"
-#include "task.hpp"
+#include "sortstrategy.hpp"
+#include "../src/sortpriority.cpp"
+#include "../src/sortdate.cpp"
+#include "../src/task.cpp"
 
 class TaskList : public Base {
 protected:
     int priority;
     bool completed;
-    vector<Base*> priorityQueue;
+    vector<Task> priorityQueue;
+    int numSubTasks;
     //set to empty string to differentiate between tasks and task lists when sorting by date
     string dueDate = ""; 
     bool assigned;
+    SortStrategy* strat;
 public:
     TaskList(string name, string details, int priority);
-    virtual void display() const {}
-    virtual void del() {}
-    virtual void edit() {}
-    void addSubTask(Base* task);
+    virtual void display() const;
+    virtual void del();
+    virtual void edit();
+    void addSubTask(Task task);
     virtual void setCompleted(bool isComplete);
 	virtual void setAssigned (bool isAssigned);
 	virtual bool isAssigned() const { return assigned; }
 	virtual bool isCompleted() const { return completed; }
-	virtual string getDate() const { return dueDate; }
-    virtual vector<Base*> getQueue() const { return strategy->sort(priorityQueue); }
-    virtual int getPriority() const { return priority; }
+	virtual string getDate() const { return ""; }
+    vector<Task> getQueue() const { return strat->sort(priorityQueue); }
+    void setStrategy(SortStrategy* strat) {
+		this->strategy = strat;
+	}
 };
 
 //this task list is initialized with two task mocks
+/*
 class TaskListMock : public Base {
 protected:
     int priority;
@@ -58,5 +66,7 @@ public:
     virtual vector<Base*> getQueue() const { return priorityQueue; }
     virtual int getPriority() const { return priority; }
 };
+
+*/
 
 #endif
