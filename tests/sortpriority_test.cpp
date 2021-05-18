@@ -45,4 +45,17 @@ TEST(sortByPriority_test, taskList_test1) {
     }
 }
 
+TEST(sortByPriority_test, taskList_test2) {
+    Base* test = new TaskList("Chores", "", 4);
+    test->setStrategy(new SortByPriority());
+    test->addSubTask(new Task("Bathroom", "05/20/21", "", 3));
+    test->addSubTask(new Task("Dishes", "05/18/21", "", 2));
+    test->addSubTask(new Task("Bedroom", "05/17/21", "", 4));
+    test->addSubTask(new Task("Mop floors", "05/17/21", "", 5));
+    vector<string> expected = {"Mop floors", "Bedroom", "Bathroom", "Dishes"};
+    for(int i = 0; i < expected.size(); i++) {
+        EXPECT_EQ(test->getQueue()[i]->getName(), expected[i]) << "vectors differ at " << i;
+    }
+}
+
 #endif
