@@ -49,8 +49,8 @@ public:
     virtual void del() {}
     virtual void setCompleted(bool isComplete) {}
 	virtual void setAssigned(bool isAssigned) {}
-	virtual bool isAssigned() const { return true; }
-	virtual bool isCompleted() const { return true; }
+	virtual bool isAssigned() const { return false; }
+	virtual bool isCompleted() const { return false; }
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return priorityQueue; }

@@ -9,3 +9,6 @@ taskScheduler
 bin/
 .vscode/
 googletest
+build/
+taskScheduler.exe
+test.exe
