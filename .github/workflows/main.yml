@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master, schau1121/task-list-add-subtasks, schau1121/sorting-functions ]
+    branches: [ master, schau1121/add-subtasks, schau1121/sorting-functions ]
   pull_request:
-    branches: [ master, schau1121/task-list-add-subtasks, schau1121/sorting-functions ]
+    branches: [ master, schau1121/sorting-functions, schau1121/add-subtasks ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
