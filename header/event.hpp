@@ -2,6 +2,8 @@
 #define __EVENT_HPP__
 
 #include "base.hpp"
+#include "../src/sortdate.cpp"
+#include "../src/sortpriority.cpp"
 #include "tasklist.hpp"
 
 class Event : public Base {
@@ -9,23 +11,28 @@ protected:
     string date;
     string time;
     double duration; //number of hours
-    vector<Base*> priorityQueue;
+    vector<TaskList> priorityQueue;
     int numSubTasks;
+    SortStrategy* strat;
 public:
     Event(string name, string date, string time, string details, double duration);
     virtual void display() const;
     virtual void del();
     virtual void edit();
-    void addSubTask(Base* task);
-    virtual void setCompleted(bool isComplete);
-	virtual void setAssigned (bool isAssigned);
-	virtual bool isAssigned();
-	virtual bool isCompleted();
-	virtual string getDate();
-    virtual vector<Base*> getQueue() const;
+    void addSubTask(TaskList list);
+    virtual void setCompleted(bool isComplete) {};
+	virtual void setAssigned (bool isAssigned) {};
+	virtual bool isAssigned() const { return false; }
+	virtual bool isCompleted() const { return false; }
+	virtual string getDate() const { return (date + "\n" + time + "\n"); }
+    vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
+    void setStrategy(SortStrategy* strat) {
+		this->strategy = strat;
+	}
+    
 };
 
-
+/*
 //this mock is initialized with a task list containing 2 tasks
 class EventMock : public Base {
 protected:
@@ -55,5 +62,6 @@ public:
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return priorityQueue; }
 };
+*/
 
 #endif

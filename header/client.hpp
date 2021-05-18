@@ -10,6 +10,7 @@
 #include "sortstrategy.hpp"
 #include "../src/task.cpp"
 #include "../src/tasklist.cpp"
+#include "../src/event.cpp"
 
 
 using namespace std;
@@ -17,9 +18,9 @@ using namespace std;
 class client {
 	private:
 		vector<Base*> allObjects;
-		vector<Base*> allTasks;
-		vector<Base*> allLists;
-		vector<Base*> allEvents;
+		vector<Task> allTasks;
+		vector<TaskList> allLists;
+		vector<Event> allEvents;
 		string sortingMethod;
 	public:
 		//constructor
@@ -35,7 +36,7 @@ class client {
 
 		//print functions
 		void view();
-		void printAll(); 
+		void printAll();
 		void printTasks();
 		void printLists();
 		void printEvents(); 
