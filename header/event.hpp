@@ -8,8 +8,8 @@ class Event : public Base {
 protected:
     string date;
     string time;
-    double duration; //number of hours
-    Base** priorityQueue;
+    double duration;
+    vector<Base*> priorityQueue;
     int numSubTasks;
 public:
     Event(string name, string date, string time, string details, double duration);
@@ -17,17 +17,45 @@ public:
     virtual void del();
     virtual void edit();
     void addSubTask(Base* task);
+    virtual void setCompleted(bool isComplete);
+	virtual void setAssigned (bool isAssigned);
+	virtual bool isAssigned() const ;
+	virtual bool isCompleted() const ;
+	virtual string getDate() const { return date; }
+    virtual vector<Base*> getQueue() const { return strategy->sort(priorityQueue); }
+    virtual int getPriority() const { return 6; }
 };
 
 
 //this mock is initialized with a task list containing 2 tasks
-class EventMock : public Event {
+class EventMock : public Base {
+protected:
+    string date;
+    string time;
+    double duration; //number of hours
+    vector<Base*> priorityQueue;
+    int numSubTasks;
 public:
-    EventMock() : Event("Event 1", "05/15/20", "12:00 PM", "event details", 2.5) {
+    EventMock() {
+        name = "Event 1";
+        date = "05/15/20";
+        time = "12:00 PM";
+        details = "event details";
+        duration = 2.5;
         numSubTasks = 1;
-        priorityQueue = new Base* [numSubTasks];
-        priorityQueue[0] = new TaskListMock();
+        priorityQueue.push_back(new TaskListMock());
     };
+    virtual void display() const {};
+    virtual void edit() {}
+    virtual void del() {}
+    virtual void setCompleted(bool isComplete) {}
+	virtual void setAssigned(bool isAssigned) {}
+	virtual bool isAssigned() const { return true; }
+	virtual bool isCompleted() const { return true; }
+	virtual string getDate() const { return ""; }
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return priorityQueue; }
+    virtual int getPriority() const { return 6; }
 };
 
 #endif
