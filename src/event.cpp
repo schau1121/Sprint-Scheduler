@@ -9,7 +9,7 @@ Event::Event(string name, string date, string time, string details, double durat
     this->details = details;
     this->duration = duration;
     this->priority = 6;
-    setStrategy(new SortByPriority());
+//    setStrategy(new SortByPriority());
 }
 
 void Event::display() const {

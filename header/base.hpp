@@ -39,9 +39,6 @@ public:
 	virtual string getDate() const = 0;
 	//for task do nothing	
 	//for taskList and event add task to priorityQueue
-	virtual void addSubTask(Base* task) = 0;	
-	//for task return empty list
-	//for taskList and event return priorityQueue
 	string getName() const { return name; }
         string getDetails() const { return details; }
 	int getPriority() const { return priority; }

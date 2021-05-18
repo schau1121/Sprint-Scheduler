@@ -1,6 +1,6 @@
 #include "../header/base.hpp"
 #include "../header/event.hpp"
-#include "../header/client.cpp"
+#include "../header/client.hpp"
 void client::createEvent() {
 
 	string name = "";
@@ -30,8 +30,8 @@ void client::createEvent() {
 	cout << "Enter event duration in hours: " << endl;
 	cin >> duration; 
 
-	Base* newEvent = new Event(name, date, time, details, duration);
-	allObjects.push_back(newEvent);
+	Event newEvent = Event(name, date, time, details, duration);
+	allObjects.push_back(&newEvent);
 	allEvents.push_back(newEvent);
 	cout << "Event created!" << endl;	
 
@@ -56,8 +56,8 @@ void client::createTask() {
     getline(cin, details);
     cout << "\nEnter priority as 0-5: ";
     cin >> priority;
-    Base* newTask = new Task(name, date, details, priority);
-    allObjects.push_back(newTask);
+    Task newTask = Task(name, date, details, priority);
+    allObjects.push_back(&newTask);
     allTasks.push_back(newTask);
     cout << "\nCreated!" << endl;
 }

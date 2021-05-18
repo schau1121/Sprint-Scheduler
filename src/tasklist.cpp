@@ -8,7 +8,7 @@ TaskList::TaskList(string name, string details, int priority) {
     this->details = details;
     this->priority = priority;
     this->completed = false;
-    setStrategy(new SortByPriority());
+//    setStrategy(new SortByPriority());
 }
 
 void TaskList::display() const {

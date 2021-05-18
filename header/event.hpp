@@ -3,8 +3,8 @@
 
 #include <string>
 #include "base.hpp"
-#include "../src/sortdate.cpp"
-#include "../src/sortpriority.cpp"
+//#include "../src/sortdate.cpp"
+//#include "../src/sortpriority.cpp"
 #include "tasklist.hpp"
 
 class Event : public Base {

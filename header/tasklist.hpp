@@ -3,8 +3,8 @@
 
 #include "base.hpp"
 #include "sortstrategy.hpp"
-#include "../src/sortpriority.cpp"
-#include "../src/sortdate.cpp"
+//#include "../src/sortpriority.cpp"
+//#include "../src/sortdate.cpp"
 #include "task.hpp"
 
 class TaskList : public Base {
