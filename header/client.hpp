@@ -1,5 +1,5 @@
-#ifndef CLIENT_HPP
-#define CLIENT_HPP
+#ifndef __CLIENT_HPP__
+#define __CLIENT_HPP__
 
 #include <iostream>
 #include <vector>
@@ -7,9 +7,9 @@
 
 //header files
 #include "base.hpp"
-#include "sortstrategy.hpp"
-#include "../src/task.cpp"
-#include "../src/tasklist.cpp"
+//#include "sortstrategy.hpp"
+#include "../src/event.cpp"
+//#include "../src/tasklist.cpp"
 
 
 using namespace std;

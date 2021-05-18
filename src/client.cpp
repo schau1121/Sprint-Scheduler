@@ -1,6 +1,42 @@
-#include "../header/client.hpp"
+#include "../header/base.hpp"
+#include "../header/event.hpp"
+#include "../header/client.cpp"
+void client::createEvent() {
 
-//need to add exception handling
+	string name = "";
+	string date = "";
+	string time = "";
+	string details = "";
+	double duration = 0;
+		
+	cout << "Creating an event..." << endl;
+	
+	cout << "Enter a name: " << endl;
+	cin >> name;
+	if(name == "") {
+		cout << "ERROR: NEED AN EVENT NAME." << endl;
+		return;
+	}
+	
+	cout << "Enter a due date as MM/DD/YY: " << endl;
+	cin >> date;
+
+	cout << "Enter an event starting time as MONTH/DAY/HOUR: " << endl;
+	cin >> time;
+	
+	cout << "Enter event details: " << endl;
+	getline(cin, details);
+
+	cout << "Enter event duration in hours: " << endl;
+	cin >> duration; 
+
+	Base* newEvent = new Event(name, date, time, details, duration);
+	allObjects.push_back(newEvent);
+	allEvents.push_back(newEvent);
+	cout << "Event created!" << endl;	
+
+}
+
 void client::createTask() {
     string name;
     string date = "";
@@ -25,4 +61,3 @@ void client::createTask() {
     allTasks.push_back(newTask);
     cout << "\nCreated!" << endl;
 }
-
