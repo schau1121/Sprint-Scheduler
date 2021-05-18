@@ -56,9 +56,9 @@ class client {
 		void createList();
 		void createEvent();	
 
-		
-		//edit functions
+		//after printing all lists, ask user for which list to add a task to
 		void addTaskToTaskList(Base* currList);	
+		//after printing all events, ask user for which event to add event to
 		void addListToEvent(Base* currEvent);
 
 

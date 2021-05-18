@@ -17,11 +17,11 @@ public:
     virtual void del();
     virtual void edit();
     void addSubTask(Base* task);
-    virtual void setCompleted(bool isComplete);
-	virtual void setAssigned (bool isAssigned);
-	virtual bool isAssigned() const ;
-	virtual bool isCompleted() const ;
-	virtual string getDate() const { return date; }
+    virtual void setCompleted(bool isComplete) {}
+	virtual void setAssigned (bool isAssigned) {}
+	virtual bool isAssigned() const { return false; }
+	virtual bool isCompleted() const { return false; }
+	virtual string getDate() const;
     virtual vector<Base*> getQueue() const { return strategy->sort(priorityQueue); }
     virtual int getPriority() const { return 6; }
 };
@@ -50,8 +50,8 @@ public:
     virtual void del() {}
     virtual void setCompleted(bool isComplete) {}
 	virtual void setAssigned(bool isAssigned) {}
-	virtual bool isAssigned() const { return true; }
-	virtual bool isCompleted() const { return true; }
+	virtual bool isAssigned() const { return false; }
+	virtual bool isCompleted() const { return false; }
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return priorityQueue; }
