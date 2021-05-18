@@ -9,17 +9,21 @@ protected:
     int priority;
     bool completed;
     vector<Base*> priorityQueue;
-    int numSubTasks;
     //set to empty string to differentiate between tasks and task lists when sorting by date
     string dueDate = ""; 
+    bool assigned;
 public:
     TaskList(string name, string details, int priority);
-    virtual void display() const {};
-    virtual void del() {};
-    virtual void edit() {};
+    virtual void display() const;
+    virtual void del();
+    virtual void edit();
     void addSubTask(Base* task);
-    bool isCompleted() { return true; };
-    vector<Base*> getQueue() const { return priorityQueue; };
+    virtual void setCompleted(bool isComplete);
+	virtual void setAssigned (bool isAssigned);
+	virtual bool isAssigned() const ;
+	virtual bool isCompleted() const ;
+	virtual string getDate() const ;
+    virtual vector<Base*> getQueue() const;
 };
 
 //this task list is initialized with two task mocks
@@ -42,8 +46,15 @@ public:
         priorityQueue.push_back(new TaskMock2());
     }
     virtual void display() const {};
-    virtual void del() {};
-    virtual void edit() {};
+    virtual void edit() {}
+    virtual void del() {}
+    virtual void setCompleted(bool isComplete) {}
+	virtual void setAssigned(bool isAssigned) {}
+	virtual bool isAssigned() const { return true; }
+	virtual bool isCompleted() const { return true; }
+	virtual string getDate() const { return ""; }
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return priorityQueue; }
 };
 
 #endif

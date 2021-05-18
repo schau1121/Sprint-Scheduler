@@ -1,6 +1,6 @@
-#include "../header/client.hpp"
 #include "../header/base.hpp"
 #include "../header/event.hpp"
+#include "../header/client.cpp"
 void client::createEvent() {
 
 	string name = "";
@@ -35,4 +35,29 @@ void client::createEvent() {
 	allEvents.push_back(newEvent);
 	cout << "Event created!" << endl;	
 
+}
+
+void client::createTask() {
+    string name;
+    string date = "";
+    string details = "";
+    int priority = 0;
+    cout << "Creating a task..." << endl;
+    cout << "Enter a name: ";
+    cin >> name;
+    while(name == "") {
+        cout << "ERROR: NEED TASK NAME" << endl;
+        cout << "Enter a name: ";
+        cin >> name;
+    }
+    cout << "\nEnter a due date as MM/DD/YY: ";
+    cin >> date;
+    cout << "\nEnter details: ";
+    getline(cin, details);
+    cout << "\nEnter priority as 0-5: ";
+    cin >> priority;
+    Base* newTask = new Task(name, date, details, priority);
+    allObjects.push_back(newTask);
+    allTasks.push_back(newTask);
+    cout << "\nCreated!" << endl;
 }

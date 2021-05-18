@@ -13,14 +13,21 @@ public:
         this->completed = false;
     };
     ~Task();
-    virtual void display() const;
     virtual void edit();
-    virtual void del();
-    void setCompleted(bool isComplete);
+	virtual void display() const;
+	virtual void del();
+	virtual void setCompleted(bool isComplete);
+	virtual void setAssigned(bool isAssigned);
+	virtual bool isAssigned() const;
+	virtual bool isCompleted() const;
+	virtual string getDate() const;
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return {}; }
 protected:
     int priority;
     bool completed;
     string dueDate;
+    bool assigned;
 };
 
 class TaskMock1 : public Base {
@@ -31,14 +38,21 @@ public:
         this->details = "some details";
         this->priority = 2;
         this->completed = false; 
-    };
+    }
     virtual void display() const {
         cout << name << endl;
         cout << dueDate << endl;
         cout << details << endl;
-    };
-    virtual void edit() {};
-    virtual void del() {};
+    }
+    virtual void edit() {}
+    virtual void del() {}
+    virtual void setCompleted(bool isComplete) {}
+	virtual void setAssigned(bool isAssigned) {}
+	virtual bool isAssigned() const { return true; }
+	virtual bool isCompleted() const { return true; }
+	virtual string getDate() const { return ""; }
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return {}; }
 private:
     string dueDate;
     bool completed;
@@ -53,14 +67,21 @@ public:
         this->details = "more details";
         this->priority = 4;
         this->completed = false; 
-    };
+    }
     virtual void display() const {
         cout << name << endl;
         cout << dueDate << endl;
         cout << details << endl;
-    };
-    virtual void edit() {};
-    virtual void del() {};
+    }
+    virtual void edit() {}
+    virtual void del() {}
+    virtual void setCompleted(bool isComplete) {}
+	virtual void setAssigned(bool isAssigned) {}
+	virtual bool isAssigned() const { return true; }
+	virtual bool isCompleted() const { return true; }
+	virtual string getDate() const { return ""; }
+	virtual void addSubTask(Base* task) {}
+    virtual vector<Base*> getQueue() const { return {}; }
 private:
     string dueDate;
     bool completed;

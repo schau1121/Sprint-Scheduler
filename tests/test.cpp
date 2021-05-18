@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "task_test.cpp"
 #include "create_tests.cpp"
 
 int main(int argc, char **argv) {
