@@ -3,6 +3,8 @@
 
 #include <string>
 #include "base.hpp"
+#include "../src/sortdate.cpp"
+#include "../src/sortpriority.cpp"
 #include "tasklist.hpp"
 
 class Event : public Base {
@@ -12,25 +14,28 @@ protected:
     string time;
     string details;
     double duration; //number of hours
-    vector<Base*> priorityQueue;
+    vector<TaskList> priorityQueue;
     int numSubTasks;
+    SortStrategy* strat;
 public:
     Event(string name, string date, string time, string details, double duration);
     virtual void display() const;
     virtual void del();
     virtual void edit();
-    void addSubTask(Base* task);
-    virtual void setCompletedbool isComplete();
-    virtual void setAssigned(bool isAssigned);
-    virtual bool isAssigned() const;
-    virtual bool isCompleted() const;
-    virtual string getDate() const;
-    virtual void addSubTask(Base* task);
-    virtual vector<Base*> getQueue() const;
-    void createEvent();
-    ~Event();
+    void addSubTask(TaskList list);
+    virtual void setCompleted(bool isComplete) {};
+    virtual void setAssigned (bool isAssigned) {};
+    virtual bool isAssigned() const { return false; }
+    virtual bool isCompleted() const { return false; }
+    virtual string getDate() const { return (date + "\n" + time + "\n"); }
+    vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
+    void setStrategy(SortStrategy* strat) {
+		this->strategy = strat;
+	}
+    ~Event();  
 };
 
+/*
 //this mock is initialized with a task list containing 2 tasks
 class EventMock : public Base {
 protected:
@@ -54,11 +59,12 @@ public:
     virtual void del() {}
     virtual void setCompleted(bool isComplete) {}
 	virtual void setAssigned(bool isAssigned) {}
-	virtual bool isAssigned() const { return true; }
-	virtual bool isCompleted() const { return true; }
+	virtual bool isAssigned() const { return false; }
+	virtual bool isCompleted() const { return false; }
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return priorityQueue; }
 };
+*/
 
 #endif

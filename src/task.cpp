@@ -18,6 +18,19 @@ Task::Task(string name, string dueDate = "", string details = "", int priority =
     this->assigned = false;
 }
 
+void Task::edit() {
+
+}
+
+void Task::display() const {
+
+}
+
+void Task::del() {
+
+
+}
+
 void Task::setCompleted(bool isComplete) {
     completed = isComplete;
 }

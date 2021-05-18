@@ -18,11 +18,10 @@ public:
 	virtual void del();
 	virtual void setCompleted(bool isComplete);
 	virtual void setAssigned(bool isAssigned);
-	virtual bool isAssigned() const;
-	virtual bool isCompleted() const;
-	virtual string getDate() const;
-	virtual void addSubTask(Base* task) {}
-    virtual vector<Base*> getQueue() const { return {}; }
+	virtual bool isAssigned() const { return assigned; }
+	virtual bool isCompleted() const { return completed; }
+	virtual string getDate() const { return dueDate; }
+    
 protected:
     int priority;
     bool completed;
@@ -30,6 +29,7 @@ protected:
     bool assigned;
 };
 
+/*
 class TaskMock1 : public Base {
 public:
     TaskMock1() {
@@ -87,5 +87,6 @@ private:
     bool completed;
     int priority;
 };
+*/
 
 #endif
