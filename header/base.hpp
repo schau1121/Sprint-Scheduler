@@ -38,7 +38,7 @@ public:
 	//for event return date & time separated by a new line
 	virtual string getDate() const = 0;
 	string getName() const { return name; }
-        string getDetails() const { return details; }
+    string getDetails() const { return details; }
 	int getPriority() const { return priority; }
 };
 
