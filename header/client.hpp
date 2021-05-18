@@ -7,9 +7,9 @@
 
 //header files
 #include "base.hpp"
-#include "sortstrategy.hpp"
-#include "../src/task.cpp"
-#include "../src/tasklist.cpp"
+//#include "sortstrategy.hpp"
+//#include "../src/task.cpp"
+//#include "../src/tasklist.cpp"
 
 
 using namespace std;
