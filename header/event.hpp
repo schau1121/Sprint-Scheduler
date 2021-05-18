@@ -19,11 +19,16 @@ public:
     virtual void display() const;
     virtual void del();
     virtual void edit();
-    void addSubTask(Base* task);
+    virtual void setCompleted();
+    virtual void setAssigned() {return false;};
+    virtual bool isAssigned() {return false;} const;
+    virtual bool isCompleted() { return date;} const;
+    virtual string getDate() const;
+    virtual void addSubTask(Base* task);
+    virtual vector<Base*> getQueue() const;
     void createEvent();
-};
-
     ~Event();
+};
 
 //this mock is initialized with a task list containing 2 tasks
 class EventMock : public Base {

@@ -1,6 +1,6 @@
 #include "../header/client.hpp"
 
-void client:: createEvent() {
+void client::createEvent() {
 
 	string name = "";
 	string date = "";
