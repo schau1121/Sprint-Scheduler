@@ -8,7 +8,7 @@ class Event : public Base {
 protected:
     string date;
     string time;
-    double duration; //number of hours
+    double duration;
     vector<Base*> priorityQueue;
     int numSubTasks;
 public:
@@ -22,7 +22,7 @@ public:
 	virtual bool isAssigned() const ;
 	virtual bool isCompleted() const ;
 	virtual string getDate() const { return date; }
-    virtual vector<Base*> getQueue() const;
+    virtual vector<Base*> getQueue() const { return strategy->sort(priorityQueue); }
     virtual int getPriority() const { return 6; }
 };
 
