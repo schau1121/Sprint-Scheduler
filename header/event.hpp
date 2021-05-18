@@ -20,9 +20,9 @@ public:
     virtual void del();
     virtual void edit();
     virtual void setCompleted();
-    virtual void setAssigned() {return false;};
-    virtual bool isAssigned() {return false;} const;
-    virtual bool isCompleted() { return date;} const;
+    virtual void setAssigned();
+    virtual bool isAssigned() const;
+    virtual bool isCompleted() const;
     virtual string getDate() const;
     virtual void addSubTask(Base* task);
     virtual vector<Base*> getQueue() const;
