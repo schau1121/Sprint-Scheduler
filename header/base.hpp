@@ -37,13 +37,8 @@ public:
 	//for task and taskList return dueDate
 	//for event return date & time separated by a new line
 	virtual string getDate() const = 0;
-	//for task do nothing
-	//for taskList and event add task to priorityQueue
-	virtual void addSubTask(Base* task) = 0;
-	//for task return empty list
-	//for taskList and event return priorityQueue
 	string getName() const { return name; }
-    string getDetails() const { return details; }
+        string getDetails() const { return details; }
 	int getPriority() const { return priority; }
 };
 
