@@ -26,9 +26,7 @@ public:
 	virtual bool isCompleted() const { return false; }
 	virtual string getDate() const { return (date + "\n" + time + "\n"); }
     vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
-    void setStrategy(SortStrategy<TaskList>* strat) {
-		this->strat = strat;
-	}
+    void setStrategy(string strategy);
     
 };
 

@@ -29,9 +29,7 @@ public:
 	virtual bool isCompleted() const { return completed; }
 	virtual string getDate() const { return ""; }
     vector<Task> getQueue() const { return strat->sort(priorityQueue); }
-    void setStrategy(SortStrategy<Task>* strat) {
-		this->strat = strat;
-	}
+    void setStrategy(string strategy);
 };
 
 //this task list is initialized with two task mocks

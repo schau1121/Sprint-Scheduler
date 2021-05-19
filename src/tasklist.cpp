@@ -1,3 +1,6 @@
+#ifndef __TASKLIST_CPP__
+#define __TASKLIST_CPP__
+
 #include "../header/tasklist.hpp"
 
 TaskList::TaskList(string name, string details, int priority) {
@@ -5,7 +8,7 @@ TaskList::TaskList(string name, string details, int priority) {
     this->details = details;
     this->priority = priority;
     this->completed = false;
-    setStrategy(new SortByPriority<Task>());
+    setStrategy("priority");
 }
 
 void TaskList::display() const {
@@ -31,3 +34,16 @@ void TaskList::setAssigned(bool isAssigned) {
     assigned = isAssigned;
 }
 
+void TaskList::setStrategy(string strategy) {
+    if(this->strat != nullptr) {
+        delete this->strat;
+    }
+    if(strategy == "date") {
+        this->strat = new SortByDate<Task>();
+    }
+    if(strategy == "priority") {
+        this->strat = new SortByPriority<Task>();
+    }
+}
+
+#endif

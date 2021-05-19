@@ -1,3 +1,6 @@
+#ifndef __EVENT_CPP__
+#define __EVENT_CPP__
+
 #include "../header/event.hpp"
 
 Event::Event(string name, string date, string time, string details, double duration) {
@@ -7,7 +10,7 @@ Event::Event(string name, string date, string time, string details, double durat
     this->details = details;
     this->duration = duration;
     this->priority = 6;
-    setStrategy(new SortByPriority<TaskList>());
+    setStrategy("priority");
 }
 
 void Event::display() const {
@@ -25,3 +28,17 @@ void Event::edit() {
 void Event::addSubTask(TaskList list) {
     priorityQueue.push_back(list);
 }
+
+void Event::setStrategy(string strategy) {
+    if(this->strat != nullptr) {
+        delete this->strat;
+    }
+    if(strategy == "date") {
+        this->strat = new SortByDate<TaskList>();
+    }
+    if(strategy == "priority") {
+        this->strat = new SortByPriority<TaskList>();
+    }
+}
+
+#endif
