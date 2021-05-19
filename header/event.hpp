@@ -13,7 +13,7 @@ protected:
     double duration; //number of hours
     vector<TaskList> priorityQueue;
     int numSubTasks;
-    SortStrategy* strat;
+    SortStrategy<TaskList>* strat;
 public:
     Event(string name, string date, string time, string details, double duration);
     virtual void display() const;
@@ -26,7 +26,7 @@ public:
 	virtual bool isCompleted() const { return false; }
 	virtual string getDate() const { return (date + "\n" + time + "\n"); }
     vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
-    void setStrategy(SortStrategy* strat) {
+    void setStrategy(SortStrategy<TaskList>* strat) {
 		this->strat = strat;
 	}
     

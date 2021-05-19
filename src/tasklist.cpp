@@ -5,7 +5,7 @@ TaskList::TaskList(string name, string details, int priority) {
     this->details = details;
     this->priority = priority;
     this->completed = false;
-    setStrategy(new SortByPriority());
+    setStrategy(new SortByPriority<Task>());
 }
 
 void TaskList::display() const {
@@ -21,7 +21,7 @@ void TaskList::edit() {
 }
 
 void TaskList::addSubTask(Task task) {
-
+    priorityQueue.push_back(task);
 }
 
 void TaskList::setCompleted(bool isComplete) {

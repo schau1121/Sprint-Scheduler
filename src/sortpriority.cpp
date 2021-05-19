@@ -1,6 +1,7 @@
 #include "../header/sortpriority.hpp"
 
-vector<Base*> SortByPriority::sort(vector<Base*> priorityQueue) {
-    std::sort(priorityQueue.begin(), priorityQueue.end(), greaterThanPriority());
+template<class T>
+vector<T> SortByPriority<T>::sort(vector<T> priorityQueue) {
+    std::sort(priorityQueue.begin(), priorityQueue.end(), greaterThanPriority<T>());
     return priorityQueue;
 } 

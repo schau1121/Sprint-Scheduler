@@ -16,7 +16,7 @@ protected:
     //set to empty string to differentiate between tasks and task lists when sorting by date
     string dueDate = ""; 
     bool assigned;
-    SortStrategy* strat;
+    SortStrategy<Task>* strat;
 public:
     TaskList(string name, string details, int priority);
     virtual void display() const;
@@ -29,8 +29,8 @@ public:
 	virtual bool isCompleted() const { return completed; }
 	virtual string getDate() const { return ""; }
     vector<Task> getQueue() const { return strat->sort(priorityQueue); }
-    void setStrategy(SortStrategy* strat) {
-		this->strategy = strat;
+    void setStrategy(SortStrategy<Task>* strat) {
+		this->strat = strat;
 	}
 };
 

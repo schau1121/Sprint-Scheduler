@@ -3,16 +3,18 @@
 
 #include "sortstrategy.hpp"
 
+template<class T>
 struct greaterThanPriority {
-    inline bool operator() (const Base* l, const Base* r) {
-        return (l->getPriority() > r->getPriority());
+    inline bool operator() (const T l, const T r) {
+        return (l.getPriority() > r.getPriority());
     }
 };
 
-class SortByPriority : public SortStrategy {
+template<class T>
+class SortByPriority : public SortStrategy<T> {
 public:
     SortByPriority() {};
-    virtual vector<Base*> sort(vector<Base*> priorityQueue);
+    virtual vector<T> sort(vector<T> priorityQueue);
 };
 
 #endif

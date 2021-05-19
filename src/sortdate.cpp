@@ -1,6 +1,7 @@
 #include "../header/sortdate.hpp"
 
-vector<Base*> SortByDate::sort(vector<Base*> priorityQueue) {
-    std::sort(priorityQueue.begin(), priorityQueue.end(), greaterThanDate());
+template<class T>
+vector<T> SortByDate<T>::sort(vector<T> priorityQueue) {
+    std::sort(priorityQueue.begin(), priorityQueue.end(), greaterThanDate<T>());
     return priorityQueue;    
 }
