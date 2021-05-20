@@ -19,6 +19,7 @@ protected:
     SortStrategy* strat;
     string name;
     string details;
+    double duration;
 public:
     TaskList(string name, string details, int priority);
     virtual void display() const;
@@ -33,6 +34,7 @@ public:
     virtual string getName() const { return name; }    
     virtual string getDetails() const { return details; }
     virtual int getPriority() const { return priority; }
+    virtual double getDuration() const { return 0; }
 //vector<Task> getQueue() const { return strat->sort(priorityQueue); }
     //void setStrategy(SortStrategy* strat) {
 	//	this->strategy = strat;

@@ -18,6 +18,7 @@ public:
         virtual string getName() const { return name; }
 	virtual string getDetails() const { return details; }
         virtual int getPriority() const { return priority; }
+	virtual double getDuration() const { return 0; }
 protected:
     int priority;
     bool completed;
