@@ -1,11 +1,22 @@
 #include "../header/task.hpp"
 
+#include <iostream>
+
 void Task::edit() {
 
 }
 
 void Task::display() const {
+	cout << "Name: " << this->name << " Date: " << this->dueDate << endl;
+	cout << "Priority: " << this->priority << endl;
+	cout << "Details: " << this->details << endl;
+	
 
+	if(this->isCompleted()) {
+		cout << "Completed" << endl;
+	}
+
+	return;
 }
 
 void Task::del() {

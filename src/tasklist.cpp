@@ -8,7 +8,11 @@ TaskList::TaskList(string name, string details, int priority) {
 }
 
 void TaskList::display() const {
-
+	cout << "Name: " << this->name << endl;
+	cout << "Priority: " << this->priority << endl;
+	cout << "Details: " << this->details << endl;
+	
+	return;
 }
 
 void TaskList::del() {

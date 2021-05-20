@@ -7,6 +7,10 @@
 #include "../src/sortdate.cpp"
 #include "task.hpp"
 
+
+#include <vector>
+
+
 class TaskList : public Base {
 protected:
     int priority;
