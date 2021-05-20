@@ -6,7 +6,6 @@
 class Task : public Base {
 public:
     Task(string name, string dueDate, string details, int priority);
-    ~Task();
     virtual void edit();
 	virtual void display() const;
 	virtual void del();
