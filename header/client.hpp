@@ -13,7 +13,7 @@
 #include "../src/event.cpp"
 
 
-using namespace std;
+//using namespace std;
 
 class client {
 	private:

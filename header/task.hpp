@@ -15,12 +15,15 @@ public:
 	virtual bool isAssigned() const { return assigned; }
 	virtual bool isCompleted() const { return completed; }
 	virtual string getDate() const { return dueDate; }
-    
+        virtual string getName() const { return name; }
+	virtual string getDetails() const { return details; }
+        virtual int getPriority() const { return priority; }
 protected:
     int priority;
     bool completed;
     string dueDate;
     bool assigned;
+    string name;
 };
 
 /*

@@ -1,7 +1,7 @@
 #ifndef __TASK_TEST_CPP__
 #define __TASK_TEST_CPP__
 #include "gtest/gtest.h"
-#include "../src/task.cpp"
+#include "../src/client.cpp"
 #include <iosfwd>
 
 TEST(Task_Constructor_test, null_name) {

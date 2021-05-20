@@ -13,6 +13,7 @@ protected:
     string date;
     string time;
     string details;
+    int priority;
     double duration; //number of hours
     vector<TaskList> priorityQueue;
     int numSubTasks;
@@ -23,15 +24,18 @@ public:
     virtual void del();
     virtual void edit();
     void addSubTask(TaskList list);
-    virtual void setCompleted(bool isComplete) {};
-    virtual void setAssigned (bool isAssigned) {};
+    virtual void setCompleted(bool isComplete) {}
+    virtual void setAssigned (bool isAssigned) {}
     virtual bool isAssigned() const { return false; }
     virtual bool isCompleted() const { return false; }
-    virtual string getDate() const { return (date + "\n" + time + "\n"); }
-    vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
+    virtual string getName() const { return name; }
+    virtual string getDate() const { return date; }
+    virtual string getDetails() const { return details; }
+    virtual int getPriority() const { return 6; }
+/*    vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(SortStrategy* strat) {
 		this->strategy = strat;
-	}
+	} */
     ~Event();  
 };
 

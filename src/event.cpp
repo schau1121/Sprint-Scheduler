@@ -28,4 +28,5 @@ void Event::addSubTask(TaskList list) {
     priorityQueue.push_back(list);
 }
 
+Event::~Event() {}
 #endif

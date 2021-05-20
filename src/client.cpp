@@ -1,6 +1,8 @@
 #include "../header/base.hpp"
 #include "../header/event.hpp"
 #include "../header/client.hpp"
+#include "../header/task.hpp"
+
 void client::createEvent() {
 
 	string name = "";
@@ -60,8 +62,8 @@ void client::createTask() {
     allObjects.push_back(&newTask);
     allTasks.push_back(newTask);
     cout << "\nCreated!" << endl;
-
-
+}
+/*
 void client::createList(){
 
 	string name = "";
@@ -89,4 +91,4 @@ void client::createList(){
 	allLists.push_back(newList);
 
 	cout << "Task list created!" << endl;
-}
+} */

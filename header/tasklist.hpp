@@ -17,6 +17,8 @@ protected:
     string dueDate = ""; 
     bool assigned;
     SortStrategy* strat;
+    string name;
+    string details;
 public:
     TaskList(string name, string details, int priority);
     virtual void display() const;
@@ -28,10 +30,13 @@ public:
     virtual bool isAssigned() const { return assigned; }
     virtual bool isCompleted() const { return completed; }
     virtual string getDate() const { return ""; }
-    vector<Task> getQueue() const { return strat->sort(priorityQueue); }
-    void setStrategy(SortStrategy* strat) {
-		this->strategy = strat;
-	}
+    virtual string getName() const { return name; }    
+    virtual string getDetails() const { return details; }
+    virtual int getPriority() const { return priority; }
+//vector<Task> getQueue() const { return strat->sort(priorityQueue); }
+    //void setStrategy(SortStrategy* strat) {
+	//	this->strategy = strat;
+	//}
 };
 
 //this task list is initialized with two task mocks
