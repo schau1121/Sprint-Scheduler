@@ -7,7 +7,7 @@ void Task::edit() {
 }
 
 void Task::display() const {
-	cout << "Name: " << this->name << " Date: " << this->date << endl;
+	cout << "Name: " << this->name << " Date: " << this->dueDate << endl;
 	cout << "Priority: " << this->priority << endl;
 	cout << "Details: " << this->details << endl;
 	
