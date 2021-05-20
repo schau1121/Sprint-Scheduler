@@ -32,7 +32,8 @@ public:
     virtual string getDate() const { return date; }
     virtual string getDetails() const { return details; }
     virtual int getPriority() const { return 6; }
-    double getDuration() const { return duration; }
+    virtual double getDuration() const { return duration; }
+    virtual string getTime() const { return time; }
 /*    vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(SortStrategy* strat) {
 		this->strategy = strat;

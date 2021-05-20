@@ -45,6 +45,7 @@ public:
         virtual string getDetails() const = 0;
 	virtual int getPriority() const = 0;
 	virtual double getDuration() const = 0;
+	virtual string getTime() const = 0;
 };
 
 

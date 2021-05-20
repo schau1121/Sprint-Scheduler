@@ -14,6 +14,11 @@ TEST(Valid_Event_Constructor, valid_due_date) {
     EXPECT_EQ(test->getDate(), "04/12/20");
 }
 
+TEST(Valid_Event_Constructor, valid_time) {
+    Base* test = new Event("", "04/12/20", "april/19/12PM", "finish homework", 5);
+    EXPECT_EQ(test->getTime(), "april/19/12PM");
+}
+
 TEST(Valid_Event_Constructor, valid_details) {
     Base* test = new Event("", "04/12/20", "april/19/12 PM", "finish homework", 5);
     EXPECT_EQ(test->getDetails(), "finish homework");

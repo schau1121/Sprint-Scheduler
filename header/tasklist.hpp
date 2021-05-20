@@ -35,6 +35,7 @@ public:
     virtual string getDetails() const { return details; }
     virtual int getPriority() const { return priority; }
     virtual double getDuration() const { return 0; }
+    virtual string getTime() const { return ""; }
 //vector<Task> getQueue() const { return strat->sort(priorityQueue); }
     //void setStrategy(SortStrategy* strat) {
 	//	this->strategy = strat;
