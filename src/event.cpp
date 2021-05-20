@@ -11,7 +11,12 @@ Event::Event(string name, string date, string time, string details, double durat
 }
 
 void Event::display() const {
-
+	cout << "Name: " << this->name << " Date: " << this->date << endl;
+	cout << "Time: " << this->time << endl;
+	cout << "Duration: " << this->duration << endl;
+	cout << "Details: " << this->details << endl;
+	
+	return;
 }
 
 void Event::del() {
