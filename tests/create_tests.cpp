@@ -30,6 +30,12 @@ TEST(Valid_Event_Constructor, Valid_Duration) {
     EXPECT_EQ(test->getDuration(), 5);
 }
 
+//					Invalid Events
+/*
+TEST(Invalid_Event_Constructor, Null_Name) {
+    EXPECT_THROW(Event("", "10/10/20", "may/20/20 PM", "testing", 4), invalid_argument);
+}
+*/
 
 //					Task Tests 
 
@@ -53,9 +59,27 @@ TEST(Valid_Task_Constructor, Valid_Priority) {
     EXPECT_EQ(test->getPriority(), 3);
 }
 
-
-TEST(Task_Constructor_test, null_name) {
+//					Invalid Tasks
+TEST(Invalid_Task_Constructor, Null_Name) {
     EXPECT_THROW(Task("", "11/21/21", "Birthday coming up", 0), invalid_argument);
+}
+
+
+//					Tasklist Tests 
+
+TEST(Valid_Tasklist_Constructor, Valid_Name) {
+    Base* test = new TaskList("assignments", "list of homework", 4);
+    EXPECT_EQ(test->getName(), "assignments");
+}
+
+TEST(Valid_Tasklist_Constructor, Valid_Details) {
+    Base* test = new TaskList("assignments", "list of homework", 4);
+    EXPECT_EQ(test->getDetails(), "list of homework");
+}
+
+TEST(Valid_Tasklist_Constructor, Valid_Priority) {
+    Base* test = new TaskList("assignments", "list of homework", 4);
+    EXPECT_EQ(test->getPriority(), 4);
 }
 
 

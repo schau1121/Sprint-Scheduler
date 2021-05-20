@@ -39,6 +39,7 @@ void client::createEvent() {
 
 }
 
+
 void client::createTask() {
     string name;
     string date = "";
@@ -63,7 +64,8 @@ void client::createTask() {
     allTasks.push_back(newTask);
     cout << "\nCreated!" << endl;
 }
-/*
+
+
 void client::createList(){
 
 	string name = "";
@@ -86,9 +88,9 @@ void client::createList(){
 	cout << "Enter task list priority 0-5: " << endl;
 	cin >> priority;
 
-	Base* newList = new tasklist(name, details, priority);
-	allObjects.push_back(newList);
+	TaskList newList = TaskList(name, details, priority);
+	allObjects.push_back(&newList);
 	allLists.push_back(newList);
 
 	cout << "Task list created!" << endl;
-} */
+} 
