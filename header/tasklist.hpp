@@ -11,7 +11,6 @@ class TaskList : public Base {
 protected:
     bool completed;
     vector<Task> priorityQueue;
-    int numSubTasks;
     //set to empty string to differentiate between tasks and task lists when sorting by date
     string dueDate = ""; 
     bool assigned;
