@@ -10,7 +10,7 @@ vector<T> SortByPriority<T>::sort(vector<T> priorityQueue) {
     return priorityQueue;
 } 
 
-/*
+/* brute force method to debug
 template<class T>
 vector<T> SortByPriority<T>::sort(vector<T> priorityQueue) {
     int maxIndex;

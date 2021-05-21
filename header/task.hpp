@@ -15,7 +15,6 @@ public:
 	virtual bool isAssigned() const { return assigned; }
 	virtual bool isCompleted() const { return completed; }
 	virtual string getDate() const { return dueDate; }
-    virtual int getPriority() const { return priority; }
 protected:
     bool completed;
     string dueDate;

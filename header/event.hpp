@@ -28,7 +28,7 @@ public:
 	virtual string getDate() const { return (date + "\n" + time + "\n"); }
     vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(string strategy);
-    virtual int getPriority() const { return priority; }
+    
     
 };
 

@@ -30,7 +30,6 @@ public:
 	virtual string getDate() const { return ""; }
     vector<Task> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(string strategy);
-    int getPriority() const { return priority; }
 };
 
 //this task list is initialized with two task mocks
