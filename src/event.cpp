@@ -33,12 +33,7 @@ void Event::setStrategy(string strategy) {
     if(this->strat != nullptr) {
         delete this->strat;
     }
-    if(strategy == "date") {
-        this->strat = new SortByDate<TaskList>();
-    }
-    if(strategy == "priority") {
-        this->strat = new SortByPriority<TaskList>();
-    }
+    this->strat = new SortByPriority<TaskList>();
 }
 
 #endif
