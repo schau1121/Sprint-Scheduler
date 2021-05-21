@@ -5,9 +5,7 @@
 
 template<class T>
 vector<T> SortByDate<T>::sort(vector<T> priorityQueue) {
-    if(priorityQueue[0]->getDate() != "") {
-        std::sort(priorityQueue.begin(), priorityQueue.end(), greaterThanDate<T>());
-    }
+    std::sort(priorityQueue.begin(), priorityQueue.end(), greaterThanDate<T>());
     return priorityQueue;
 }
 
