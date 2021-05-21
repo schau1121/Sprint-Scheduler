@@ -39,7 +39,7 @@ public:
 	virtual string getDate() const = 0;
 	string getName() const { return name; }
     string getDetails() const { return details; }
-	int getPriority() const { return priority; }
+	virtual int getPriority() const = 0;
 };
 
 #endif

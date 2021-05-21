@@ -6,6 +6,7 @@
 class Task : public Base {
 public:
     Task(string name, string dueDate, string details, int priority);
+    ~Task() {}
     virtual void edit();
 	virtual void display() const;
 	virtual void del();
@@ -14,9 +15,8 @@ public:
 	virtual bool isAssigned() const { return assigned; }
 	virtual bool isCompleted() const { return completed; }
 	virtual string getDate() const { return dueDate; }
-    
+    virtual int getPriority() const { return priority; }
 protected:
-    int priority;
     bool completed;
     string dueDate;
     bool assigned;

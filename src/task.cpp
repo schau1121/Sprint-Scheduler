@@ -3,7 +3,7 @@
 
 #include "../header/task.hpp"
 
-Task::Task(string name, string dueDate = "", string details = "", int priority = 0) {
+Task::Task(string name, string dueDate, string details, int priority) {
     if(name == "") {
         throw invalid_argument("Empty name passed into task constructor");
     }

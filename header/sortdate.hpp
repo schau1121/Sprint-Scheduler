@@ -29,6 +29,7 @@ template<class T>
 class SortByDate : public SortStrategy<T> {
 public:
     SortByDate() {};
+    ~SortByDate() {};
     virtual vector<T> sort(vector<T> priorityQueue);
 };
 
