@@ -17,7 +17,6 @@ using namespace std;
 
 class client {
 	private:
-		vector<Base*> allObjects;
 		vector<Task> allTasks;
 		vector<TaskList> allLists;
 		vector<Event> allEvents;
@@ -59,18 +58,19 @@ class client {
 
 		
 		//edit functions
-		void addTaskToTaskList(Base* currList);	
-		void addListToEvent(Base* currEvent);
+		void addTaskToTaskList(TaskList currList);	
+		void addListToEvent(Event currEvent);
 
 
 
 		//edit functions
-		void editList(Base* currObject);
-		void editEvent(Base* currObject);
-		void editTask(Base* currObject);
+		void editList(TaskList currObject);
+		void editEvent(Event currObject);
+		void editTask(Task currObject);
 
 
 		//delete functions
+		//these need to find and erase the objects from the vectors & the priorityQueues
 		void delTask();
 		void delList();
 		void delEvent();
