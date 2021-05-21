@@ -45,4 +45,17 @@ TEST(sortByDate_test, taskList_test1) {
     }
 }
 
+TEST(sortByDate_test, taskList_test2) {
+    TaskList test = TaskList("Chores", "Clean up the house", 2);
+    test.setStrategy("date");
+    test.addSubTask(Task("Bathroom", "05/20/21", "", 3));
+    test.addSubTask(Task("Dishes", "05/18/21", "", 2));
+    test.addSubTask(Task("Bedroom", "05/17/21", "", 4));
+    test.addSubTask(Task("Mop floors", "05/17/21", "", 5));
+    vector<string> expected = {"Bedroom", "Mop floors", "Dishes", "Bathroom"};
+    for(int i = 0; i < expected.size(); i++) {
+        EXPECT_EQ(test.getQueue()[i].getName(), expected[i]) << "vectors differ at " << i;
+    }
+}
+
 #endif
