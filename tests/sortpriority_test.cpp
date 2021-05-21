@@ -5,6 +5,7 @@
 #include "../src/sortpriority.cpp"
 #include "../src/task.cpp"
 #include "../src/tasklist.cpp"
+#include "../src/event.cpp"
 
 TEST(sortByPriority_test, simple_test_tasks1) {
     vector<Task> queue;
@@ -53,6 +54,20 @@ TEST(sortByPriority_test, taskList_test2) {
     test.addSubTask(Task("Bedroom", "05/17/21", "", 4));
     test.addSubTask(Task("Mop floors", "05/17/21", "", 5));
     vector<string> expected = {"Mop floors", "Bedroom", "Bathroom", "Dishes"};
+    for(int i = 0; i < expected.size(); i++) {
+        EXPECT_EQ(test.getQueue()[i].getName(), expected[i]) << "vectors differ at " << i;
+    }
+}
+
+TEST(sortByPriority_test, event_test1) {
+    Event test = Event("Productivity block", "05/21/21", "12:00 PM", "", 2.5);
+    TaskList test2 = TaskList("CS100 Project Sprint", "Finish this weeks assigned work", 5);
+    TaskList test3 = TaskList("Homework", "", 2);
+    TaskList test4 = TaskList("Chores", "Clean the house", 4);
+    test.addSubTask(test2);
+    test.addSubTask(test3);
+    test.addSubTask(test4);
+    vector<string> expected = {"CS100 Project Sprint", "Chores", "Homework"};
     for(int i = 0; i < expected.size(); i++) {
         EXPECT_EQ(test.getQueue()[i].getName(), expected[i]) << "vectors differ at " << i;
     }

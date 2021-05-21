@@ -29,6 +29,7 @@ void Event::addSubTask(TaskList list) {
     priorityQueue.push_back(list);
 }
 
+//event will always be set to sortPriority since TaskList has empty date attribute
 void Event::setStrategy(string strategy) {
     if(this->strat != nullptr) {
         delete this->strat;
