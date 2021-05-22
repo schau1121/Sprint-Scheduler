@@ -5,14 +5,8 @@
 
 class Task : public Base {
 public:
-    Task(string name, string dueDate, string details, int priority) {
-        this->name = name;
-        this->dueDate = dueDate;
-        this->details = details;
-        this->priority = priority;
-        this->completed = false;
-    };
-    ~Task();
+    Task(string name, string dueDate, string details, int priority);
+    ~Task() {}
     virtual void edit();
 	virtual void display() const;
 	virtual void del();
@@ -21,9 +15,7 @@ public:
 	virtual bool isAssigned() const { return assigned; }
 	virtual bool isCompleted() const { return completed; }
 	virtual string getDate() const { return dueDate; }
-    
 protected:
-    int priority;
     bool completed;
     string dueDate;
     bool assigned;
@@ -38,12 +30,12 @@ public:
         this->details = "some details";
         this->priority = 2;
         this->completed = false; 
-    };
+    }
     virtual void display() const {
         cout << name << endl;
         cout << dueDate << endl;
         cout << details << endl;
-    };
+    }
     virtual void edit() {}
     virtual void del() {}
     virtual void setCompleted(bool isComplete) {}
@@ -53,6 +45,7 @@ public:
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return {}; }
+    virtual int getPriority() const { return priority; }
 private:
     string dueDate;
     bool completed;
@@ -67,12 +60,12 @@ public:
         this->details = "more details";
         this->priority = 4;
         this->completed = false; 
-    };
+    }
     virtual void display() const {
         cout << name << endl;
         cout << dueDate << endl;
         cout << details << endl;
-    };
+    }
     virtual void edit() {}
     virtual void del() {}
     virtual void setCompleted(bool isComplete) {}
@@ -82,6 +75,7 @@ public:
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return {}; }
+    virtual int getPriority() const { return priority; }
 private:
     string dueDate;
     bool completed;

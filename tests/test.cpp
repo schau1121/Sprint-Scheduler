@@ -1,4 +1,6 @@
 #include "gtest/gtest.h"
+#include "sortdate_test.cpp"
+#include "sortpriority_test.cpp"
 
 
 
