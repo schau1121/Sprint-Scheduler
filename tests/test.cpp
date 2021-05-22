@@ -1,8 +1,7 @@
 #include "gtest/gtest.h"
 #include "sortdate_test.cpp"
 #include "sortpriority_test.cpp"
-
-
+#include "task_test.cpp"
 
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);
