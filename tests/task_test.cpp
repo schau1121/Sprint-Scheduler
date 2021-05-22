@@ -19,6 +19,7 @@ TEST(Task_Constructor_test, multi_line_details) {
     EXPECT_EQ(out.str(), "Ask groupmates about issue. \nFix issue");
 }
 
+/*
 TEST(Task_Constructor_test, default_values) {
     Base* test = new Task("Task 1");
     ostringstream out;
@@ -28,5 +29,6 @@ TEST(Task_Constructor_test, default_values) {
     out<< test->getDate();
     EXPECT_EQ(out.str(), "");
 }
+*/
 
 #endif
