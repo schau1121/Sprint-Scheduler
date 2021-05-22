@@ -12,7 +12,6 @@ protected:
     string time;
     double duration; //number of hours
     vector<TaskList> priorityQueue;
-    int numSubTasks;
     SortStrategy<TaskList>* strat = nullptr;
 public:
     Event(string name, string date, string time, string details, double duration);
