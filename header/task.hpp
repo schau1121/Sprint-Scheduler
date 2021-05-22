@@ -6,7 +6,7 @@
 class Task : public Base {
 public:
     Task(string name, string dueDate, string details, int priority);
-    ~Task();
+    ~Task() {}
     virtual void edit();
 	virtual void display() const;
 	virtual void del();
@@ -15,13 +15,7 @@ public:
 	virtual bool isAssigned() const { return assigned; }
 	virtual bool isCompleted() const { return completed; }
 	virtual string getDate() const { return dueDate; }
-        virtual string getName() const { return name; }
-	virtual string getDetails() const { return details; }
-        virtual int getPriority() const { return priority; }
-	virtual double getDuration() const { return 0; }
-	virtual string getTime() const { return ""; }
 protected:
-    int priority;
     bool completed;
     string dueDate;
     bool assigned;
@@ -52,6 +46,7 @@ public:
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return {}; }
+    virtual int getPriority() const { return priority; }
 private:
     string dueDate;
     bool completed;
@@ -81,6 +76,7 @@ public:
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return {}; }
+    virtual int getPriority() const { return priority; }
 private:
     string dueDate;
     bool completed;

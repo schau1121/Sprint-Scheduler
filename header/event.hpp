@@ -3,9 +3,9 @@
 
 #include <string>
 #include "base.hpp"
-//#include "../src/sortdate.cpp"
-//#include "../src/sortpriority.cpp"
-#include "tasklist.hpp"
+#include "../src/sortdate.cpp"
+#include "../src/sortpriority.cpp"
+#include "../src/tasklist.cpp"
 
 class Event : public Base {
 protected:
@@ -17,28 +17,21 @@ protected:
     double duration; //number of hours
     vector<TaskList> priorityQueue;
     int numSubTasks;
-    SortStrategy* strat;
+    SortStrategy<TaskList>* strat = nullptr;
 public:
     Event(string name, string date, string time, string details, double duration);
+    ~Event() {}
     virtual void display() const;
     virtual void del();
     virtual void edit();
     void addSubTask(TaskList list);
-    virtual void setCompleted(bool isComplete) {}
-    virtual void setAssigned (bool isAssigned) {}
-    virtual bool isAssigned() const { return false; }
-    virtual bool isCompleted() const { return false; }
-    virtual string getName() const { return name; }
-    virtual string getDate() const { return date; }
-    virtual string getDetails() const { return details; }
-    virtual int getPriority() const { return 6; }
-    virtual double getDuration() const { return duration; }
-    virtual string getTime() const { return time; }
-/*    vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
-    void setStrategy(SortStrategy* strat) {
-		this->strategy = strat;
-	} */
-    ~Event();  
+    virtual void setCompleted(bool isComplete) {};
+	virtual void setAssigned (bool isAssigned) {};
+	virtual bool isAssigned() const { return false; }
+	virtual bool isCompleted() const { return false; }
+	virtual string getDate() const { return (date + "\n" + time + "\n"); }
+    vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
+    void setStrategy(string strategy);
 };
 
 /*
@@ -70,6 +63,7 @@ public:
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return priorityQueue; }
+    virtual int getPriority() const { return 6; }
 };
 */
 

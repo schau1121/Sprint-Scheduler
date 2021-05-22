@@ -12,5 +12,4 @@ test.exe
 taskScheduler.exe
 bin/
 .vscode/
-googletest
 build/

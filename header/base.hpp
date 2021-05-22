@@ -39,13 +39,9 @@ public:
 	
 	// Get Functions
 	virtual string getDate() const = 0;
-	//for task do nothing	
-	//for taskList and event add task to priorityQueue
-	virtual string getName() const = 0;
-        virtual string getDetails() const = 0;
-	virtual int getPriority() const = 0;
-	virtual double getDuration() const = 0;
-	virtual string getTime() const = 0;
+	string getName() const { return name; }
+    string getDetails() const { return details; }
+	int getPriority() const { return priority; }
 };
 
 

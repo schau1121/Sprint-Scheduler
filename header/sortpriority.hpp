@@ -3,10 +3,21 @@
 
 #include "sortstrategy.hpp"
 
-class SortByPriority : public SortStrategy {
+
+template<class T>
+struct greaterThanPriority {
+    inline bool operator() (const T l, const T r) {
+        return (l.getPriority() > r.getPriority());
+    }
+};
+
+
+template<class T>
+class SortByPriority : public SortStrategy<T> {
 public:
     SortByPriority() {};
-    virtual vector<Base*> sort(vector<Base*> priorityQueue, int numSubTasks);
+    ~SortByPriority() {};
+    virtual vector<T> sort(vector<T> priorityQueue);
 };
 
 #endif

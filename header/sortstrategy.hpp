@@ -1,18 +1,18 @@
 #ifndef __SORTSTRATEGY_HPP__
 #define __SORTSTRATEGY_HPP__
 
-#include "base.hpp"
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
-class Base;
-
+template<class T>
 class SortStrategy {
 public:
 	SortStrategy() {};
+	~SortStrategy() {};
 	//This should return a new priority queue that is sorted
-	//We need to deallocate the memory from the previous priority queue after sorting
-	virtual vector<Base*> sort(vector<Base*> priorityQueue, int numSubTasks) = 0;
+	virtual vector<T> sort(vector<T> priorityQueue) = 0;
 };
 
 #endif
