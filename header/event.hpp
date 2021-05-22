@@ -9,14 +9,10 @@
 
 class Event : public Base {
 protected:
-    string name;
     string date;
     string time;
-    string details;
-    int priority;
     double duration; //number of hours
     vector<TaskList> priorityQueue;
-    int numSubTasks;
     SortStrategy<TaskList>* strat = nullptr;
 public:
     Event(string name, string date, string time, string details, double duration);
@@ -30,6 +26,8 @@ public:
 	virtual bool isAssigned() const { return false; }
 	virtual bool isCompleted() const { return false; }
 	virtual string getDate() const { return (date + "\n" + time + "\n"); }
+    string getTime() const { return time; }
+    double getDuration() const { return duration; }
     vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(string strategy);
 };

@@ -19,7 +19,6 @@ protected:
     bool completed;
     string dueDate;
     bool assigned;
-    string name;
 };
 
 /*
