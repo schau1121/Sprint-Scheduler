@@ -7,6 +7,10 @@
 #include "../src/sortdate.cpp"
 #include "../src/task.cpp"
 
+
+#include <vector>
+
+
 class TaskList : public Base {
 protected:
     bool completed;
