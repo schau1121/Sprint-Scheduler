@@ -2,7 +2,7 @@
 #define __EVENT_CPP__
 
 #include "../header/event.hpp"
-
+#include <string>
 //Date format: MM/DD/YY
 //Time: HH:MM AM/PM
 /*if(date[2] != '/' || date[5] != '/') {
@@ -18,13 +18,36 @@
 
 
 Event::Event(string name, string date, string time, string details, double duration) {
-    this->name = name;
-    this->date = date;
-    this->time = time;
-    this->details = details;
-    this->duration = duration;
-    this->priority = 6;
-    setStrategy("priority");
+
+	if(name == "") {
+                throw(invalid_argument("No event name entered."));
+        }
+
+	if(date != "" && date[2] != '/' || date[5] != '/') {
+                throw(invalid_argument("Wrong date format entered."));
+        }	
+	
+	if(time[2] != ':' || time.substr(6,7) != "AM" && time.substr(6,7) != "PM" && time.substr(6,7) != "am" && time.substr(6,7) != "pm") {
+
+                throw(invalid_argument("Wrong time format entered."));
+        }
+
+	if(details == "") {
+                throw(invalid_argument("No details entered."));
+        }
+
+	if(duration == 0) {
+                throw(invalid_argument("No duration entered."));
+        }
+
+
+        this->name = name;
+        this->date = date;
+        this->time = time;
+        this->details = details;
+        this->duration = duration;
+        this->priority = 6;
+        setStrategy("priority");
 }
 
 void Event::display() const {

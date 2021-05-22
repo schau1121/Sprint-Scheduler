@@ -25,7 +25,7 @@ public:
 	virtual void setAssigned (bool isAssigned) {};
 	virtual bool isAssigned() const { return false; }
 	virtual bool isCompleted() const { return false; }
-	virtual string getDate() const { return (date + "\n" + time + "\n"); }
+	virtual string getDate() const { return date; }
     string getTime() const { return time; }
     double getDuration() const { return duration; }
     vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }

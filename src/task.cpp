@@ -5,12 +5,23 @@
 #include "../header/task.hpp"
 
 Task::Task(string name, string dueDate, string details, int priority) {
+
     if(name == "") {
-        throw invalid_argument("Empty name passed into task constructor");
+        throw invalid_argument("No task name entered.");
     }
+
     if(dueDate != "" && (dueDate[2] != '/' || dueDate[5] != '/')) {
-        throw invalid_argument("Wrong date format passed into task constructor");
+        throw invalid_argument("Wrong date format entered.");
     }
+
+    if(details == "") {
+                throw(invalid_argument("No details entered."));
+        }
+
+    if(priority < 0 || priority > 5) {
+                throw(invalid_argument("Priority entered must be 0-5."));
+        }
+
     this->name = name;
     this->dueDate = dueDate;
     this->details = details;

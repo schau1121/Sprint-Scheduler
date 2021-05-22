@@ -4,11 +4,25 @@
 #include "../header/tasklist.hpp"
 
 TaskList::TaskList(string name, string details, int priority) {
-    this->name = name;
-    this->details = details;
-    this->priority = priority;
-    this->completed = false;
-    setStrategy("priority");
+
+	if(name == "") {
+                throw(invalid_argument("No task list name entered."));
+        }
+
+	if(details == "") {
+                throw(invalid_argument("No details entered."));
+        }
+
+	if(priority < 0 || priority > 5) {
+                throw(invalid_argument("Priority entered must be 0-5."));
+        }
+
+
+        this->name = name;
+        this->details = details;
+        this->priority = priority;
+        this->completed = false;
+        setStrategy("priority");
 }
 
 void TaskList::display() const {

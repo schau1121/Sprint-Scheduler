@@ -14,23 +14,44 @@ void client::createEvent() {
 	cout << "Creating an event..." << endl;
 	
 	cout << "Enter a name: " << endl;
-	cin >> name;
-	if(name == "") {
-		cout << "ERROR: NEED AN EVENT NAME." << endl;
-		return;
+	getline(cin, name);
+	while(name == "") {
+		cout << "No event name entered!" << endl;
+		cout << "Please enter an event name: " << endl;
+		getline(cin, name);
 	}
 	
 	cout << "Enter a due date as MM/DD/YY: " << endl;
 	cin >> date;
+	while(date[2] != '/' || date[5] != '/') {
+		cout << "Wrong date format entered!" << endl;
+		cout << "Enter date format as MM/DD/YY: " << endl;
+		cin >> date;
+	}
 
-	cout << "Enter an event starting time as MONTH/DAY/HOUR: " << endl;
+	cout << "Enter an event starting time HH:MM AM/PM: " << endl;
 	cin >> time;
+	while(time[2] != ':' || time.substr(6,7) != "AM" && time.substr(6,7) != "PM" && time.substr(6,7) != "am" && time.substr(6,7) != "pm") {
+                cout << "Wrong time format entered!" << endl;
+                cout << "Enter time format as HH:MM AM/PM: " << endl;
+                cin >> time;
+        }
 	
 	cout << "Enter event details: " << endl;
 	getline(cin, details);
+	while(details == "") {
+                cout << "No event details entered!" << endl;
+                cout << "Please enter event details: " << endl;
+                getline(cin, details);
+        }
 
 	cout << "Enter event duration in hours: " << endl;
 	cin >> duration; 
+	while(duration == 0) {
+                cout << "No event duration entered!" << endl;
+                cout << "Please enter event duration: " << endl;
+                cin >> duration;
+        }
 
 	Event newEvent = Event(name, date, time, details, duration);
 	allEvents.push_back(newEvent);
@@ -42,23 +63,33 @@ void client::createList(){
 
 	string name = "";
 	string details = "";
-	int priority = 0;
+	int priority = -1;
 
 	cout << "Creating a task list..." << endl;
 	
 	cout << "Enter a task list name: " << endl;
-	cin >> name;
-	
-	if(name == "") {
-	cout << "ERROR: NEED TASK LIST NAME" << endl;
-	return;
-	}
+	getline(cin, name);	
+	while(name == "") {
+                cout << "No task list name entered!" << endl;
+                cout << "Please enter a task list name: " << endl;
+                getline(cin, name);
+        }
 
 	cout << "Enter task list details: " << endl;
 	getline(cin, details);
+	while(details == "") {
+                cout << "No task list details entered!" << endl;
+                cout << "Please enter task list details: " << endl;
+                getline(cin, details);
+        }
 
 	cout << "Enter task list priority 0-5: " << endl;
 	cin >> priority;
+	while(priority < 0 || priority > 5) {
+		cout << "Invalid priority entered!" << endl;
+		cout << "Please enter a priority from 0-5: " << endl;
+		cin >> priority;
+	}	
 
 	TaskList newList = TaskList(name, details, priority);
 	allLists.push_back(newList);
@@ -68,27 +99,50 @@ void client::createList(){
 
 
 void client::createTask() {
-    string name;
-    string date = "";
-    string details = "";
-    int priority = 0;
-    cout << "Creating a task..." << endl;
-    cout << "Enter a name: ";
-    cin >> name;
-    while(name == "") {
-        cout << "ERROR: NEED TASK NAME" << endl;
+        
+	string name = "";
+        string date = "";
+        string details = "";
+        int priority = -1;
+        
+	cout << "Creating a task..." << endl;
+ 
         cout << "Enter a name: ";
-        cin >> name;
-    }
-    cout << "\nEnter a due date as MM/DD/YY: ";
-    cin >> date;
-    cout << "\nEnter details: ";
-    getline(cin, details);
-    cout << "\nEnter priority as 0-5: ";
-    cin >> priority;
-    Task newTask = Task(name, date, details, priority);
-    allTasks.push_back(newTask);
-    cout << "\nCreated!" << endl;
+        getline(cin, name);
+	while(name == "") {
+                cout << "No task name entered!" << endl;
+                cout << "Please enter a task name: " << endl;
+                getline(cin, name);
+        }      
+ 
+        cout << "Enter a due date as MM/DD/YY: ";
+        cin >> date;
+	while(date[2] != '/' || date[5] != '/') {
+                cout << "Wrong date format entered!" << endl;
+                cout << "Enter date format as MM/DD/YY: " << endl;
+                cin >> date;
+        }
+
+        cout << "Enter task details: ";
+        getline(cin, details);
+ 	while(details == "") {
+                cout << "No task list details entered!" << endl;
+                cout << "Please enter task list details: " << endl;
+                getline(cin, details);
+        }
+      
+
+	cout << "Enter task priority as 0-5: ";
+        cin >> priority;
+  	while(priority < 0 || priority > 5) {
+                cout << "Invalid priority entered!" << endl;
+                cout << "Please enter a priority from 0-5: " << endl;
+                cin >> priority;
+        }
+ 
+        Task newTask = Task(name, date, details, priority);
+        allTasks.push_back(newTask);
+        cout << "Task created!" << endl;
 }
 
 void client::setSortingMethod() {
