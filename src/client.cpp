@@ -1,10 +1,29 @@
+#ifndef CLIENT_CPP
+#define CLIENT_CPP
+
 #include "../header/base.hpp"
 #include "../header/event.hpp"
 #include "../header/client.hpp"
 #include "../header/task.hpp"
+#include "../header/tasklist.hpp"
+
+void client::printAll() {
+
+}
+
+void client::printEvents() {
+
+}
+
+void client::printTasks() {
+
+}
+
+void client::printLists() {
+
+}
 
 void client::createEvent() {
-
 	string name = "";
 	string date = "";
 	string time = "";
@@ -229,3 +248,4 @@ void client::addListToEvent(Event &currEvent) {
 }
 
 
+#endif
