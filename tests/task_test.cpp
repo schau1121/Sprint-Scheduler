@@ -19,5 +19,4 @@ TEST(Task_Constructor_test, multi_line_details) {
     EXPECT_EQ(out.str(), "Ask groupmates about issue. \nFix issue");
 }
 
-
 #endif
