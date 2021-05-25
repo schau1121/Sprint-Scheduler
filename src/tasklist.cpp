@@ -9,10 +9,6 @@ TaskList::TaskList(string name, string details, int priority) {
                 throw(invalid_argument("No task list name entered."));
         }
 
-	if(details == "") {
-                throw(invalid_argument("No details entered."));
-        }
-
 	if(priority < 0 || priority > 5) {
                 throw(invalid_argument("Priority entered must be 0-5."));
         }

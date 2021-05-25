@@ -32,10 +32,6 @@ Event::Event(string name, string date, string time, string details, double durat
                 throw(invalid_argument("Wrong time format entered."));
         }
 
-	if(details == "") {
-                throw(invalid_argument("No details entered."));
-        }
-
 	if(duration == 0) {
                 throw(invalid_argument("No duration entered."));
         }

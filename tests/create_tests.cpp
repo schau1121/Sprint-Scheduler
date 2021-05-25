@@ -30,6 +30,11 @@ TEST(Valid_Event_Constructor, Valid_Details) {
     EXPECT_EQ(test.getDetails(), "finish homework");
 }
 
+TEST(Valid_Event_Constructor, Empty_Details) {
+    Event test = Event("homework", "04/12/20", "10:15 AM", "", 5);
+    EXPECT_EQ(test.getDetails(), "");
+}
+
 TEST(Valid_Event_Constructor, Valid_Duration) {
     Event test = Event("homework", "04/12/20", "12:30 PM", "finish homework", 5);
     EXPECT_EQ(test.getDuration(), 5);
@@ -47,11 +52,11 @@ TEST(Invalid_Event_Constructor, Invalid_Due_Date) {
 TEST(Invalid_Event_Constructor, Invalid_Time) {
     EXPECT_THROW(Event("fall", "09/22/21", "8:12 am", "new quarter", 1), invalid_argument);
 }
-
+/*
 TEST(Invalid_Event_Constructor, Null_Details) {
     EXPECT_THROW(Event("fall", "09/22/21", "12:12 am", "", 5), invalid_argument);
 }
-
+*/
 TEST(Invalid_Event_Constructor, Invalid_Duration) {
     EXPECT_THROW(Event("fall", "09/22/21", "12:12 am", "new quarter", 0), invalid_argument);
 }
@@ -73,6 +78,11 @@ TEST(Valid_Task_Constructor, Valid_Details) {
     EXPECT_EQ(test.getDetails(), "finish project");
 }
 
+TEST(Valid_Task_Constructor, Empty_Details) {
+    Task test = Task("project", "11/11/21", "", 3);
+    EXPECT_EQ(test.getDetails(), "");
+}
+
 TEST(Valid_Task_Constructor, Valid_Priority) {
     Task test = Task("project", "11/11/21", "finish project", 3);
     EXPECT_EQ(test.getPriority(), 3);
@@ -86,11 +96,11 @@ TEST(Invalid_Task_Constructor, Null_Name) {
 TEST(Invalid_Task_Constructor, Invalid_Due_Date) {
     EXPECT_THROW(Task("Birthday", "1/21/21", "Birthday coming up", 0), invalid_argument);
 }
-
+/*
 TEST(Invalid_Task_Constructor, Null_Details) {
     EXPECT_THROW(Task("Birthdat", "11/21/21", "", 0), invalid_argument);
 }
-
+*/
 TEST(Invalid_Task_Constructor, Invalid_Priority) {
     EXPECT_THROW(Task("Birthday", "11/21/21", "Birthday coming up", 20), invalid_argument);
 }
@@ -107,6 +117,11 @@ TEST(Valid_Tasklist_Constructor, Valid_Details) {
     EXPECT_EQ(test.getDetails(), "list of homework");
 }
 
+TEST(Valid_Tasklist_Constructor, Empty_Details) {
+    TaskList test = TaskList("assignments", "", 4);
+    EXPECT_EQ(test.getDetails(), "");
+}
+
 TEST(Valid_Tasklist_Constructor, Valid_Priority) {
     TaskList test = TaskList("assignments", "list of homework", 4);
     EXPECT_EQ(test.getPriority(), 4);
@@ -117,11 +132,11 @@ TEST(Valid_Tasklist_Constructor, Valid_Priority) {
 TEST(Invalid_Tasklist_Constructor, Null_Name) {
     EXPECT_THROW(TaskList("", "chores", 0), invalid_argument);
 }
-
+/*
 TEST(Invalid_Tasklist_Constructor, Null_Details) {
     EXPECT_THROW(TaskList("Todos", "", 0), invalid_argument);
 }
-
+*/
 TEST(Invalid_Tasklist_Constructor, Invalid_Priority) {
     EXPECT_THROW(TaskList("Todos", "chores", -5), invalid_argument);
 }
