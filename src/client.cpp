@@ -20,11 +20,12 @@ void client::setSortingMethod() {
     cout << "\nSorting strategy selected!" << endl;
 }
 
-void client::addTaskToTaskList(Base* currList) {
+void client::addTaskToTaskList(TaskList currList) {
     char userInput = ' ';
     while(userInput != 'q' || userInput != 'Q') {
         if(allTasks.empty() == true) {
-            cout << "ERROR: There are no lists created" << endl;
+            cout << "ERROR: There are no tasks created" << endl;
+            //can add option to create a task
             return;
         }
         cout << "Printing all unassigned tasks..." << endl;
@@ -36,28 +37,22 @@ void client::addTaskToTaskList(Base* currList) {
             cout << "Enter the number of the task you would like to add to this list: ";
             cin >> userInput;
         }
-        if(!allTasks[userInput - 1]->isAssigned()) {
-            cout << "Adding " << '\"' << allTasks[(int)userInput - 1]->getName() << '\"...' << endl;
-            currList->addSubTask(allTasks[(int)userInput - 1]);
-            allTasks[(int)userInput - 1]->setAssigned(true);
-            for(int i = 0; i < allObjects.size(); i++) {
-                if(allObjects[i]->getName() == allTasks[(int)userInput - 1]->getName() &&
-                    allObjects[i]->getDate() == allTasks[(int)userInput - 1]->getDate()) {
-                        allObjects[i]->setAssigned(true);
-                    }
-            }
+        if(!allTasks[userInput - 1].isAssigned()) {
+            cout << "Adding " << '\"' << allTasks[(int)userInput - 1].getName() << '\"...' << endl;
+            currList.addSubTask(allTasks[(int)userInput - 1]);
+            allTasks[(int)userInput - 1].setAssigned(true);
             cout << "Successfully added to this list!" << endl;
             cout << "Enter 'q' to quit or 'c' to continue adding tasks to this list: ";
             cin >> userInput;
         }
         else {
-            cout << "ERROR: all tasks are assigned already" << endl;
+            cout << "ERROR: Task is assigned already" << endl;
             userInput = 'q';
         }
     }
 }
 
-void client::addListToEvent(Base* currEvent) {
+void client::addListToEvent(Event currEvent) {
     char userInput = ' ';
     while(userInput != 'q' || userInput != 'Q') {
         if(allLists.empty() == true) {
@@ -73,22 +68,16 @@ void client::addListToEvent(Base* currEvent) {
             cout << "Enter the number of the list you would like to add to this event: ";
             cin >> userInput;
         }
-        if(!allLists[userInput - 1]->isAssigned()) {
-            cout << "Adding " << '\"' << allLists[(int)userInput - 1]->getName() << '\"...' << endl;
-            currEvent->addSubTask(allLists[(int)userInput - 1]);
-            allLists[(int)userInput - 1]->setAssigned(true);
-            for(int i = 0; i < allObjects.size(); i++) {
-                if(allObjects[i]->getName() == allLists[(int)userInput - 1]->getName() &&
-                    allObjects[i]->getDate() == allLists[(int)userInput - 1]->getDate()) {
-                        allObjects[i]->setAssigned(true);
-                    }
-            }
+        if(!allLists[userInput - 1].isAssigned()) {
+            cout << "Adding " << '\"' << allLists[(int)userInput - 1].getName() << '\"...' << endl;
+            currEvent.addSubTask(allLists[(int)userInput - 1]);
+            allLists[(int)userInput - 1].setAssigned(true);
             cout << "Successfully added to this event!" << endl;
             cout << "Enter 'q' to quit or 'c' to continue adding lists to this event: ";
             cin >> userInput;
         }
         else {
-            cout << "ERROR: all lists are assigned already" << endl;
+            cout << "ERROR: List is assigned already" << endl;
             userInput = 'q';
         } 
     }
