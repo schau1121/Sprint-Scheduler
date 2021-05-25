@@ -10,16 +10,16 @@
 #include "sortstrategy.hpp"
 #include "../src/task.cpp"
 #include "../src/tasklist.cpp"
+#include "../src/event.cpp"
 
 
 using namespace std;
 
 class client {
 	private:
-		vector<Base*> allObjects;
-		vector<Base*> allTasks;
-		vector<Base*> allLists;
-		vector<Base*> allEvents;
+		vector<Task> allTasks;
+		vector<TaskList> allLists;
+		vector<Event> allEvents;
 		string sortingMethod;
 	public:
 		//constructor
@@ -56,20 +56,21 @@ class client {
 		void createList();
 		void createEvent();	
 
-		//after printing all lists, ask user for which list to add a task to
-		void addTaskToTaskList(Base* currList);	
-		//after printing all events, ask user for which event to add event to
-		void addListToEvent(Base* currEvent);
+		
+		//edit functions
+		void addTaskToTaskList(TaskList currList);	
+		void addListToEvent(Event currEvent);
 
 
 
 		//edit functions
-		void editList(Base* currObject);
-		void editEvent(Base* currObject);
-		void editTask(Base* currObject);
+		void editList(TaskList currObject);
+		void editEvent(Event currObject);
+		void editTask(Task currObject);
 
 
 		//delete functions
+		//these need to find and erase the objects from the vectors & the priorityQueues
 		void delTask();
 		void delList();
 		void delEvent();

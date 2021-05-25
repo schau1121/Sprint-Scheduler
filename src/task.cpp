@@ -1,9 +1,10 @@
 #ifndef __TASK_CPP__
 #define __TASK_CPP__
 
+#include <iostream>
 #include "../header/task.hpp"
 
-Task::Task(string name, string dueDate = "", string details = "", int priority = 0) {
+Task::Task(string name, string dueDate, string details, int priority) {
     if(name == "") {
         throw invalid_argument("Empty name passed into task constructor");
     }
@@ -18,6 +19,27 @@ Task::Task(string name, string dueDate = "", string details = "", int priority =
     this->assigned = false;
 }
 
+void Task::edit() {
+
+}
+
+void Task::display() const {
+	cout << "Name: " << this->name << " Date: " << this->dueDate << endl;
+	cout << "Priority: " << this->priority << endl;
+	cout << "Details: " << this->details << endl;
+	
+
+	if(this->isCompleted()) {
+		cout << "Completed" << endl;
+	}
+
+	return;
+}
+
+void Task::del() {
+
+}
+
 void Task::setCompleted(bool isComplete) {
     completed = isComplete;
 }
@@ -26,7 +48,5 @@ void Task::setAssigned(bool isAssigned) {
     assigned = isAssigned;
 }
 
-Task::~Task() {
-    delete this;
-}
+
 #endif
