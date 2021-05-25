@@ -20,7 +20,7 @@ void client::setSortingMethod() {
     cout << "\nSorting strategy selected!" << endl;
 }
 
-void client::addTaskToTaskList(TaskList currList) {
+void client::addTaskToTaskList(TaskList &currList) {
     char userInput = ' ';
     while(userInput != 'q' || userInput != 'Q') {
         if(allTasks.empty() == true) {
@@ -52,7 +52,7 @@ void client::addTaskToTaskList(TaskList currList) {
     }
 }
 
-void client::addListToEvent(Event currEvent) {
+void client::addListToEvent(Event &currEvent) {
     char userInput = ' ';
     while(userInput != 'q' || userInput != 'Q') {
         if(allLists.empty() == true) {
