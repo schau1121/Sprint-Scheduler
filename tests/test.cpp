@@ -3,6 +3,7 @@
 #include "sortpriority_test.cpp"
 #include "task_test.cpp"
 #include "tasklist_test.cpp"
+#include "event_test.cpp"
 
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);
