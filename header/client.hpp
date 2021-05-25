@@ -58,8 +58,8 @@ class client {
 
 		
 		//edit functions
-		void addTaskToTaskList(TaskList currList);	
-		void addListToEvent(Event currEvent);
+		void addTaskToTaskList(TaskList &currList);	
+		void addListToEvent(Event &currEvent);
 
 
 
