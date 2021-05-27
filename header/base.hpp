@@ -30,16 +30,19 @@ public:
 	//for task and taskList return assigned
 	//for event return false
 	virtual bool isAssigned() const = 0;
-	//for task and taskList return completed
+	//for task and taskList return completed		
 	//for event return false
 	virtual bool isCompleted() const = 0;
 	//helper function for display() & sortByDate()
 	//for task and taskList return dueDate
 	//for event return date & time separated by a new line
+	
+	// Get Functions
 	virtual string getDate() const = 0;
 	string getName() const { return name; }
     string getDetails() const { return details; }
 	int getPriority() const { return priority; }
 };
+
 
 #endif
