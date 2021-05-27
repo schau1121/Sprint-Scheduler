@@ -5,8 +5,8 @@
 
 void client::create() {
 
-	cout << "Enter t or T to create an task." << endl;
-	cout << "Enter l or L to create an list." << endl;
+	cout << "Enter t or T to create a task." << endl;
+	cout << "Enter l or L to create a list." << endl;
 	cout << "Enter e or E to create an event." << endl;
 
 	cin >> choice;
