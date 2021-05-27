@@ -7,13 +7,15 @@
 
 //header files
 #include "base.hpp"
+#include "task.hpp"
+#include "tasklist.hpp"
+#include "event.hpp"
 #include "sortstrategy.hpp"
 #include "../src/task.cpp"
 #include "../src/tasklist.cpp"
 #include "../src/event.cpp"
 
-
-//using namespace std;
+using namespace std;
 
 class client {
 	private:
@@ -47,6 +49,9 @@ class client {
 		void setSortingMethod();
 		
 		//completed functions
+		//might want to pass in the object by reference to call .setCompleted on it
+		//if task is assigned, find it in the correct taskList, then set as completed
+		//if task is not assigned, mark as completed from allTasks vector
 		void markAsCompleted();
 
 		
@@ -58,15 +63,15 @@ class client {
 
 		
 		//edit functions
-		void addTaskToTaskList(TaskList currList);	
-		void addListToEvent(Event currEvent);
+		void addTaskToTaskList(TaskList &currList);	
+		void addListToEvent(Event &currEvent);
 
 
 
 		//edit functions
-		void editList(TaskList currObject);
-		void editEvent(Event currObject);
-		void editTask(Task currObject);
+		void editList(TaskList &currObject);
+		void editEvent(Event &currObject);
+		void editTask(Task &currObject);
 
 
 		//delete functions
