@@ -13,6 +13,13 @@ void client::create() {
 
 	cin >> choice;
 
+	while(choice != 'e' || 'E' || 'l' || 'L' || 't' || 'T'){
+                
+                cout << "Invalid character or string entered." << endl;
+                cout << "Please enter a valid character: " << endl;
+                cin >> choice;
+        }
+
 	if(choice == 'e' || 'E') {
 		createEvent();
 	}
@@ -23,12 +30,6 @@ void client::create() {
 
 	if(choice == 't' || 'T') {
 		createTask();
-	}
-
-	else {
-		cout << "Invalid character or string entered." << endl;
-		cout << "Please enter a valid character: " << endl;
-		cin >> choice;
 	}
 }
 
