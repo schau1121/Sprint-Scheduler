@@ -5,6 +5,8 @@
 
 void client::create() {
 
+	string choice;
+	
 	cout << "Enter t or T to create a task." << endl;
 	cout << "Enter l or L to create a list." << endl;
 	cout << "Enter e or E to create an event." << endl;
@@ -23,6 +25,11 @@ void client::create() {
 		createTask();
 	}
 
+	else {
+		cout << "Invalid character or string entered." << endl;
+		cout << "Please enter a valid character: " << endl;
+		cin >> choice;
+	}
 }
 
 void client::createEvent() {
