@@ -60,12 +60,57 @@ void client::deleteEvent(){
 
 void client::deleteList(){
 
+int choice = -1;
 
+        printLists();
 
+        cout << "Please enter the index of which list you would like to delete, indices start at 1: " << endl;
+
+        cin >> choice;
+
+        while(choice == -1 || choice > allLists.size()) {
+
+		cout << "Choice is out of range." << endl;
+                cout << "Please enter a number between 1 and last index available." << endl;
+                cin >> choice;
+
+	}
+	
+	if(allLists.at(choice - 1).isAssigned()){
+		
+	
+	}
+	
+
+	allLists.erase(choice - 1);
+	
+	
 }
 
 void client::deleteTask(){ 
 
+	int choice = -1;
 
+        printTasks();
+
+        cout << "Please enter the index of which task you would like to delete, indices start at 1: " << endl;
+
+        cin >> choice;
+
+        while(choice == -1 || choice > allLists.size()) {
+
+		cout << "Choice is out of range." << endl;
+                cout << "Please enter a number between 1 and last index available." << endl;
+                cin >> choice;
+
+        }
+
+	if(allTasks.at(choice - 1).isAssigned()) {
+
+	
+	}
+
+
+        allTasks.erase(choice - 1);
 
 }
