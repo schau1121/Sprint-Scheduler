@@ -3,6 +3,28 @@
 #include "../header/client.hpp"
 #include "../header/task.hpp"
 
+void client::create() {
+
+	cout << "Enter t or T to create an task." << endl;
+	cout << "Enter l or L to create an list." << endl;
+	cout << "Enter e or E to create an event." << endl;
+
+	cin >> choice;
+
+	if(choice == 'e' || 'E') {
+		createEvent();
+	}
+
+	if(choice == 'l' || 'L') {
+		createList();
+	}
+
+	if(choice == 't' || 'T') {
+		createTask();
+	}
+
+}
+
 void client::createEvent() {
 
 	string name = "";
