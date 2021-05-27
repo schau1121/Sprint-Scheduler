@@ -13,17 +13,36 @@ using namespace std;
 
 class Base {
 protected:
-	SortStrategy* strategy;
 	string name;
 	string details;
+	int priority;
 public:
 	Base() {};
 	virtual void edit() = 0;
 	virtual void display() const = 0;
-	virtual void del() = 0; //calling this del since delete is a keyword
-	void setStrategy(SortStrategy* strat) {
-		this->strategy = strat;
-	}
+	virtual void del() = 0;
+	//for task and taskList just set completed = isComplete
+	//for event do nothing
+	virtual void setCompleted(bool isComplete) = 0;
+	//for task and taskList set assigned = isAssigned if the current object belongs to a priority queue
+	//for event do nothing
+	virtual void setAssigned(bool isAssigned) = 0;
+	//for task and taskList return assigned
+	//for event return false
+	virtual bool isAssigned() const = 0;
+	//for task and taskList return completed		
+	//for event return false
+	virtual bool isCompleted() const = 0;
+	//helper function for display() & sortByDate()
+	//for task and taskList return dueDate
+	//for event return date & time separated by a new line
+	
+	// Get Functions
+	virtual string getDate() const = 0;
+	string getName() const { return name; }
+    string getDetails() const { return details; }
+	int getPriority() const { return priority; }
 };
+
 
 #endif
