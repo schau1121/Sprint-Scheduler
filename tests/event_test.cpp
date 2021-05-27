@@ -45,12 +45,10 @@ TEST(Event_test, addSubTask_test3) {
     }
 }
 
-/*
 TEST(Event_test, editEvent_test1) {
     Event currEvent = Event("Productivity Block", "05/27/21", "09:00 AM", "", 3);
     currEvent.edit();
     EXPECT_EQ("Study Session", currEvent.getName());
 }
-*/
 
 #endif

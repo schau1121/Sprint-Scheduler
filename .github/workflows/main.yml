@@ -32,4 +32,10 @@ jobs:
           cmake .
           make
           ./test
+          Study Session
+          05/27/21
+          12:30 AM
+          Some Details
+          3
+          
 
