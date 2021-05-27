@@ -17,10 +17,6 @@ client::client() {
 
 
 client::~client() {
-	for (auto i : allObjects) {
-		delete i;
-	}
-	allObjects.clear();
 
 	for(auto i : allTasks) {
 		delete i;
