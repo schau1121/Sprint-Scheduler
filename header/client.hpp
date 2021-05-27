@@ -7,13 +7,15 @@
 
 //header files
 #include "base.hpp"
+#include "task.hpp"
+#include "tasklist.hpp"
+#include "event.hpp"
 #include "sortstrategy.hpp"
 #include "../src/task.cpp"
 #include "../src/tasklist.cpp"
 #include "../src/event.cpp"
 
-
-//using namespace std;
+using namespace std;
 
 class client {
 	private:
