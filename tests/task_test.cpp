@@ -1,7 +1,7 @@
 #ifndef __TASK_TEST_CPP__
 #define __TASK_TEST_CPP__
 #include "gtest/gtest.h"
-#include "../src/task.cpp"
+#include "../src/client.cpp"
 #include <iosfwd>
 
 TEST(Task_Constructor_test, null_name) {
@@ -18,6 +18,5 @@ TEST(Task_Constructor_test, multi_line_details) {
     out << test->getDetails();
     EXPECT_EQ(out.str(), "Ask groupmates about issue. \nFix issue");
 }
-
 
 #endif
