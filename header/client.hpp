@@ -67,9 +67,9 @@ class client {
 
 
 		//edit functions
-		void editList(TaskList currObject);
-		void editEvent(Event currObject);
-		void editTask(Task currObject);
+		void editList(TaskList &currObject);
+		void editEvent(Event &currObject);
+		void editTask(Task &currObject);
 
 
 		//delete functions

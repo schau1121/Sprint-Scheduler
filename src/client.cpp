@@ -83,3 +83,14 @@ void client::addListToEvent(Event &currEvent) {
     }
 }
 
+void client::editTask(Task &currObject) {
+    currObject.edit();
+}
+
+void client::editList(TaskList &currObject) {
+    currObject.edit();
+}
+
+void client::editEvent(Event &currObject) {
+    currObject.edit();
+}
