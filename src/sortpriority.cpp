@@ -9,12 +9,6 @@ vector<T> SortByPriority<T>::sort(vector<T> priorityQueue) {
     return priorityQueue;
 } 
 
-template<class T>
-vector<T> sortByPriority<T>::sort(vector<T> priorityQueue) {
-    vector<T> newVector;
-    int max = 0;
-}
-
 /* brute force method to debug
 template<class T>
 vector<T> SortByPriority<T>::sort(vector<T> priorityQueue) {
