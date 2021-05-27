@@ -21,7 +21,7 @@ client::~client() {
 	for(auto i : allTasks) {
 		delete i;
 	}
-	allTaks.clear();
+	allTasks.clear();
 	
 	for(auto i : allLists) {
 		delete i;
