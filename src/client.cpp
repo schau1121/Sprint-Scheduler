@@ -1,17 +1,11 @@
 #ifndef CLIENT_CPP
 #define CLIENT_CPP
 
-#include "../header/base.hpp"
-#include "../header/event.hpp"
 #include "../header/client.hpp"
-#include "../header/task.hpp"
-#include "../header/tasklist.hpp"
+
+using namespace std;
 
 void client::printAll() {
-
-}
-
-void client::printEvents() {
 
 }
 
@@ -247,5 +241,16 @@ void client::addListToEvent(Event &currEvent) {
     }
 }
 
+void client::editTask(Task &currObject) {
+    currObject.edit();
+}
+
+void client::editList(TaskList &currObject) {
+    currObject.edit();
+}
+
+void client::editEvent(Event &currObject) {
+    currObject.edit();
+}
 
 #endif

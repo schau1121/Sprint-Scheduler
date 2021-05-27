@@ -45,4 +45,16 @@ TEST(Event_test, addSubTask_test3) {
     }
 }
 
+/*
+TEST(Event_test, edit_event_test1) {
+    Event currEvent = Event("Productivity Block", "05/27/21", "09:00 AM", "Some details", 3);
+    currEvent.edit();
+    EXPECT_NE("Productivity Block", currEvent.getName());
+    EXPECT_NE("05/27/21", currEvent.getDate());
+    EXPECT_NE("09:00 AM", currEvent.getTime());
+    EXPECT_NE("Some details", currEvent.getDetails());
+    EXPECT_NE(3, currEvent.getDuration());
+}
+*/
+
 #endif
