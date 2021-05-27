@@ -3,12 +3,17 @@
 
 #include "../header/sortpriority.hpp"
 
-
 template<class T>
 vector<T> SortByPriority<T>::sort(vector<T> priorityQueue) {
     std::sort(priorityQueue.begin(), priorityQueue.end(), greaterThanPriority<T>());
     return priorityQueue;
 } 
+
+template<class T>
+vector<T> sortByPriority<T>::sort(vector<T> priorityQueue) {
+    vector<T> newVector;
+    int max = 0;
+}
 
 /* brute force method to debug
 template<class T>

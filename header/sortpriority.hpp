@@ -3,7 +3,6 @@
 
 #include "sortstrategy.hpp"
 
-
 template<class T>
 struct greaterThanPriority {
     inline bool operator() (const T l, const T r) {
@@ -19,5 +18,8 @@ public:
     ~SortByPriority() {};
     virtual vector<T> sort(vector<T> priorityQueue);
 };
+
+
+
 
 #endif
