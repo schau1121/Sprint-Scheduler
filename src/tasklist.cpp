@@ -23,9 +23,17 @@ TaskList::TaskList(string name, string details, int priority) {
 
 void TaskList::display() const {
 	cout << "Name: " << this->name << endl;
-	cout << "Priority: " << this->priority << endl;
 	cout << "Details: " << this->details << endl;
+    cout << "Priority: " << this->priority << endl;
     
+    if(priorityQueue.empty() == false) {
+        cout << "Sub Tasks: " << endl;
+        for(int i = 0; i < priorityQueue.size(); i++) {
+            cout << (i + 1) << ". ";
+            this->getQueue()[i].display();
+        }
+    }
+
     if(this->isCompleted()) {
         cout << "Completed" << endl;
     }
@@ -44,11 +52,11 @@ void TaskList::edit() {
     cout << "Current Task List: "; 
     this->display();
     cout << "\nEnter new list name: ";
-    cin >> newName;
+    getline(cin, newName);
     while(newName == "") {
         cout << "Error: Need list name" << endl;
         cout << "Enter new list name: ";
-        cin >> newName;
+        getline(cin, newName);
     }
     cout << "\nEnter new details: ";
     getline(cin, newDetails);
@@ -62,7 +70,7 @@ void TaskList::edit() {
     this->name = newName;
     this->details = newDetails;
     this->priority = newPriority;
-    cout << "New Task List: ";
+    cout << "\nNew Task List: ";
     this->display();
 }
 
@@ -90,6 +98,9 @@ void TaskList::setStrategy(string strategy) {
 }
 
 bool TaskList::isCompleted() const {
+    if(priorityQueue.empty() == true) {
+        return false;
+    }
     for(int i = 0; i < priorityQueue.size(); i++) {
         if(priorityQueue[i].isCompleted() == false) {
             return false;

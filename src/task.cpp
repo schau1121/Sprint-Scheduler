@@ -36,11 +36,11 @@ void Task::edit() {
     cout << "Current Task: "; 
     this->display();
     cout << "\nEnter new task name: ";
-    cin >> newName;
+    getline(cin, newName);
     while(newName == "") {
         cout << "Error: Need task name" << endl;
         cout << "Enter new task name: ";
-        cin >> newName;
+        getline(cin, newName);
     }
     cout << "\nEnter new due date: ";
     cin >> newDueDate;
@@ -50,6 +50,7 @@ void Task::edit() {
         cin >> newDueDate;
     }
     cout << "\nEnter new details: ";
+    cin.ignore();
     getline(cin, newDetails);
     cout << "\nEnter new priority: ";
     cin >> newPriority;
@@ -62,12 +63,13 @@ void Task::edit() {
     this->dueDate = newDueDate;
     this->details = newDetails;
     this->priority = newPriority;
-    cout << "New Task: ";
+    cout << "\nNew Task: ";
     this->display();
 }
 
 void Task::display() const {
-	cout << "Name: " << this->name << " Date: " << this->dueDate << endl;
+	cout << "Name: " << this->name << endl;
+    cout << "Due date: " << this->dueDate << endl;
 	cout << "Priority: " << this->priority << endl;
 	cout << "Details: " << this->details << endl;
 	
