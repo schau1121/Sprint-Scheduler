@@ -5,6 +5,42 @@
 
 using namespace std;
 
+void client::create() {
+
+	char choice = ' ';
+	
+	cout << "Enter t or T to create a task." << endl;
+	cout << "Enter l or L to create a list." << endl;
+	cout << "Enter e or E to create an event." << endl;
+	cout << "Enter q or Q to quit." << endl;
+	
+	cin >> choice;
+
+	while(choice != 'q' && choice != 'Q') {
+
+	  if(choice == 'e' || choice == 'E') {
+		  createEvent();
+		  break;
+	  }
+
+	  if(choice == 'l' || choice == 'L') {
+		  createList();
+		  break;
+	  }
+
+	  if(choice == 't' || choice == 'T') {
+		  createTask();
+		  break;
+	  }
+	
+	  else{
+      cout << "Invalid character or string entered." << endl;
+      cout << "Please enter a valid character: " << endl;
+      cin >> choice;
+	  }
+	}
+}
+
 void client::printAll() {
 
 }
