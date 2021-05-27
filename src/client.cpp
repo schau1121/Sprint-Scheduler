@@ -5,7 +5,7 @@
 
 void client::create() {
 
-	string choice;
+	char choice;
 	
 	cout << "Enter t or T to create a task." << endl;
 	cout << "Enter l or L to create a list." << endl;
