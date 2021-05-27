@@ -64,4 +64,14 @@ TEST(TaskList_test, addSubTask_test4) {
     }
 }
 
+/*
+TEST(TaskList_test, edit_TaskList_test1) {
+    TaskList currList = TaskList("Homework", "Finish math and cs homework", 3);
+    currList.edit();
+    EXPECT_NE("Homework", currList.getName());
+    EXPECT_NE("Finish math and cs homework", currList.getDetails());
+    EXPECT_NE(3, currList.getPriority());
+}
+*/
+
 #endif
