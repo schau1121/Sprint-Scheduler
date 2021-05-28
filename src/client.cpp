@@ -290,7 +290,7 @@ void client::setSortingMethod() {
     cout << "How would you like to sort your task list?" << endl;
     cout << "Enter the number corresponding to which sort you'd like to use: ";
     cin >> userInput;
-    while(userInput != 1 || userInput != 2) {
+    while(userInput > 2 || userInput < 0) {
         cout << "\nERROR: Enter either 1 or 2: ";
         cin >> userInput;
     }
