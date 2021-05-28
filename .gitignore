@@ -13,4 +13,4 @@ taskScheduler.exe
 bin/
 .vscode/
 build/
-
+save.json
