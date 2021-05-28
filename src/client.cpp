@@ -16,6 +16,94 @@ client::client() {
 
 client::~client() {}
 
+void client::displayMenu() {
+	char choice = ' ';
+	int runTime = 0;
+	
+	if(runTime == 0) { cout << "Welcome to your task scheduler!" << endl; }
+	
+	
+
+	cout << "Enter v or V to view your tasks, lists, and events." << endl;
+                cout << "Enter c or C to create new tasks, lists, or events." << endl;
+                cout << "Press q or Q to quit." << endl;
+
+                cin >> choice;
+
+	
+
+	while(choice != 'q' && choice != 'Q') {
+		
+
+		if(choice == 'v' || choice == 'V') {  
+			view();
+			
+				cout << "Enter e or E to edit." << endl;
+				cout << "Enter d or D to delete." << endl;
+			
+				cin >> choice;
+				
+				if(choice == 'e' || choice == 'E') { 
+					cout << "Enter t or T to edit a task." << endl;
+					cout << "Enter l or L to edit a list." << endl;
+					cout << "Enter e or E to edit an event." << endl; 
+					cout << "Press q or Q to quit." << endl;
+
+					cin >> choice;
+			                 
+					if(choice == 't' || choice == 'T') {  
+					       printTasks();
+					       cout << "Input the task to edit: " << endl;
+					       int thisTask;
+					       cin >> thisTask;
+					       editTask(allTasks.at(thisTask - 1));					       				       break; 
+					}
+					if(choice == 'l' || choice == 'L') {  
+					       printLists();
+                                               cout << "Input the list to edit: " << endl;
+                                               int thisList;
+                                               cin >> thisList;
+                                               editList(allLists.at(thisList - 1));
+					       break; 
+					}
+                		        if(choice == 'e' || choice == 'E') {  
+					       printEvents();
+                                               cout << "Input the event to edit: " << endl;
+                                               int thisEvent;
+                                               cin >> thisEvent;
+                                               editEvent(allEvents.at(thisEvent - 1));
+					       break; 
+
+					}
+	
+					break;			
+				 }
+				if(choice == 'd' || choice == 'D') {
+					cout << "FIXME: call delete " << endl;	
+					break;
+				}
+			   
+                           
+		}
+
+                if(choice == 'c' || choice == 'C') {  create(); break;  }
+		
+		else { cout << "Invalid character or string entered." << endl;
+                       cout << "Please enter a valid character: " << endl;
+                       cin >> choice;
+                }
+				
+			
+		runTime++;
+
+	}
+
+	cout << "Goodbye!" << endl;
+	
+
+
+
+}
 
 void client::view() {
 	char choice = ' ';
