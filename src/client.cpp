@@ -24,9 +24,10 @@ void client::displayMenu() {
 	
 	
 
-	cout << "Enter v or V to view your tasks, lists, and events." << endl;
+		cout << "Enter v or V to view your tasks, lists, and events." << endl;
                 cout << "Enter c or C to create new tasks, lists, or events." << endl;
-                cout << "Press q or Q to quit." << endl;
+                cout << "Enter s or S to set sorting method." << endl;
+		cout << "Press q or Q to quit." << endl;
 
                 cin >> choice;
 
@@ -34,13 +35,18 @@ void client::displayMenu() {
 
 	while(choice != 'q' && choice != 'Q') {
 		
+		if(choice == 's' || choice == 'S') {
+			setSortingMethod();
+			choice = ' ';
+			break;
+		}
 
 		if(choice == 'v' || choice == 'V') {  
 			view();
 			
 				cout << "Enter e or E to edit." << endl;
 				cout << "Enter d or D to delete." << endl;
-			
+				cout << "Enter m or M to mark as complete." << endl;
 				cin >> choice;
 				
 				if(choice == 'e' || choice == 'E') { 
@@ -75,18 +81,69 @@ void client::displayMenu() {
 					       break; 
 
 					}
-	
+					choice = ' ';
 					break;			
 				 }
 				if(choice == 'd' || choice == 'D') {
-					cout << "FIXME: call delete " << endl;	
+					cout << "FIXME: call delete " << endl;
+					choice = ' ';	
 					break;
+				}
+				
+				if(choice == 'm' || choice == 'M') {
+				        cout << "Enter t or T to mark a task." << endl;
+                                        cout << "Enter l or L to mark a list." << endl;
+                                        cout << "Enter e or E to mark an event." << endl;
+                                        cout << "Press q or Q to quit." << endl;
+
+                                        cin >> choice;
+					
+					
+					
+                                        if(choice == 't' || choice == 'T') {
+                                               if(allTasks.size() == 0) {
+							cout << "Nothing to mark." << endl;
+							break;
+					       } 
+					       printTasks();
+                                               cout << "Input the task to mark: " << endl;
+                                               int thisTaskI;
+                                               cin >> thisTaskI;
+                                        }
+                                        if(choice == 'l' || choice == 'L') {
+                                               if(allLists.size() == 0) {
+                                                        cout << "Nothing to mark." << endl;
+                                                        break;
+                                               }
+
+					       printLists();
+                                               cout << "Input the list to mark: " << endl;
+                                               int thisListI;
+                                               cin >> thisListI;
+                                               markAsCompletedL(allLists.at(thisListI - 1));
+                                        }
+                                        if(choice == 'e' || choice == 'E') {
+					       if(allEvents.size() == 0) {
+                                                        cout << "Nothing to mark." << endl;
+                                                        break;
+                                               }                                               
+
+					       printEvents();
+                                               cout << "Input the event to mark: " << endl;
+                                               int thisEventI;
+                                               cin >> thisEventI;
+                                               markAsCompletedE(allEvents.at(thisEventI - 1));
+
+                                        }
+					choice = ' ';
+                                        break;
+
 				}
 			   
                            
 		}
 
-                if(choice == 'c' || choice == 'C') {  create(); break;  }
+                if(choice == 'c' || choice == 'C') {  create(); choice = ' ';    }
 		
 		else { cout << "Invalid character or string entered." << endl;
                        cout << "Please enter a valid character: " << endl;
@@ -104,6 +161,19 @@ void client::displayMenu() {
 
 
 }
+
+void client::markAsCompletedT(Task &obj) {
+	if(!obj.isAssigned()) {
+		obj.setCompleted(true);
+		cout << "Success!" << endl;
+	}
+}
+void client::markAsCompletedL(TaskList &obj) {
+	obj.setCompleted(true);
+}
+void client::markAsCompletedE(Event &obj) {}
+
+
 
 void client::view() {
 	char choice = ' ';
