@@ -17,6 +17,10 @@
 
 using namespace std;
 
+/*
+	we might want to move the vectors into public so we can access them for testing
+*/
+
 class client {
 	private:
 		vector<Task> allTasks;

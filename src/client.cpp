@@ -53,6 +53,11 @@ void client::create() {
 	}
 }
 
+/*
+    Add in parameter for string stream into display function to test that
+    shouldn't need to test print functions since they should just loop over the vector and call display(cout)
+*/
+
 void client::printAll() {
 
 }
@@ -69,6 +74,9 @@ void client::printEvents() {
 
 }
 
+/*
+    Change date and time format check into bool functions and unit test those
+*/
 void client::createEvent() {
 	string name = "";
 	string date = "";
@@ -124,6 +132,9 @@ void client::createEvent() {
 
 }
 
+/*
+    Change priority checking int function and unit test that
+*/
 void client::createList(){
 
 	string name = "";
@@ -162,6 +173,9 @@ void client::createList(){
 	cout << "Task list created!" << endl;
 } 
 
+/*
+    use date and priority checking functions from comments above in here 
+*/
 
 void client::createTask() {
         
@@ -174,7 +188,7 @@ void client::createTask() {
  
         cout << "Enter a name: ";
         getline(cin, name);
-	while(name == "") {
+	    while(name == "") {
                 cout << "No task name entered!" << endl;
                 cout << "Please enter a task name: " << endl;
                 getline(cin, name);
@@ -292,6 +306,13 @@ void client::addListToEvent(Event &currEvent) {
         } 
     }
 }
+
+/*
+    Use format checking functions from above in this as well
+    Change edit function to take in parameter for string stream
+    when called in gtest, define the string stream;
+    in client, pass in cin
+*/
 
 void client::editTask(Task &currObject) {
     currObject.edit();
