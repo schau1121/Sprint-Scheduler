@@ -38,7 +38,6 @@ void client::displayMenu() {
 		if(choice == 's' || choice == 'S') {
 			setSortingMethod();
 			choice = ' ';
-			break;
 		}
 
 		if(choice == 'v' || choice == 'V') {  
@@ -64,13 +63,13 @@ void client::displayMenu() {
 					       cin >> thisTask;
 					       editTask(allTasks.at(thisTask - 1));					       				       break; 
 					}
+
 					if(choice == 'l' || choice == 'L') {  
 					       printLists();
                                                cout << "Input the list to edit: " << endl;
                                                int thisList;
                                                cin >> thisList;
                                                editList(allLists.at(thisList - 1));
-					       break; 
 					}
                 		        if(choice == 'e' || choice == 'E') {  
 					       printEvents();
@@ -78,11 +77,7 @@ void client::displayMenu() {
                                                int thisEvent;
                                                cin >> thisEvent;
                                                editEvent(allEvents.at(thisEvent - 1));
-					       break; 
-
 					}
-					choice = ' ';
-					break;			
 				 }
 				if(choice == 'd' || choice == 'D') {
 					cout << "FIXME: call delete " << endl;
@@ -109,6 +104,7 @@ void client::displayMenu() {
                                                cout << "Input the task to mark: " << endl;
                                                int thisTaskI;
                                                cin >> thisTaskI;
+					       markAsCompletedT(allTasks.at(thisTaskI - 1));
                                         }
                                         if(choice == 'l' || choice == 'L') {
                                                if(allLists.size() == 0) {
@@ -135,15 +131,13 @@ void client::displayMenu() {
                                                markAsCompletedE(allEvents.at(thisEventI - 1));
 
                                         }
-					choice = ' ';
-                                        break;
 
 				}
 			   
                            
 		}
 
-                if(choice == 'c' || choice == 'C') {  create(); choice = ' ';    }
+                else if(choice == 'c' || choice == 'C') {  create(); choice = ' '; }
 		
 		else { cout << "Invalid character or string entered." << endl;
                        cout << "Please enter a valid character: " << endl;
@@ -155,6 +149,8 @@ void client::displayMenu() {
 
 	}
 
+
+	cout << choice << endl;
 	cout << "Goodbye!" << endl;
 	
 
