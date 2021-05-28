@@ -62,7 +62,7 @@ void client::displayMenu() {
 					       cout << "Input the task to edit: " << endl;
 					       int thisTask;
 					       cin >> thisTask;
-					       editTask(allTasks.at(thisTask - 1));					       				       break; 
+					       editTask(allTasks.at(thisTask - 1));					       				       
 					}
 
 					if(choice == 'l' || choice == 'L') {  
