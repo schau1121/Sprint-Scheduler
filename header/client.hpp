@@ -21,12 +21,16 @@
 using namespace std;
 
 class client {
-	private:
+	//private:
+		// vector<Task> allTasks;
+		// vector<TaskList> allLists;
+		// vector<Event> allEvents;
+		string sortingMethod;
+	public:
 		vector<Task> allTasks;
 		vector<TaskList> allLists;
 		vector<Event> allEvents;
-		string sortingMethod;
-	public:
+		
 		//constructor
 		client();
 		~client();

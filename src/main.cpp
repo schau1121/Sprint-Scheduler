@@ -9,7 +9,6 @@ using namespace std;
 
 int main() {
   client driver;
-  driver.load();
   cout << "---TASKS---" << endl;
   for(int i = 0; i < driver.allTasks.size(); i++) {
     driver.allTasks[i].display();
@@ -26,7 +25,5 @@ int main() {
     cout << endl;
   }
   
-  
-
   return 0;
 }

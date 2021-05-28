@@ -162,9 +162,8 @@ void client::save() {
 
 client::client() {
 	//call load function to populate the vector data members
-	
+	load();
 	this->sortingMethod = "priority"; //default sorting method
-
 }
 
 client::~client() {
@@ -172,7 +171,6 @@ client::~client() {
 }
 
 void client::create() {
-
 	char choice = ' ';
 	
 	cout << "Enter t or T to create a task." << endl;
