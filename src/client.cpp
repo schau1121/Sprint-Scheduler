@@ -24,23 +24,24 @@ void client::displayMenu() {
 	
 	
 
-		cout << "Enter v or V to view your tasks, lists, and events." << endl;
-                cout << "Enter c or C to create new tasks, lists, or events." << endl;
-                cout << "Enter s or S to set sorting method." << endl;
-		cout << "Press q or Q to quit." << endl;
-
-                cin >> choice;
 
 	
 
 	while(choice != 'q' && choice != 'Q') {
 		
+		cout << "Enter v or V to view your tasks, lists, and events." << endl;
+                cout << "Enter c or C to create new tasks, lists, or events." << endl;
+                cout << "Enter s or S to set sorting method." << endl;
+                cout << "Press q or Q to quit." << endl;
+		
+		cin >> choice;
+
+
 		if(choice == 's' || choice == 'S') {
 			setSortingMethod();
-			choice = ' ';
 		}
 
-		if(choice == 'v' || choice == 'V') {  
+		else if(choice == 'v' || choice == 'V') {  
 			view();
 			
 				cout << "Enter e or E to edit." << endl;
@@ -79,13 +80,11 @@ void client::displayMenu() {
                                                editEvent(allEvents.at(thisEvent - 1));
 					}
 				 }
-				if(choice == 'd' || choice == 'D') {
+				else if(choice == 'd' || choice == 'D') {
 					cout << "FIXME: call delete " << endl;
-					choice = ' ';	
-					break;
 				}
 				
-				if(choice == 'm' || choice == 'M') {
+				else if(choice == 'm' || choice == 'M') {
 				        cout << "Enter t or T to mark a task." << endl;
                                         cout << "Enter l or L to mark a list." << endl;
                                         cout << "Enter e or E to mark an event." << endl;
@@ -93,7 +92,7 @@ void client::displayMenu() {
 
                                         cin >> choice;
 					
-					
+					if(choice == 'q' || choice == 'Q') { break; }	
 					
                                         if(choice == 't' || choice == 'T') {
                                                if(allTasks.size() == 0) {
@@ -141,16 +140,13 @@ void client::displayMenu() {
 		
 		else { cout << "Invalid character or string entered." << endl;
                        cout << "Please enter a valid character: " << endl;
-                       cin >> choice;
                 }
 				
 			
 		runTime++;
-
 	}
 
 
-	cout << choice << endl;
 	cout << "Goodbye!" << endl;
 	
 
@@ -162,7 +158,9 @@ void client::markAsCompletedT(Task &obj) {
 	if(!obj.isAssigned()) {
 		obj.setCompleted(true);
 		cout << "Success!" << endl;
+	
 	}
+
 }
 void client::markAsCompletedL(TaskList &obj) {
 	obj.setCompleted(true);
@@ -444,7 +442,7 @@ void client::setSortingMethod() {
     cout << "How would you like to sort your task list?" << endl;
     cout << "Enter the number corresponding to which sort you'd like to use: ";
     cin >> userInput;
-    while(userInput != 1 || userInput != 2) {
+    while(userInput > 2 || userInput < 0) {
         cout << "\nERROR: Enter either 1 or 2: ";
         cin >> userInput;
     }
