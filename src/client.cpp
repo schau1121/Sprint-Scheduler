@@ -6,6 +6,7 @@
 using namespace std;
 
 
+
 client::client() {
 	//call load function to populate the vector data members
 	
@@ -13,8 +14,33 @@ client::client() {
 
 }
 
-client::~client() {
+client::~client() {}
 
+
+void client::view() {
+	char choice = ' ';
+
+	cout << "Enter a or A to view all." << endl;
+	cout << "Enter t or T to view tasks." << endl;
+	cout << "Enter l or L to view tasklists." << endl;
+	cout << "Enter e or E to view events." << endl;
+
+	cin >> choice;
+
+	while(choice != 'q' && choice != 'Q') {
+
+		if(choice == 'a' || choice == 'A') {  printAll();    break; }
+		if(choice == 't' || choice == 'T') {  printTasks();  break; }
+		if(choice == 'l' || choice == 'L') {  printLists();  break; }
+		if(choice == 'e' || choice == 'E') {  printEvents(); break; }
+		
+		else { cout << "Invalid character or string entered." << endl;
+		       cout << "Please enter a valid character: " << endl;
+		       cin >> choice;
+		}
+
+	
+	}
 }
 
 void client::create() {
@@ -55,18 +81,51 @@ void client::create() {
 
 void client::printAll() {
 
+	if(allTasks.size() == 0 && allLists.size() == 0 && allEvents.size() == 0) {
+		cout << "There is nothing to display." << endl; 
+		return;
+	}
+
+	this->printEvents();
+	this->printLists();
+	this->printTasks();	
 }
 
 void client::printTasks() {
 
+	if(allTasks.size() == 0) { cout << "There are no tasks to display." << endl; return; }
+
+	for(int i = 0; i < allTasks.size(); i++) {
+		if(!(allTasks.at(i).isAssigned())) {
+			cout << (i+1) << ". ";
+			allTasks.at(i).display();
+			cout << endl;
+		}
+	}
 }
 
 void client::printLists() {
-    
+
+	if(allLists.size() == 0) { cout << "There are no lists to display." << endl; return; }
+
+ 	for(int i = 0; i < allLists.size(); i++) {
+		cout << (i+1) << ". ";
+		allLists.at(i).display();
+		cout << endl;
+
+	}   
 }
 
 void client::printEvents() {
 
+	if(allEvents.size() == 0) { cout << "There are no events to display." << endl; return; }
+
+	for(int i = 0; i < allEvents.size(); i++) {
+		cout << (i+1) << ". ";
+		allEvents.at(i).display();
+		cout << endl;
+
+	}
 }
 
 void client::createEvent() {
