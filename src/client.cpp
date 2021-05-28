@@ -37,15 +37,13 @@ void client::load() {
         TaskList list = TaskList(name, details, priority);
         list.setAssigned(assigned);
         list.setCompleted(completed);
-        for(auto currSubTask: j["Task Lists"]["Sub Tasks"]) {
+        for(auto currSubTask: currList["Sub Tasks"]) {
             string name = currSubTask["Name"];
             string dueDate = currSubTask["Due Date"];
             string details = currSubTask["Details"];
             int priority = currSubTask["Priority"];
             bool completed = currSubTask["Completed"];
-            bool assigned = currSubTask["Assigned"];
             Task task = Task(name, dueDate, details, priority);
-            task.setAssigned(assigned);
             task.setCompleted(completed);
             list.addSubTask(task);
         }
@@ -59,14 +57,14 @@ void client::load() {
         string details = currEvent["Details"];
         double duration = currEvent["Duration"];
         Event event = Event(name, date, time, details, duration);
-        for(auto currSubList: j["Events"]["Sub Lists"]) {
+        for(auto currSubList: currEvent["Sub Lists"]) {
             string name = currSubList["Name"];
             string details = currSubList["Details"];
             int priority = currSubList["Priority"];
             bool completed = currSubList["Completed"];
             TaskList list = TaskList(name, details, priority);
             list.setCompleted(completed);
-            for(auto currSubTask: j["Events"]["Sub Lists"]["Sub Tasks"]) {
+            for(auto currSubTask: currSubList["Sub Tasks"]) {
                 string name = currSubTask["Name"];
                 string date = currSubTask["Due Date"];
                 string details = currSubTask["Details"];
