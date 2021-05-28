@@ -1,5 +1,5 @@
-#ifndef CLIENT_HPP
-#define CLIENT_HPP
+#ifndef __CLIENT_HPP__
+#define __CLIENT_HPP__
 
 #include <iostream>
 #include <vector>
@@ -7,17 +7,18 @@
 
 //header files
 #include "base.hpp"
+#include "task.hpp"
+#include "tasklist.hpp"
+#include "event.hpp"
 #include "sortstrategy.hpp"
 #include "../src/task.cpp"
 #include "../src/tasklist.cpp"
 #include "../src/event.cpp"
 
-
 using namespace std;
 
 class client {
 	private:
-		vector<Base*> allObjects;
 		vector<Task> allTasks;
 		vector<TaskList> allLists;
 		vector<Event> allEvents;
@@ -37,14 +38,20 @@ class client {
 		//print functions
 		void view();
 		void printAll();
+		//print all unassigned tasks 
 		void printTasks();
+		//print all unassigned taskLists and their queues
 		void printLists();
+		//print all events
 		void printEvents(); 
 
 		//sort function
 		void setSortingMethod();
 		
 		//completed functions
+		//might want to pass in the object by reference to call .setCompleted on it
+		//if task is assigned, find it in the correct taskList, then set as completed
+		//if task is not assigned, mark as completed from allTasks vector
 		void markAsCompleted();
 
 		
@@ -56,18 +63,19 @@ class client {
 
 		
 		//edit functions
-		void addTaskToTaskList(Base* currList);	
-		void addListToEvent(Base* currEvent);
+		void addTaskToTaskList(TaskList &currList);	
+		void addListToEvent(Event &currEvent);
 
 
 
 		//edit functions
-		void editList(Base* currObject);
-		void editEvent(Base* currObject);
-		void editTask(Base* currObject);
+		void editList(TaskList &currObject);
+		void editEvent(Event &currObject);
+		void editTask(Task &currObject);
 
 
 		//delete functions
+		//these need to find and erase the objects from the vectors & the priorityQueues
 		void delTask();
 		void delList();
 		void delEvent();
