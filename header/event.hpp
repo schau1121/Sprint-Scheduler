@@ -6,6 +6,9 @@
 #include "../src/sortpriority.cpp"
 #include "tasklist.hpp"
 
+#include <vector>
+#include <string>
+
 class Event : public Base {
 protected:
     string date;
@@ -34,7 +37,7 @@ public:
 
 /*
 //this mock is initialized with a task list containing 2 tasks
-class EventMock : public Base {
+nclass EventMock : public Base {
 protected:
     string date;
     string time;
