@@ -131,11 +131,9 @@ void Event::setStrategy(string strategy) {
 void Event::removeListFromQueue(TaskList item) {
 
 	for(int i = 0; i < priorityQueue.size(); i++) {
-		int index = 0;
 		if(item.getName() == priorityQueue.at(i).getName()){
-			priorityQueue.erase(index);
+			priorityQueue.erase(i);
 		}
-		index++;
 	}
 
 }
