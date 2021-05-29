@@ -33,7 +33,7 @@ public:
 	virtual string getDate() const { return ""; }
     vector<Task> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(string strategy);
-    void deleteTaskFromQueue(Task item);
+    void removeTaskFromQueue(Task item);
 };
 
 //this task list is initialized with two task mocks
