@@ -38,11 +38,11 @@ void client::Delete(){
 
 }
 
+
+
 void client::deleteEvent(){
 
-	int choice = -1;
-
-	printEvents();
+	int choice = -1; 
 
         cout << "Please enter the index of which event you would like to delete, indices start at 1: " << endl;
 
@@ -58,11 +58,11 @@ void client::deleteEvent(){
 	allEvents.erase(choice - 1);
 }
 
+
+
 void client::deleteList(){
 
-int choice = -1;
-
-        printLists();
+	int choice = -1;
 
         cout << "Please enter the index of which list you would like to delete, indices start at 1: " << endl;
 
@@ -87,11 +87,11 @@ int choice = -1;
 	
 }
 
+
+
 void client::deleteTask(){ 
 
 	int choice = -1;
-
-        printTasks();
 
         cout << "Please enter the index of which task you would like to delete, indices start at 1: " << endl;
 
@@ -106,7 +106,7 @@ void client::deleteTask(){
         }
 
 	if(allTasks.at(choice - 1).isAssigned()) {
-
+		
 	
 	}
 
