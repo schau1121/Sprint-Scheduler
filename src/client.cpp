@@ -78,7 +78,7 @@ void client::deleteList(){
 	
 	if(allLists.at(choice - 1).isAssigned()){
 		
-		deleteFromQueue(allLists.at(choice - 1);
+		deleteListFromQueue(allLists.at(choice - 1);
 	
 	}
 	
@@ -108,7 +108,7 @@ void client::deleteTask(){
 
 	if(allTasks.at(choice - 1).isAssigned()) {
 
-		deleteFromQueue(allTasks.at(choice - 1);
+		deleteTaskFromQueue(allTasks.at(choice - 1);
 
 	}
 
