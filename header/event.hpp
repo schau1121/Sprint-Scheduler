@@ -30,6 +30,7 @@ public:
     double getDuration() const { return duration; }
     vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(string strategy);
+    void removeListFromQueue(TaskList item);	
 };
 
 /*
