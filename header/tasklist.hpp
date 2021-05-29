@@ -29,7 +29,7 @@ public:
     virtual void setCompleted(bool isComplete);
 	virtual void setAssigned (bool isAssigned);
 	virtual bool isAssigned() const { return assigned; }
-	virtual bool isCompleted() const { return completed; }
+	virtual bool isCompleted() const;
 	virtual string getDate() const { return ""; }
     vector<Task> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(string strategy);
