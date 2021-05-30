@@ -160,6 +160,12 @@ void client::createEvent() {
 		cout << "Enter date format as MM/DD/YY: " << endl;
 		cin >> date;
 	}
+	/*
+	if(!check_date_format(date)){
+		cout << "Wrong date format entered!" << endl;
+		cout << "Enter date format as MM/DD/YY: " << endl;
+		cin >> date;
+	} */
 
 	cout << "Enter an event starting time HH:MM AM/PM: " << endl;
 	cin >> time;
