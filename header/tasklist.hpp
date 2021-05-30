@@ -22,9 +22,9 @@ protected:
 public:
     TaskList(string name, string details, int priority);
     ~TaskList() {}
-    virtual void display() const;
+    virtual void display(ostream& out) const;
     virtual void del();
-    virtual void edit();
+    virtual void edit(istream& in);
     void addSubTask(Task task);
     virtual void setCompleted(bool isComplete);
 	virtual void setAssigned (bool isAssigned);

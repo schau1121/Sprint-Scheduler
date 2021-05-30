@@ -64,14 +64,60 @@ TEST(TaskList_test, addSubTask_test4) {
     }
 }
 
-/*
-TEST(TaskList_test, edit_TaskList_test1) {
-    TaskList currList = TaskList("Homework", "Finish math and cs homework", 3);
-    currList.edit();
-    EXPECT_NE("Homework", currList.getName());
-    EXPECT_NE("Finish math and cs homework", currList.getDetails());
-    EXPECT_NE(3, currList.getPriority());
+TEST(TaskList_Display_test, simple_display_test) {
+    TaskList test = TaskList("Homework", "Some details", 3);
+    ostringstream out;
+    test.display(out);
+    EXPECT_EQ(out.str(), "Name: Homework\nDetails: Some details\nPriority: 3\n");
 }
-*/
+
+TEST(TaskList_Display_test, simple_display_subTask_test) {
+    TaskList test = TaskList("Homework", "Some details", 3);
+    Task test2 = Task("CS100", "05/30/21", "", 5);
+    test.addSubTask(test2);
+    ostringstream out;
+    test.display(out);
+    EXPECT_EQ(out.str(), "Name: Homework\nDetails: Some details\nPriority: 3\nSub Tasks: \n1. Name: CS100\nDue date: 05/30/21\nPriority: 5\nDetails: \n");
+}
+
+TEST(TaskList_Display_test, simple_display_subTask_Completed_test) {
+    TaskList test = TaskList("Homework", "Some details", 3);
+    Task test2 = Task("CS100", "05/30/21", "", 5);
+    test2.setCompleted(true);
+    test.addSubTask(test2);
+    ostringstream out;
+    test.display(out);
+    EXPECT_EQ(out.str(), "Name: Homework\nDetails: Some details\nPriority: 3\nSub Tasks: \n1. Name: CS100\nDue date: 05/30/21\nPriority: 5\nDetails: \nCompleted\nCompleted\n");
+}
+
+TEST(TaskList_test, edit_TaskList_test) {
+    TaskList currList = TaskList("Homework", "Finish math and cs homework", 3);
+    string input = "House work\nChores\n4\n";
+    istringstream in(input);
+    currList.edit(in);
+    EXPECT_EQ("House work", currList.getName());
+    EXPECT_EQ("Chores", currList.getDetails());
+    EXPECT_EQ(4, currList.getPriority());
+}
+
+TEST(TaskList_test, edit_TaskList_test_invalid_priority) {
+    TaskList currList = TaskList("Homework", "Finish math and cs homework", 3);
+    string input = "House work\nChores\n-1\n4\n";
+    istringstream in(input);
+    currList.edit(in);
+    EXPECT_EQ("House work", currList.getName());
+    EXPECT_EQ("Chores", currList.getDetails());
+    EXPECT_EQ(4, currList.getPriority());
+}
+
+TEST(TaskList_test, edit_TaskList_test_invalid_name) {
+    TaskList currList = TaskList("Homework", "Finish math and cs homework", 3);
+    string input = "\nHouse work\nChores\n4\n";
+    istringstream in(input);
+    currList.edit(in);
+    EXPECT_EQ("House work", currList.getName());
+    EXPECT_EQ("Chores", currList.getDetails());
+    EXPECT_EQ(4, currList.getPriority());
+}
 
 #endif

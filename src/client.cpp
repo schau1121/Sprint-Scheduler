@@ -258,7 +258,7 @@ void client::printTasks() {
 	for(int i = 0; i < allTasks.size(); i++) {
 		if(!(allTasks.at(i).isAssigned())) {
 			cout << (i+1) << ". ";
-			allTasks.at(i).display();
+			allTasks.at(i).display(cout);
 			cout << endl;
 		}
 	}
@@ -270,7 +270,7 @@ void client::printLists() {
 
  	for(int i = 0; i < allLists.size(); i++) {
 		cout << (i+1) << ". ";
-		allLists.at(i).display();
+		allLists.at(i).display(cout);
 		cout << endl;
 
 	}   
@@ -282,7 +282,7 @@ void client::printEvents() {
 
 	for(int i = 0; i < allEvents.size(); i++) {
 		cout << (i+1) << ". ";
-		allEvents.at(i).display();
+		allEvents.at(i).display(cout);
 		cout << endl;
 
 	}
@@ -515,15 +515,15 @@ void client::addListToEvent(Event &currEvent) {
 */
 
 void client::editTask(Task &currObject) {
-    currObject.edit();
+    currObject.edit(cin);
 }
 
 void client::editList(TaskList &currObject) {
-    currObject.edit();
+    currObject.edit(cin);
 }
 
 void client::editEvent(Event &currObject) {
-    currObject.edit();
+    currObject.edit(cin);
 }
 
 #endif

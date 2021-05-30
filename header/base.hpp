@@ -18,8 +18,8 @@ protected:
 	int priority;
 public:
 	Base() {};
-	virtual void edit() = 0;
-	virtual void display() const = 0;
+	virtual void edit(istream& in) = 0;
+	virtual void display(ostream& out) const = 0;
 	virtual void del() = 0;
 	//for task and taskList just set completed = isComplete
 	//for event do nothing

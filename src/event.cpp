@@ -46,18 +46,18 @@ Event::Event(string name, string date, string time, string details, double durat
         setStrategy("priority");
 }
 
-void Event::display() const {
-	cout << "Name: " << this->name << endl;
-    cout << "Date: " << this->date << endl;
-	cout << "Time: " << this->time << endl;
-	cout << "Duration: " << this->duration << endl;
-	cout << "Details: " << this->details << endl;
+void Event::display(ostream& out) const {
+	out << "Name: " << this->name << endl;
+    out << "Date: " << this->date << endl;
+	out << "Time: " << this->time << endl;
+	out << "Duration: " << this->duration << endl;
+	out << "Details: " << this->details << endl;
 	
     if(priorityQueue.empty() == false) {
-        cout << "Sub Lists: " << endl;
+        out << "Sub Lists: " << endl;
         for(int i = 0; i < priorityQueue.size(); i++) {
-            cout << (i + 1) << ". ";
-            this->getQueue()[i].display();
+            out << (i + 1) << ". ";
+            this->getQueue()[i].display(out);
         }
     }
 
@@ -68,44 +68,44 @@ void Event::del() {
 
 }
 
-void Event::edit() {
+void Event::edit(istream& in) {
     string newName;
     string newDetails;
     string newDate;
     string newTime;
     double newDuration;
     cout << "Current Event: "; 
-    this->display();
+    this->display(cout);
     cout << "\nEnter new event name: ";
-    getline(cin, newName);
+    getline(in, newName);
     while(newName == "") {
         cout << "Error: Need event name" << endl;
         cout << "Enter new event name: ";
-        getline(cin, newName);
+        getline(in, newName);
     }
     cout << "\nEnter new date: ";
-    cin >> newDate;
+    in >> newDate;
     while(newDate == "" || (newDate[2] != '/' || newDate[5] != '/')) {
         cout << "Error: Wrong date format" << endl;
         cout << "Enter new date (MM/DD/YY): ";
-        cin >> newDate;
+        in >> newDate;
     }
     cout << "\nEnter new time: ";
-    cin.ignore();
-    getline(cin, newTime);
-    while(newTime[2] != ':' || newTime.substr(6,2) != "AM" && newTime.substr(6,2) != "PM" && newTime.substr(6,2) != "am" && newTime.substr(6,2) != "pm") {
+    in.ignore();
+    getline(in, newTime);
+    while(newTime.size() < 8 || newTime[2] != ':' || newTime.substr(6,2) != "AM" && newTime.substr(6,2) != "PM" && newTime.substr(6,2) != "am" && newTime.substr(6,2) != "pm") {
         cout << "Error: Wrong time format" << endl;
         cout << "Enter new time (HH:MM AM/PM): ";
-        getline(cin, newTime); 
+        getline(in, newTime); 
     }
     cout << "\nEnter new details: ";
-    getline(cin, newDetails);
+    getline(in, newDetails);
     cout << "\nEnter new duration: ";
-    cin >> newDuration;
+    in >> newDuration;
     while(newDuration < 0) {
         cout << "Error: Invalid duration" << endl;
         cout << "Enter new duration: ";
-        cin >> newDuration;
+        in >> newDuration;
     }
     this->name = newName;
     this->date = newDate;
@@ -113,7 +113,7 @@ void Event::edit() {
     this->time = newTime;
     this->duration = newDuration;
     cout << "\nNew Event: ";
-    this->display();
+    this->display(cout);
 }
 
 void Event::addSubTask(TaskList list) {
