@@ -1,33 +1,44 @@
 #ifndef __EVENT_HPP__
 #define __EVENT_HPP__
 
+#include <string>
 #include "base.hpp"
-#include "tasklist.hpp"
+#include "../src/sortdate.cpp"
+#include "../src/sortpriority.cpp"
+#include "../src/tasklist.cpp"
+
+#include <vector>
+#include <string>
 
 class Event : public Base {
 protected:
     string date;
     string time;
     double duration; //number of hours
-    vector<Base*> priorityQueue;
-    int numSubTasks;
+    vector<TaskList> priorityQueue;
+    SortStrategy<TaskList>* strat = nullptr;
 public:
     Event(string name, string date, string time, string details, double duration);
+    ~Event() {}
     virtual void display() const;
     virtual void del();
     virtual void edit();
-    void addSubTask(Base* task);
-    virtual void setCompleted(bool isComplete);
-	virtual void setAssigned (bool isAssigned);
-	virtual bool isAssigned();
-	virtual bool isCompleted();
-	virtual string getDate();
-    virtual vector<Base*> getQueue() const;
+    void addSubTask(TaskList list);
+    virtual void setCompleted(bool isComplete) {};
+	virtual void setAssigned (bool isAssigned) {};
+	virtual bool isAssigned() const { return false; }
+	virtual bool isCompleted() const { return false; }
+	virtual string getDate() const { return date; }
+    string getTime() const { return time; }
+    double getDuration() const { return duration; }
+    vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
+    void setStrategy(string strategy);
+    void removeListFromQueue(TaskList item);	
 };
 
-
+/*
 //this mock is initialized with a task list containing 2 tasks
-class EventMock : public Base {
+nclass EventMock : public Base {
 protected:
     string date;
     string time;
@@ -49,11 +60,13 @@ public:
     virtual void del() {}
     virtual void setCompleted(bool isComplete) {}
 	virtual void setAssigned(bool isAssigned) {}
-	virtual bool isAssigned() const { return true; }
-	virtual bool isCompleted() const { return true; }
+	virtual bool isAssigned() const { return false; }
+	virtual bool isCompleted() const { return false; }
 	virtual string getDate() const { return ""; }
 	virtual void addSubTask(Base* task) {}
     virtual vector<Base*> getQueue() const { return priorityQueue; }
+    virtual int getPriority() const { return 6; }
 };
+*/
 
 #endif
