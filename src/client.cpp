@@ -470,7 +470,7 @@ void client::deleteList(){
 	}
         
 	for(int i = 0; i < allLists.size(); i++) {
-		if(allLists.at(i).getName() == allLists.at(choice - 1).getName(){
+		if(allLists.at(i).getName() == allLists.at(choice - 1).getName()) {
 			index = i;
 		}
 	}
@@ -506,7 +506,7 @@ void client::deleteTask(){
 	}
 
 	for(int i = 0; i < allTasks.size(); i++) {
-		if(allTasks.at(i).getName() == allTasks.at(choice - 1).getName() {
+		if(allTasks.at(i).getName() == allTasks.at(choice - 1).getName()) {
 			index = i;
 		}
 	}
