@@ -113,7 +113,7 @@ void TaskList::removeTaskFromQueue(Task item) {
 
 	for(int i = 0; i < priorityQueue.size(); i++) {
 		if(item.getName() == priorityQueue.at(i).getName()){
-			priorityQueue.erase(i);
+			priorityQueue.erase(priorityQueue.begin() + i);
 		}
 	}	
 
