@@ -67,9 +67,9 @@ class client {
 
 
 		//delete functions
-		void delTask();
-		void delList();
-		void delEvent();
+		void deleteTask();
+		void deleteList();
+		void deleteEvent();
 
 
 };
