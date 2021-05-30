@@ -12,12 +12,11 @@ void client::load() {
     if(!in.is_open()) {
         cout << "Error opening save.json" << endl;
     }
-    if(in.peek() == ifstream::traits_type::eof()) {
-        return;
-    }
     json j;
     in >> j;
-
+    if(j.is_null()) {
+        return;
+    }
     for(auto currTask: j["Tasks"]) {
         string name = currTask["Name"];
         string dueDate = currTask["Due Date"];
@@ -86,15 +85,14 @@ void client::load() {
 }
 
 void client::clear() {
-    ofstream out;
-    out.open("save.json", ofstream::out | ofstream::trunc);
-    out.close();
+    allLists.clear();
+    allEvents.clear();
+    allTasks.clear();
 }
 
 void client::save() {
-    clear();
     ofstream out;
-    out.open("save.json");
+    out.open("save.json", ofstream::out | ofstream::trunc);
     if(out.is_open()) {
         cout << "Saving..." << endl;
         json j;
