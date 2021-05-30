@@ -128,4 +128,15 @@ void Event::setStrategy(string strategy) {
     this->strat = new SortByPriority<TaskList>();
 }
 
+void Event::removeListFromQueue(TaskList item) {
+
+	for(int i = 0; i < priorityQueue.size(); i++) {
+		if(item.getName() == priorityQueue.at(i).getName()){
+			priorityQueue.erase(priorityQueue.begin() + i);
+		}
+	}
+
+}
+
+
 #endif
