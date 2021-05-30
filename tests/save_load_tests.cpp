@@ -142,4 +142,63 @@ TEST(save_test, nested_test_1) {
     driver.clear();
 }
 
+TEST(load_test, simple_test_1) {
+    client driver;
+    driver.clear();
+    Task task1 = Task("CS100", "06/01/21", "Final Project Sprint", 5);
+    Task task2 = Task("MATH149B", "06/01/21", "", 5);
+    driver.allTasks.push_back(task1);
+    driver.allTasks.push_back(task2);
+    driver.save();
+    driver.clear();
+    driver.load();
+    vector<string> expected = {"CS100", "MATH149B"};
+    for(int i = 0; i < expected.size(); i++) {
+        EXPECT_EQ(driver.allTasks[i].getName(), expected[i]);
+    }
+    driver.clear();
+}
+
+TEST(load_test, simple_test_2) {
+    client driver;
+    driver.clear();
+    Event event1 = Event("Productivity Block", "05/30/21", "10:00 AM", "", 3);
+    Event event2 = Event("Run Errands", "05/30/21", "01:00 PM", "", 1);
+    driver.allEvents.push_back(event1);
+    driver.allEvents.push_back(event2);
+    driver.save();
+    driver.clear();
+    driver.load();
+    vector<string> expected = {"Productivity Block", "Run Errands"};
+    for(int i = 0; i < expected.size(); i++) {
+        EXPECT_EQ(driver.allEvents[i].getName(), expected[i]);
+    }
+    driver.clear();
+}
+
+TEST(load_test, nested_test_1) {
+    client driver;
+    driver.clear();
+    Event event1 = Event("Productivity Block", "05/30/21", "10:00 AM", "", 3);
+    Event event2 = Event("Run Errands", "05/30/21", "01:00 PM", "", 1);
+    TaskList list = TaskList("Homework", "", 3);
+    Task task1 = Task("CS100", "06/01/21", "", 5);
+    list.addSubTask(task1);
+    event1.addSubTask(list);
+    driver.allEvents.push_back(event1);
+    driver.allEvents.push_back(event2);
+    driver.allLists.push_back(list);
+    driver.allTasks.push_back(task1);
+    driver.save();
+    driver.clear();
+    driver.load();
+    vector<string> expectedEvents = {"Productivity Block", "Run Errands"};
+    for(int i = 0; i < expectedEvents.size(); i++) {
+        EXPECT_EQ(driver.allEvents[i].getName(), expectedEvents[i]);
+    }
+    EXPECT_EQ(driver.allEvents[0].getQueue()[0].getName(), "Homework");
+    EXPECT_EQ(driver.allEvents[0].getQueue()[0].getQueue()[0].getName(), "CS100");
+    driver.clear();
+}   
+
 #endif
