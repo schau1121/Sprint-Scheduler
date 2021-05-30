@@ -18,6 +18,7 @@ TaskList::TaskList(string name, string details, int priority) {
         this->details = details;
         this->priority = priority;
         this->completed = false;
+        this->assigned = false;
         setStrategy("priority");
 }
 

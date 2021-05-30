@@ -12,6 +12,9 @@ void client::load() {
     if(!in.is_open()) {
         cout << "Error opening save.json" << endl;
     }
+    if(in.peek() == ifstream::traits_type::eof()) {
+        return;
+    }
     json j;
     in >> j;
 
