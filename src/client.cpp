@@ -434,12 +434,12 @@ void client::deleteEvent(){
 	}
 	
 	for(int i = 0; i < allEvents.size(); i++) {
-		if(allEvents.at(i).getName() == allEvents.at(choice - 1).getName(){
+		if(allEvents.at(i).getName() == allEvents.at(choice - 1).getName()) {
 			index = i;
 		}
 	}
 
-	allEvents.erase(allEvents.begin() + i);
+	allEvents.erase(allEvents.begin() + index);
 }
 
 
@@ -475,7 +475,7 @@ void client::deleteList(){
 		}
 	}
                 
-	allLists.erase(allLists.begin() + i);
+	allLists.erase(allLists.begin() + index);
 }
 
 
@@ -511,7 +511,7 @@ void client::deleteTask(){
 		}
 	}
 
-	allTasks.erase(allTasks.begin() + i);
+	allTasks.erase(allTasks.begin() + index);
 }
 
 #endif
