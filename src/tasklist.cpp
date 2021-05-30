@@ -109,7 +109,7 @@ bool TaskList::isCompleted() const {
     return true;
 }
 
-void TaskList::removeTaskFromQueue(Task item) {
+void TaskList::deleteTaskFromQueue(Task item) {
 
 	for(int i = 0; i < priorityQueue.size(); i++) {
 		if(item.getName() == priorityQueue.at(i).getName()){

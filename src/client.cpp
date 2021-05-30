@@ -423,6 +423,7 @@ void client::Delete(){
 void client::deleteEvent(){
 
 	int choice = -1; 
+	int index = 0;
 	cout << "Please enter the index of which event you would like to delete, indices start at 1: " << endl;
 	cin >> choice; 
 
@@ -432,7 +433,13 @@ void client::deleteEvent(){
 	  cin >> choice;
 	}
 	
-	allEvents.erase(choice - 1);
+	for(int i = 0; i < allEvents.size(); i++) {
+		if(allEvents.at(i).getName() == allEvents.at(choice - 1).getName(){
+			index = i;
+		}
+	}
+
+	allEvents.erase(allEvents.begin() + i);
 }
 
 
@@ -461,8 +468,14 @@ void client::deleteList(){
 	if(allLists.at(choice - 1).isAssigned()){
 	  allEvents.at(index).deleteListFromQueue(allLists.at(choice - 1));
 	}
-                        
-	allLists.erase(choice - 1);
+        
+	for(int i = 0; i < allLists.size(); i++) {
+		if(allLists.at(i).getName() == allLists.at(choice - 1).getName(){
+			index = i;
+		}
+	}
+                
+	allLists.erase(allLists.begin() + i);
 }
 
 
@@ -480,7 +493,7 @@ void client::deleteTask(){
 	}
 
 	for(int i = 0; i < allLists.size(); i++) {
-		vector<Tasks> queue = allLists.at(i).getQueue();
+		vector<Task> queue = allLists.at(i).getQueue();
 		for(int j = 0; j < queue.size(); i++) {
 			if(queue.at(j).getName() == allTasks.at(choice - 1).getName()) {
 				index = i;				
@@ -492,7 +505,13 @@ void client::deleteTask(){
 	  allLists.at(index).deleteTaskFromQueue(allTasks.at(choice - 1));
 	}
 
-	allTasks.erase(choice - 1);
+	for(int i = 0; i < allTasks.size(); i++) {
+		if(allTasks.at(i).getName() == allTasks.at(choice - 1).getName() {
+			index = i;
+		}
+	}
+
+	allTasks.erase(allTasks.begin() + i);
 }
 
 #endif
