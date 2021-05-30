@@ -80,9 +80,10 @@ class client {
 
 		//delete functions
 		//these need to find and erase the objects from the vectors & the priorityQueues
-		void delTask();
-		void delList();
-		void delEvent();
+		void Delete();
+		void deleteTask();
+		void deleteList();
+		void deleteEvent();
 
 
 };
