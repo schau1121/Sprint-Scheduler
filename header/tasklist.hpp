@@ -14,7 +14,6 @@
 class TaskList : public Base {
 protected:
     bool completed;
-    vector<Task> priorityQueue;
     //set to empty string to differentiate between tasks and task lists when sorting by date
     string dueDate = ""; 
     bool assigned;
@@ -33,6 +32,7 @@ public:
 	virtual string getDate() const { return ""; }
     vector<Task> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(string strategy);
+    vector<Task> priorityQueue;
 };
 
 //this task list is initialized with two task mocks

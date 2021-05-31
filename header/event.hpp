@@ -15,7 +15,6 @@ protected:
     string date;
     string time;
     double duration; //number of hours
-    vector<TaskList> priorityQueue;
     SortStrategy<TaskList>* strat = nullptr;
 public:
     Event(string name, string date, string time, string details, double duration);
@@ -33,6 +32,7 @@ public:
     double getDuration() const { return duration; }
     vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(string strategy);
+    vector<TaskList> priorityQueue;
 };
 
 /*
