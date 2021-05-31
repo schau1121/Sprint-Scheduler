@@ -1,3 +1,4 @@
+![Screenshot 41](https://user-images.githubusercontent.com/43623351/120130552-52d8a500-c17b-11eb-9252-37c5698a0870.png)
 # Task Scheduler 
 Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https://github.com/AnhQNguyen), [Simon Chau](https://github.com/schau1121)
  
