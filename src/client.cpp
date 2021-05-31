@@ -16,6 +16,158 @@ client::client() {
 
 client::~client() {}
 
+void client::displayMenu() {
+	char choice = ' ';
+	int runTime = 0;
+	
+	if(runTime == 0) { cout << "Welcome to your task scheduler!" << endl; }
+	
+	
+
+
+	
+
+	while(choice != 'q' && choice != 'Q') {
+		
+		cout << "Enter v or V to view your tasks, lists, and events." << endl;
+                cout << "Enter c or C to create new tasks, lists, or events." << endl;
+                cout << "Enter s or S to set sorting method." << endl;
+                cout << "Press q or Q to quit." << endl;
+		
+		cin >> choice;
+
+
+		if(choice == 's' || choice == 'S') {
+			setSortingMethod();
+		}
+
+		else if(choice == 'v' || choice == 'V') {  
+			view();
+			
+				cout << "Enter e or E to edit." << endl;
+				cout << "Enter d or D to delete." << endl;
+				cout << "Enter m or M to mark as complete." << endl;
+				cin >> choice;
+				
+				if(choice == 'e' || choice == 'E') { 
+					cout << "Enter t or T to edit a task." << endl;
+					cout << "Enter l or L to edit a list." << endl;
+					cout << "Enter e or E to edit an event." << endl; 
+					cout << "Press q or Q to quit." << endl;
+
+					cin >> choice;
+			                 
+					if(choice == 't' || choice == 'T') {  
+					       printTasks();
+					       cout << "Input the task to edit: " << endl;
+					       int thisTask;
+					       cin >> thisTask;
+					       editTask(allTasks.at(thisTask - 1));					       				       
+					}
+
+					if(choice == 'l' || choice == 'L') {  
+					       printLists();
+                                               cout << "Input the list to edit: " << endl;
+                                               int thisList;
+                                               cin >> thisList;
+                                               editList(allLists.at(thisList - 1));
+					}
+                		        if(choice == 'e' || choice == 'E') {  
+					       printEvents();
+                                               cout << "Input the event to edit: " << endl;
+                                               int thisEvent;
+                                               cin >> thisEvent;
+                                               editEvent(allEvents.at(thisEvent - 1));
+					}
+				 }
+				else if(choice == 'd' || choice == 'D') {
+					cout << "FIXME: call delete " << endl;
+				}
+				
+				else if(choice == 'm' || choice == 'M') {
+				        cout << "Enter t or T to mark a task." << endl;
+                                        cout << "Enter l or L to mark a list." << endl;
+                                        cout << "Enter e or E to mark an event." << endl;
+                                        cout << "Press q or Q to quit." << endl;
+
+                                        cin >> choice;
+					
+					if(choice == 'q' || choice == 'Q') { break; }	
+					
+                                        if(choice == 't' || choice == 'T') {
+                                               if(allTasks.size() == 0) {
+							cout << "Nothing to mark." << endl;
+							break;
+					       } 
+					       printTasks();
+                                               cout << "Input the task to mark: " << endl;
+                                               int thisTaskI;
+                                               cin >> thisTaskI;
+					       markAsCompletedT(allTasks.at(thisTaskI - 1));
+                                        }
+                                        if(choice == 'l' || choice == 'L') {
+                                               if(allLists.size() == 0) {
+                                                        cout << "Nothing to mark." << endl;
+                                                        break;
+                                               }
+
+					       printLists();
+                                               cout << "Input the list to mark: " << endl;
+                                               int thisListI;
+                                               cin >> thisListI;
+                                               markAsCompletedL(allLists.at(thisListI - 1));
+                                        }
+                                        if(choice == 'e' || choice == 'E') {
+					       if(allEvents.size() == 0) {
+                                                        cout << "Nothing to mark." << endl;
+                                                        break;
+                                               }                                               
+
+					       printEvents();
+                                               cout << "Input the event to mark: " << endl;
+                                               int thisEventI;
+                                               cin >> thisEventI;
+                                               markAsCompletedE(allEvents.at(thisEventI - 1));
+
+                                        }
+
+				}
+			   
+                           
+		}
+
+                else if(choice == 'c' || choice == 'C') {  create(); choice = ' '; }
+		
+		else { cout << "Invalid character or string entered." << endl;
+                       cout << "Please enter a valid character: " << endl;
+                }
+				
+			
+		runTime++;
+	}
+
+
+	cout << "Goodbye!" << endl;
+	
+
+
+
+}
+
+void client::markAsCompletedT(Task &obj) {
+	if(!obj.isAssigned()) {
+		obj.setCompleted(true);
+		cout << "Success!" << endl;
+	
+	}
+
+}
+void client::markAsCompletedL(TaskList &obj) {
+	obj.setCompleted(true);
+}
+void client::markAsCompletedE(Event &obj) {}
+
+
 
 void client::view() {
 	char choice = ' ';

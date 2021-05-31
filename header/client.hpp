@@ -56,7 +56,9 @@ class client {
 		//might want to pass in the object by reference to call .setCompleted on it
 		//if task is assigned, find it in the correct taskList, then set as completed
 		//if task is not assigned, mark as completed from allTasks vector
-		void markAsCompleted();
+		void markAsCompletedT(Task &obj);
+		void markAsCompletedL(TaskList &obj);
+		void markAsCompletedE(Event &obj);
 
 		
 		//create functions
