@@ -315,7 +315,7 @@ void client::createEvent() {
 		cout << "Enter date format as MM/DD/YY: " << endl;
 		cin >> date;
 	}
-	cin.ignore()
+	cin.ignore();
 	cout << "Enter an event starting time HH:MM AM/PM: " << endl;
 	getline(cin, time);
 	if(!check_time_format(time)) {
@@ -327,10 +327,6 @@ void client::createEvent() {
 	cout << "Enter event details: " << endl;
     cin.ignore();
 	getline(cin, details);
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/scottyallenp/create-hotfix
 	cout << "Enter event duration in hours: " << endl;
 	cin >> duration; 
 	while(duration == 0) {
@@ -368,10 +364,6 @@ void client::createList(){
 	cout << "Enter task list details: " << endl;
     cin.ignore();
 	getline(cin, details);
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/scottyallenp/create-hotfix
 	cout << "Enter task list priority 0-5: " << endl;
 	cin >> priority;
 	while(priority < 0 || priority > 5) {
@@ -571,7 +563,7 @@ void client::Delete(){
     	    cout << "Invalid character or string entered." << endl;
             cout << "Please enter a valid character: " << endl;
     	    cin >> choice;
-  }
+        }
  }
 }
 
