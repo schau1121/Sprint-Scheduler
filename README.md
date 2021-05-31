@@ -34,13 +34,13 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > To install the task scheduler, run the following commands in terminal:
+  To install the task scheduler, run the following commands in terminal:
   * $git clone --recursive https://github.com/cs100/final-project-anguy589_spete020_schau014.git 
   * $cmake3 .
   * $make
- > To run the task scheduler, run the following command: 
+  To run the task scheduler, run the following command: 
   * $./taskScheduler
- > Follow the provided instructions and prompts to create, edit, delete, and view tasks, tasklists, and events
+  Follow the provided instructions and prompts to create, edit, delete, and view tasks, tasklists, and events
 
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
