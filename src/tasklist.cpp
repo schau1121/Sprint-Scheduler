@@ -18,24 +18,25 @@ TaskList::TaskList(string name, string details, int priority) {
         this->details = details;
         this->priority = priority;
         this->completed = false;
+        this->assigned = false;
         setStrategy("priority");
 }
 
-void TaskList::display() const {
-	cout << "Name: " << this->name << endl;
-	cout << "Details: " << this->details << endl;
-    cout << "Priority: " << this->priority << endl;
+void TaskList::display(ostream& out) const {
+	out << "Name: " << this->name << endl;
+	out << "Details: " << this->details << endl;
+    out << "Priority: " << this->priority << endl;
     
     if(priorityQueue.empty() == false) {
-        cout << "Sub Tasks: " << endl;
+        out << "Sub Tasks: " << endl;
         for(int i = 0; i < priorityQueue.size(); i++) {
-            cout << (i + 1) << ". ";
-            this->getQueue()[i].display();
+            out << (i + 1) << ". ";
+            this->getQueue()[i].display(out);
         }
     }
 
     if(this->isCompleted()) {
-        cout << "Completed" << endl;
+        out << "Completed" << endl;
     }
 
 	return;
@@ -45,33 +46,33 @@ void TaskList::del() {
 
 }
 
-void TaskList::edit() {
+void TaskList::edit(istream& in) {
     string newName;
     string newDetails;
     int newPriority;
     cout << "Current Task List: "; 
-    this->display();
+    this->display(cout);
     cout << "\nEnter new list name: ";
-    getline(cin, newName);
+    getline(in, newName);
     while(newName == "") {
         cout << "Error: Need list name" << endl;
         cout << "Enter new list name: ";
-        getline(cin, newName);
+        getline(in, newName);
     }
     cout << "\nEnter new details: ";
-    getline(cin, newDetails);
+    getline(in, newDetails);
     cout << "\nEnter new priority: ";
-    cin >> newPriority;
+    in >> newPriority;
     while(newPriority > 5 || newPriority < 0) {
         cout << "Error: Invalid priority" << endl;
         cout << "Enter new priority (0-5): ";
-        cin >> newPriority;
+        in >> newPriority;
     }
     this->name = newName;
     this->details = newDetails;
     this->priority = newPriority;
     cout << "\nNew Task List: ";
-    this->display();
+    this->display(cout);
 }
 
 void TaskList::addSubTask(Task task) {

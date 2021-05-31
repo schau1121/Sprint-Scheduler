@@ -5,6 +5,7 @@
 #include "tasklist_test.cpp"
 #include "event_test.cpp"
 #include "create_tests.cpp"
+#include "save_load_tests.cpp"
 
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);

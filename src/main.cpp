@@ -5,7 +5,6 @@
 #include "task.cpp"
 #include "event.cpp"
 
-
 using namespace std;
 
 int main() {

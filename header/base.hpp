@@ -18,8 +18,8 @@ protected:
 	int priority;
 public:
 	Base() {};
-	virtual void edit() = 0;
-	virtual void display() const = 0;
+	virtual void edit(istream& in) = 0;
+	virtual void display(ostream& out) const = 0;
 	virtual void del() = 0;
 	//for task and taskList just set completed = isComplete
 	//for event do nothing
@@ -40,9 +40,30 @@ public:
 	// Get Functions
 	virtual string getDate() const = 0;
 	string getName() const { return name; }
-    string getDetails() const { return details; }
+	string getDetails() const { return details; }
 	int getPriority() const { return priority; }
 };
 
+
+
+bool check_date_format(string date){
+
+	if(date[2] != '/' || date[5] != '/') {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+bool check_time_format(string time) {
+
+	if(time.size() < 7 || time[2] != ':' || time.substr(6,7) != "AM" && time.substr(6,7) != "PM" && time.substr(6,7) != "am" && time.substr(6,7) != "pm"){
+		return false;
+	}
+	else {
+		return true;
+	}
+}
 
 #endif

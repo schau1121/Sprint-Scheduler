@@ -3,18 +3,174 @@
 
 #include "../header/client.hpp"
 
+using json = nlohmann::json;
 using namespace std;
 
+void client::load() {
+    ifstream in;
+    in.open("save.json");
+    if(!in.is_open()) {
+        cout << "Error opening save.json" << endl;
+    }
+    json j;
+    in >> j;
+    if(j.is_null()) {
+        return;
+    }
+    for(auto currTask: j["Tasks"]) {
+        string name = currTask["Name"];
+        string dueDate = currTask["Due Date"];
+        string details = currTask["Details"];
+        int priority = currTask["Priority"];
+        bool completed = currTask["Completed"];
+        bool assigned = currTask["Assigned"];
+        Task task = Task(name, dueDate, details, priority);
+        task.setAssigned(assigned);
+        task.setCompleted(completed);
+        allTasks.push_back(task);
+    }
+
+    for(auto currList: j["Task Lists"]) {
+        string name = currList["Name"];
+        string details = currList["Details"];
+        int priority = currList["Priority"];
+        bool completed = currList["Completed"];
+        bool assigned = currList["Assigned"];
+        TaskList list = TaskList(name, details, priority);
+        list.setAssigned(assigned);
+        list.setCompleted(completed);
+        for(auto currSubTask: currList["Sub Tasks"]) {
+            string name = currSubTask["Name"];
+            string dueDate = currSubTask["Due Date"];
+            string details = currSubTask["Details"];
+            int priority = currSubTask["Priority"];
+            bool completed = currSubTask["Completed"];
+            Task task = Task(name, dueDate, details, priority);
+            task.setCompleted(completed);
+            list.addSubTask(task);
+        }
+        allLists.push_back(list);
+    }
+
+    for(auto currEvent: j["Events"]) {
+        string name = currEvent["Name"];
+        string date = currEvent["Date"];
+        string time = currEvent["Time"];
+        string details = currEvent["Details"];
+        double duration = currEvent["Duration"];
+        Event event = Event(name, date, time, details, duration);
+        for(auto currSubList: currEvent["Sub Lists"]) {
+            string name = currSubList["Name"];
+            string details = currSubList["Details"];
+            int priority = currSubList["Priority"];
+            bool completed = currSubList["Completed"];
+            TaskList list = TaskList(name, details, priority);
+            list.setCompleted(completed);
+            for(auto currSubTask: currSubList["Sub Tasks"]) {
+                string name = currSubTask["Name"];
+                string date = currSubTask["Due Date"];
+                string details = currSubTask["Details"];
+                int priority = currSubTask["Priority"];
+                bool completed = currSubTask["Completed"];
+                Task task = Task(name, date, details, priority);
+                task.setCompleted(completed);
+                list.addSubTask(task);
+            }
+            event.addSubTask(list);
+        }
+        allEvents.push_back(event);
+    }
+
+    in.close();
+}
+
+void client::clear() {
+    allLists.clear();
+    allEvents.clear();
+    allTasks.clear();
+}
+
+void client::save() {
+    ofstream out;
+    out.open("save.json", ofstream::out | ofstream::trunc);
+    if(out.is_open()) {
+        cout << "Saving..." << endl;
+        json j;
+        for(int i = 0; i < allTasks.size(); i++) {
+            json currTask;
+            currTask["Name"] = allTasks[i].getName();
+            currTask["Due Date"] = allTasks[i].getDate();
+            currTask["Details"] = allTasks[i].getDetails();
+            currTask["Priority"] = allTasks[i].getPriority();
+            currTask["Completed"] = allTasks[i].isCompleted();
+            currTask["Assigned"] = allTasks[i].isAssigned();
+            j["Tasks"].push_back(currTask);
+        }
+        for(int i = 0; i < allLists.size(); i++) {
+            json currList;
+            currList["Name"] = allLists[i].getName();
+            currList["Details"] = allLists[i].getDetails();
+            currList["Priority"] = allLists[i].getPriority();
+            currList["Completed"] = allLists[i].isCompleted();
+            currList["Assigned"] = allLists[i].isAssigned();
+            for(int j = 0; j < allLists[i].getQueue().size(); j++) {
+                json subTask;
+                vector<Task> queue = allLists[i].getQueue();
+                subTask["Name"] = queue[j].getName();
+                subTask["Due Date"] = queue[j].getDate();
+                subTask["Details"] = queue[j].getDetails();
+                subTask["Priority"] = queue[j].getPriority();
+                subTask["Completed"] = queue[j].isCompleted();
+                currList["Sub Tasks"].push_back(subTask);
+            }
+            j["Task Lists"].push_back(currList);
+        }
+        for(int i = 0; i < allEvents.size(); i++) {
+            json currEvent;
+            currEvent["Name"] = allEvents[i].getName();
+            currEvent["Date"] = allEvents[i].getDate();
+            currEvent["Time"] = allEvents[i].getTime();
+            currEvent["Details"] = allEvents[i].getDetails();
+            currEvent["Duration"] = allEvents[i].getDuration();
+            for(int j = 0; j < allEvents[i].getQueue().size(); j++) {
+                vector<TaskList> subLists = allEvents[i].getQueue();
+                json currList;
+                currList["Name"] = subLists[j].getName();
+                currList["Details"] = subLists[j].getDetails();
+                currList["Priority"] = subLists[j].getPriority();
+                currList["Completed"] = subLists[j].isCompleted();
+                for(int l = 0; l < subLists[j].getQueue().size(); l++) {
+                    json subTask;
+                    vector<Task> queue = subLists[j].getQueue();
+                    subTask["Name"] = queue[l].getName();
+                    subTask["Due Date"] = queue[l].getDate();
+                    subTask["Details"] = queue[l].getDetails();
+                    subTask["Priority"] = queue[l].getPriority();
+                    subTask["Completed"] = queue[l].isCompleted();
+                    currList["Sub Tasks"].push_back(subTask);
+                }
+                currEvent["Sub Lists"].push_back(currList);
+            }
+            j["Events"].push_back(currEvent);
+        }
+        out << setw(4) << j;
+    }
+    else {
+        cout << "Error opening save.json" << endl;
+    }
+    out.close();
+}
 
 
 client::client() {
 	//call load function to populate the vector data members
-	
+	load();
 	this->sortingMethod = "priority"; //default sorting method
-
 }
 
-client::~client() {}
+client::~client() {
+    save();
+}
 
 void client::displayMenu() {
 	char choice = ' ';
@@ -196,7 +352,6 @@ void client::view() {
 }
 
 void client::create() {
-
 	char choice = ' ';
 	
 	cout << "Enter t or T to create a task." << endl;
@@ -209,24 +364,24 @@ void client::create() {
 	while(choice != 'q' && choice != 'Q') {
 
 	  if(choice == 'e' || choice == 'E') {
-		  createEvent();
-		  break;
+		createEvent();
+		break;
 	  }
 
 	  if(choice == 'l' || choice == 'L') {
-		  createList();
-		  break;
+		createList();
+		break;
 	  }
 
 	  if(choice == 't' || choice == 'T') {
-		  createTask();
-		  break;
+		createTask();
+		break;
 	  }
 	
 	  else{
-      cout << "Invalid character or string entered." << endl;
-      cout << "Please enter a valid character: " << endl;
-      cin >> choice;
+          	cout << "Invalid character or string entered." << endl;
+          	cout << "Please enter a valid character: " << endl;
+          	cin >> choice;
 	  }
 	}
 }
@@ -255,7 +410,7 @@ void client::printTasks() {
 	for(int i = 0; i < allTasks.size(); i++) {
 		if(!(allTasks.at(i).isAssigned())) {
 			cout << (i+1) << ". ";
-			allTasks.at(i).display();
+			allTasks.at(i).display(cout);
 			cout << endl;
 		}
 	}
@@ -267,7 +422,7 @@ void client::printLists() {
 
  	for(int i = 0; i < allLists.size(); i++) {
 		cout << (i+1) << ". ";
-		allLists.at(i).display();
+		allLists.at(i).display(cout);
 		cout << endl;
 
 	}   
@@ -279,7 +434,7 @@ void client::printEvents() {
 
 	for(int i = 0; i < allEvents.size(); i++) {
 		cout << (i+1) << ". ";
-		allEvents.at(i).display();
+		allEvents.at(i).display(cout);
 		cout << endl;
 
 	}
@@ -300,46 +455,46 @@ void client::createEvent() {
 	cout << "Enter a name: " << endl;
 	getline(cin, name);
 	while(name == "") {
-		cout << "No event name entered!" << endl;
-		cout << "Please enter an event name: " << endl;
-		getline(cin, name);
+	  cout << "No event name entered!" << endl;
+	  cout << "Please enter an event name: " << endl;
+	  getline(cin, name);
 	}
 	
-	cout << "Enter a due date as MM/DD/YY: " << endl;
+	cout << "Enter a date as MM/DD/YY: " << endl;
 	cin >> date;
-	while(date[2] != '/' || date[5] != '/') {
+	if(!check_date_format(date)) {
 		cout << "Wrong date format entered!" << endl;
 		cout << "Enter date format as MM/DD/YY: " << endl;
 		cin >> date;
 	}
-
+	cin.ignore()
 	cout << "Enter an event starting time HH:MM AM/PM: " << endl;
-	cin >> time;
-	while(time[2] != ':' || time.substr(6,7) != "AM" && time.substr(6,7) != "PM" && time.substr(6,7) != "am" && time.substr(6,7) != "pm") {
+	getline(cin, time);
+	if(!check_time_format(time)) {
                 cout << "Wrong time format entered!" << endl;
                 cout << "Enter time format as HH:MM AM/PM: " << endl;
-                cin >> time;
+                getline(cin, time);
         }
 	
 	cout << "Enter event details: " << endl;
+    cin.ignore();
 	getline(cin, details);
-	while(details == "") {
-                cout << "No event details entered!" << endl;
-                cout << "Please enter event details: " << endl;
-                getline(cin, details);
-        }
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/scottyallenp/create-hotfix
 	cout << "Enter event duration in hours: " << endl;
 	cin >> duration; 
 	while(duration == 0) {
-                cout << "No event duration entered!" << endl;
-                cout << "Please enter event duration: " << endl;
-                cin >> duration;
-        }
+        cout << "No event duration entered!" << endl;
+        cout << "Please enter event duration: " << endl;
+        cin >> duration;
+    }
 
 	Event newEvent = Event(name, date, time, details, duration);
 	allEvents.push_back(newEvent);
-	cout << "Event created!" << endl;	
+	cout << "Event created!" << endl;
+    cin.ignore();
 
 }
 
@@ -352,30 +507,29 @@ void client::createList(){
 	string details = "";
 	int priority = -1;
 
-	cout << "Creating a task list..." << endl;
-	
+	cout << "Creating task list..." << endl;
+  
 	cout << "Enter a task list name: " << endl;
 	getline(cin, name);	
 	while(name == "") {
-                cout << "No task list name entered!" << endl;
-                cout << "Please enter a task list name: " << endl;
-                getline(cin, name);
-        }
+        cout << "No task list name entered!" << endl;
+        cout << "Please enter a task list name: " << endl;
+        getline(cin, name);
+    }
 
 	cout << "Enter task list details: " << endl;
+    cin.ignore();
 	getline(cin, details);
-	while(details == "") {
-                cout << "No task list details entered!" << endl;
-                cout << "Please enter task list details: " << endl;
-                getline(cin, details);
-        }
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/scottyallenp/create-hotfix
 	cout << "Enter task list priority 0-5: " << endl;
 	cin >> priority;
 	while(priority < 0 || priority > 5) {
-		cout << "Invalid priority entered!" << endl;
-		cout << "Please enter a priority from 0-5: " << endl;
-		cin >> priority;
+	  cout << "Invalid priority entered!" << endl;
+	  cout << "Please enter a priority from 0-5: " << endl;
+	  cin >> priority;
 	}	
 
 	TaskList newList = TaskList(name, details, priority);
@@ -391,48 +545,43 @@ void client::createList(){
 void client::createTask() {
         
 	string name = "";
-        string date = "";
-        string details = "";
-        int priority = -1;
+    string date = "";
+    string details = "";
+    int priority = -1;
         
 	cout << "Creating a task..." << endl;
  
-        cout << "Enter a name: ";
+    cout << "Enter a name: ";
+    getline(cin, name);
+	while(name == "") {
+        cout << "No task name entered!" << endl;
+        cout << "Please enter a task name: " << endl;
         getline(cin, name);
-	    while(name == "") {
-                cout << "No task name entered!" << endl;
-                cout << "Please enter a task name: " << endl;
-                getline(cin, name);
-        }      
+    }      
  
         cout << "Enter a due date as MM/DD/YY: ";
         cin >> date;
-	while(date[2] != '/' || date[5] != '/') {
+	if(!check_date_format(date)) {
                 cout << "Wrong date format entered!" << endl;
                 cout << "Enter date format as MM/DD/YY: " << endl;
                 cin >> date;
         }
-
+        cin.ignore();
         cout << "Enter task details: ";
         getline(cin, details);
- 	while(details == "") {
-                cout << "No task list details entered!" << endl;
-                cout << "Please enter task list details: " << endl;
-                getline(cin, details);
-        }
-      
 
 	cout << "Enter task priority as 0-5: ";
-        cin >> priority;
+    cin >> priority;
   	while(priority < 0 || priority > 5) {
-                cout << "Invalid priority entered!" << endl;
-                cout << "Please enter a priority from 0-5: " << endl;
-                cin >> priority;
-        }
- 
-        Task newTask = Task(name, date, details, priority);
-        allTasks.push_back(newTask);
-        cout << "Task created!" << endl;
+        cout << "Invalid priority entered!" << endl;
+        cout << "Please enter a priority from 0-5: " << endl;
+        cin >> priority;
+    }
+
+    Task newTask = Task(name, date, details, priority);
+    allTasks.push_back(newTask);
+    cout << "Task created!" << endl;
+    cin.ignore();
 }
 
 void client::setSortingMethod() {
@@ -526,15 +675,170 @@ void client::addListToEvent(Event &currEvent) {
 */
 
 void client::editTask(Task &currObject) {
-    currObject.edit();
+    currObject.edit(cin);
 }
 
 void client::editList(TaskList &currObject) {
-    currObject.edit();
+    currObject.edit(cin);
 }
 
 void client::editEvent(Event &currObject) {
-    currObject.edit();
+    currObject.edit(cin);
+}
+
+void client::Delete(){
+
+	char choice = ' ';
+	
+	cout << "Enter t or T to delete a task." << endl;
+	cout << "Enter l or L to delete a list." << endl;
+	cout << "Enter e or E to delete an event." << endl;
+    cout << "Enter a or A to delete all" << endl;
+	cout << "Enter q or Q to quit." << endl;
+	
+	cin >> choice;
+
+	while(choice != 'q' && choice != 'Q'){
+
+	  if(choice == 'e' || choice == 'E') {
+	    deleteEvent();
+	    break;
+	  }
+
+	  else if(choice == 'l' || choice == 'L') {
+	    deleteList();
+	    break;
+	  }
+
+	  else if(choice == 't' || choice == 'T') {
+	    deleteTask();
+	    break;	
+	  }	
+
+      else if(choice == 'a' || choice == 'A') {
+          clear();
+          break;
+      }
+	  else {
+    	    cout << "Invalid character or string entered." << endl;
+            cout << "Please enter a valid character: " << endl;
+    	    cin >> choice;
+  }
+ }
+}
+
+
+void client::deleteEvent(){
+	int choice = -1; 
+	int index = 0;
+    for(int i = 0; i < allEvents.size(); i++) {
+        cout << (i + 1) << ". ";
+        allEvents[i].display(cout);
+        cout << endl;
+    }
+	cout << "Please enter the index of which event you would like to delete: " << endl;
+	cin >> choice; 
+
+	while(choice < 0 || choice > allEvents.size()) { 
+	  cout << "Choice is out of range." << endl;
+	  cout << "Please enter a number between 1 and last index available." << endl;
+	  cin >> choice;
+	}
+
+	allEvents.erase(allEvents.begin() + choice - 1);
+}
+
+
+void client::deleteList(){
+    string taskListName;
+	int choice = -1;
+	int index = 0;
+    for(int i = 0; i < allLists.size(); i++) {
+        cout << (i + 1) << ". ";
+        allLists[i].display(cout);
+        cout << endl;
+    }
+	cout << "Please enter the index of which list you would like to delete: " << endl;
+ 	cin >> choice;
+
+	while(choice < 1 || choice > allLists.size()) {
+	  cout << "Choice is out of range." << endl;
+	  cout << "Please enter a number between 1 and last index available." << endl;
+	  cin >> choice;
+	}
+
+    taskListName = allLists[choice - 1].getName();
+
+	if(allLists.at(choice - 1).isAssigned()){
+	  for(int i = 0; i < allEvents.size(); i++) {
+          vector<TaskList> &queue = allEvents[i].priorityQueue;
+          for(int j = 0; j < queue.size(); j++) {
+              if(queue[j].getName() == taskListName) {
+                  queue.erase(queue.begin() + j);
+                  break;
+              }
+          }
+          break;
+      }
+	}
+                
+	allLists.erase(allLists.begin() + choice - 1);
+}
+
+
+void client::deleteTask(){ 
+    string taskListName;
+    string taskName;
+    int taskListIndex = 0;
+	int choice = -1;
+    for(int i = 0; i < allTasks.size(); i++) {
+        cout << (i + 1) << ". ";
+        allTasks[i].display(cout);
+        cout << endl;
+    }
+	cout << "Please enter the index of which task you would like to delete: " << endl;
+ 	cin >> choice;
+
+	while(choice < 1 || choice > allLists.size()) {
+	  cout << "Choice is out of range." << endl;
+	  cout << "Please enter a number between 1 and last index available." << endl;
+	  cin >> choice;
+	}
+
+    taskName = allTasks[choice - 1].getName();
+
+	if(allTasks.at(choice - 1).isAssigned()) {
+        for(int i = 0; i < allLists.size(); i++) {
+            vector<Task> &queue = allLists[i].priorityQueue;
+            for(int j = 0; j < queue.size(); i++) {
+                if(queue[j].getName() == taskName) {
+                    taskListName = allLists[i].getName();
+                    taskListIndex = i;
+                    queue.erase(queue.begin() + j);	
+                    break;
+                }
+            }
+            break;
+	    }
+	}
+
+    if(allLists[taskListIndex].isAssigned()) {
+        for(int i = 0; i < allEvents.size(); i++) {
+            vector<TaskList> &queue = allEvents[i].priorityQueue;
+            for(int j = 0; j < queue.size(); j++) {
+                if(queue[j].getName() == taskListName) {
+                    vector<Task> &subTasks = queue[j].priorityQueue;
+                    for(int l = 0; l < subTasks.size(); l++) {
+                        if(subTasks[l].getName() == taskName) {
+                            subTasks.erase(subTasks.begin() + l);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+	allTasks.erase(allTasks.begin() + choice - 1);
 }
 
 #endif

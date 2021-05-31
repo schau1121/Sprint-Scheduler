@@ -2,8 +2,11 @@
 #define __CLIENT_HPP__
 
 #include <iostream>
+#include <iomanip>
+#include <fstream>
 #include <vector>
 #include <string>
+#include <nlohmann/json.hpp>
 
 //header files
 #include "base.hpp"
@@ -22,12 +25,16 @@ using namespace std;
 */
 
 class client {
-	private:
+	//private:
+		// vector<Task> allTasks;
+		// vector<TaskList> allLists;
+		// vector<Event> allEvents;
+		string sortingMethod;
+	public:
 		vector<Task> allTasks;
 		vector<TaskList> allLists;
 		vector<Event> allEvents;
-		string sortingMethod;
-	public:
+		
 		//constructor
 		client();
 		~client();
