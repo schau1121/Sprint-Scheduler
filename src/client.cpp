@@ -81,7 +81,7 @@ void client::displayMenu() {
 					}
 				 }
 				else if(choice == 'd' || choice == 'D') {
-					cout << "FIXME: call delete " << endl;
+					Delete();
 				}
 				
 				else if(choice == 'm' || choice == 'M') {
