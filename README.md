@@ -24,15 +24,9 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  
  In our class diagram, we utilize the composite and strategy design patterns. Our application consists of 8 classes, 2 abstract and 6 concrete. For the composite design pattern, we have a base class which contains the pure virtual functions that make up the user interface. These functions are display, edit, delete, and add. Additionally, we have another function called setStrategy, which sets which sorting algorithm the user wants to utilize when displaying their tasks. From there, we have three objects which inherit from Base: Task, TaskList, and Event. These three objects maintain the same interface of display, edit, delete, and add, but additionally, they also contain specific data members unique to themselves. For example, a Task contains information about priority, completion, and a due date, while an Event contains duration, date, and time. Here we utilize the composite design pattern since TaskList and Event aggregate the base class in order to contain a priority queue of subtasks (which could be tasks, events, or task lists). Next, our application also utilizes the strategy pattern through our SortStrategy classes. We have two strategies which inherit from this base SortStrategy class: SortByPriority and SortByDate. These two classes contain a sort function which will sort the priority queue by either priority or due date.
  
-
- > ## Final deliverable
- > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Kanban board. 
  
  ## Screenshots
- ![Screenshot (297)](https://user-images.githubusercontent.com/66961614/120131143-9a136580-c17c-11eb-8b04-8c0a7629d195.png)
+ 
  
 
  ## Installation/Usage
@@ -47,3 +41,4 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  We utilized a combination of smoke testing, unit and integration testing to test our task scheduler. 
  [![CI](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml/badge.svg)](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml)
 ![Screenshot 41](https://user-images.githubusercontent.com/43623351/120132056-823ce100-c17e-11eb-82e7-24f4b9a901bc.png)
+![Screenshot (297)](https://user-images.githubusercontent.com/66961614/120131143-9a136580-c17c-11eb-8b04-8c0a7629d195.png)
