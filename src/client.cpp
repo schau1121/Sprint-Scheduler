@@ -438,7 +438,7 @@ void client::deleteEvent(){
 		}
 	}
 
-	allEvents.erase(allEvents.begin() + index);
+	allEvents.erase(allEvents.begin() + choice - 1);
 }
 
 
@@ -468,13 +468,8 @@ void client::deleteList(){
 	  allEvents.at(index).deleteListFromQueue(allLists.at(choice - 1));
 	}
         
-	for(int i = 0; i < allLists.size(); i++) {
-		if(allLists.at(i).getName() == allLists.at(choice - 1).getName()) {
-			index = i;
-		}
-	}
                 
-	allLists.erase(allLists.begin() + index);
+	allLists.erase(allLists.begin() + choice - 1);
 }
 
 
@@ -491,6 +486,8 @@ void client::deleteTask(){
 	  cin >> choice;
 	}
 
+	string taskName = allTasks.at(choice - 1).getName();
+
 	for(int i = 0; i < allLists.size(); i++) {
 		vector<Task> queue = allLists.at(i).getQueue();
 		for(int j = 0; j < queue.size(); i++) {
@@ -504,13 +501,17 @@ void client::deleteTask(){
 	  allLists.at(index).deleteTaskFromQueue(allTasks.at(choice - 1));
 	}
 
-	for(int i = 0; i < allTasks.size(); i++) {
-		if(allTasks.at(i).getName() == allTasks.at(choice - 1).getName()) {
-			index = i;
+	string taskListName = allLists.at(index).getName();
+
+	for(int i = 0; i < allEvents.size(); i++) {
+		for(int j = 0; j < allEvent.at(i).getQueue().size(); j++) {
+			if(taskName == ) {
+				
+			}
 		}
 	}
 
-	allTasks.erase(allTasks.begin() + index);
+	allTasks.erase(allTasks.begin() + choice - 1);
 }
 
 #endif
