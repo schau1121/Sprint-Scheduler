@@ -44,7 +44,7 @@ void Task::edit(istream& in) {
     }
     cout << "\nEnter new due date: ";
     in >> newDueDate;
-    while(newDueDate == "" || (newDueDate[2] != '/' || newDueDate[5] != '/')) {
+    while(!check_date_format(newDueDate)) {
         cout << "Error: Wrong date format" << endl;
         cout << "Enter new due date (MM/DD/YY): ";
         in >> newDueDate;

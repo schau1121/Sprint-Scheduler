@@ -84,7 +84,7 @@ void Event::edit(istream& in) {
     }
     cout << "\nEnter new date: ";
     in >> newDate;
-    while(newDate == "" || (newDate[2] != '/' || newDate[5] != '/')) {
+    while(!check_date_format(newDate)) {
         cout << "Error: Wrong date format" << endl;
         cout << "Enter new date (MM/DD/YY): ";
         in >> newDate;
@@ -92,7 +92,7 @@ void Event::edit(istream& in) {
     cout << "\nEnter new time: ";
     in.ignore();
     getline(in, newTime);
-    while(newTime.size() < 8 || newTime[2] != ':' || newTime.substr(6,2) != "AM" && newTime.substr(6,2) != "PM" && newTime.substr(6,2) != "am" && newTime.substr(6,2) != "pm") {
+    while(!check_time_format(newTime)) {
         cout << "Error: Wrong time format" << endl;
         cout << "Enter new time (HH:MM AM/PM): ";
         getline(in, newTime); 
