@@ -611,7 +611,7 @@ void client::deleteList(){
 
 	if(allLists.at(choice - 1).isAssigned()){
 	  for(int i = 0; i < allEvents.size(); i++) {
-          vector<TaskList> queue = &allEvents[i].priorityQueue;
+          vector<TaskList> &queue = allEvents[i].priorityQueue;
           for(int j = 0; j < queue.size(); j++) {
               if(queue[j].getName() == taskListName) {
                   queue.erase(queue.begin() + j);
@@ -649,7 +649,7 @@ void client::deleteTask(){
 
 	if(allTasks.at(choice - 1).isAssigned()) {
         for(int i = 0; i < allLists.size(); i++) {
-            vector<Task> queue = &allLists[i].priorityQueue;
+            vector<Task> &queue = allLists[i].priorityQueue;
             for(int j = 0; j < queue.size(); i++) {
                 if(queue[j].getName() == taskName) {
                     taskListName = allLists[i].getName();
@@ -664,10 +664,10 @@ void client::deleteTask(){
 
     if(allLists[taskListIndex].isAssigned()) {
         for(int i = 0; i < allEvents.size(); i++) {
-            vector<TaskList> queue = &allEvents[i].priorityQueue;
+            vector<TaskList> &queue = allEvents[i].priorityQueue;
             for(int j = 0; j < queue.size(); j++) {
                 if(queue[j].getName() == taskListName) {
-                    vector<Task> subTasks = & queue[j].priorityQueue;
+                    vector<Task> &subTasks = queue[j].priorityQueue;
                     for(int l = 0; l < subTasks.size(); l++) {
                         if(subTasks[l].getName() == taskName) {
                             subTasks.erase(subTasks.begin() + l);
