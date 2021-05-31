@@ -32,7 +32,9 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Kanban board. 
  
  ## Screenshots
- > Screenshots of the input/output after running your application
+ ![Screenshot (297)](https://user-images.githubusercontent.com/66961614/120131143-9a136580-c17c-11eb-8b04-8c0a7629d195.png)
+ 
+
  ## Installation/Usage
  * To install the task scheduler, run the following commands in terminal:
    * $git clone --recursive https://github.com/cs100/final-project-anguy589_spete020_schau014.git 
