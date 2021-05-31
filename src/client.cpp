@@ -11,6 +11,7 @@ void client::load() {
     in.open("save.json");
     if(!in.is_open()) {
         cout << "Error opening save.json" << endl;
+        return;
     }
     json j;
     in >> j;
