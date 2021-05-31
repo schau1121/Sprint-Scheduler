@@ -533,6 +533,7 @@ void client::Delete(){
 	cout << "Enter t or T to delete a task." << endl;
 	cout << "Enter l or L to delete a list." << endl;
 	cout << "Enter e or E to delete an event." << endl;
+    cout << "Enter a or A to delete all" << endl;
 	cout << "Enter q or Q to quit." << endl;
 	
 	cin >> choice;
@@ -544,15 +545,20 @@ void client::Delete(){
 	    break;
 	  }
 
-	  if(choice == 'l' || choice == 'L') {
+	  else if(choice == 'l' || choice == 'L') {
 	    deleteList();
 	    break;
 	  }
 
-	  if(choice == 't' || choice == 'T') {
+	  else if(choice == 't' || choice == 'T') {
 	    deleteTask();
 	    break;	
 	  }	
+
+      else if(choice == 'a' || choice == 'A') {
+          clear();
+          break;
+      }
 	  else {
     	    cout << "Invalid character or string entered." << endl;
             cout << "Please enter a valid character: " << endl;
@@ -563,97 +569,116 @@ void client::Delete(){
 
 
 void client::deleteEvent(){
-
 	int choice = -1; 
 	int index = 0;
-	cout << "Please enter the index of which event you would like to delete, indices start at 1: " << endl;
+    for(int i = 0; i < allEvents.size(); i++) {
+        cout << (i + 1) << ". ";
+        allEvents[i].display(cout);
+        cout << endl;
+    }
+	cout << "Please enter the index of which event you would like to delete: " << endl;
 	cin >> choice; 
 
-	while(choice == -1 || choice > allEvents.size()) { 
+	while(choice < 0 || choice > allEvents.size()) { 
 	  cout << "Choice is out of range." << endl;
 	  cout << "Please enter a number between 1 and last index available." << endl;
 	  cin >> choice;
 	}
-	
-	for(int i = 0; i < allEvents.size(); i++) {
-		if(allEvents.at(i).getName() == allEvents.at(choice - 1).getName()) {
-			index = i;
-		}
-	}
 
-	allEvents.erase(allEvents.begin() + index);
+	allEvents.erase(allEvents.begin() + choice - 1);
 }
 
 
 void client::deleteList(){
-
+    string taskListName;
 	int choice = -1;
 	int index = 0;
-	cout << "Please enter the index of which list you would like to delete, indices start at 1: " << endl;
+    for(int i = 0; i < allLists.size(); i++) {
+        cout << (i + 1) << ". ";
+        allLists[i].display(cout);
+        cout << endl;
+    }
+	cout << "Please enter the index of which list you would like to delete: " << endl;
  	cin >> choice;
 
-	while(choice == -1 || choice > allLists.size()) {
+	while(choice < 1 || choice > allLists.size()) {
 	  cout << "Choice is out of range." << endl;
 	  cout << "Please enter a number between 1 and last index available." << endl;
 	  cin >> choice;
 	}
 
-	for(int i = 0; i < allEvents.size(); i++) {
-		vector<TaskList> queue = allEvents.at(i).getQueue();
-		for(int j = 0; j < queue.size(); j++) {
-			if(queue.at(j).getName() == allLists.at(choice - 1).getName()) {
-				index = i;
-			}
-		}
-	}
-	
+    taskListName = allLists[choice - 1].getName();
+
 	if(allLists.at(choice - 1).isAssigned()){
-	  allEvents.at(index).deleteListFromQueue(allLists.at(choice - 1));
-	}
-        
-	for(int i = 0; i < allLists.size(); i++) {
-		if(allLists.at(i).getName() == allLists.at(choice - 1).getName()) {
-			index = i;
-		}
+	  for(int i = 0; i < allEvents.size(); i++) {
+          vector<TaskList> queue = &allEvents[i].priorityQueue;
+          for(int j = 0; j < queue.size(); j++) {
+              if(queue[j].getName() == taskListName) {
+                  queue.erase(queue.begin() + j);
+                  break;
+              }
+          }
+          break;
+      }
 	}
                 
-	allLists.erase(allLists.begin() + index);
+	allLists.erase(allLists.begin() + choice - 1);
 }
 
 
 void client::deleteTask(){ 
-
+    string taskListName;
+    string taskName;
+    int taskListIndex = 0;
 	int choice = -1;
- 	int index = 0;
-	cout << "Please enter the index of which task you would like to delete, indices start at 1: " << endl;
+    for(int i = 0; i < allTasks.size(); i++) {
+        cout << (i + 1) << ". ";
+        allTasks[i].display(cout);
+        cout << endl;
+    }
+	cout << "Please enter the index of which task you would like to delete: " << endl;
  	cin >> choice;
 
-	while(choice == -1 || choice > allLists.size()) {
+	while(choice < 1 || choice > allLists.size()) {
 	  cout << "Choice is out of range." << endl;
 	  cout << "Please enter a number between 1 and last index available." << endl;
 	  cin >> choice;
 	}
 
-	for(int i = 0; i < allLists.size(); i++) {
-		vector<Task> queue = allLists.at(i).getQueue();
-		for(int j = 0; j < queue.size(); i++) {
-			if(queue.at(j).getName() == allTasks.at(choice - 1).getName()) {
-				index = i;				
-			}
-		}
-	}
+    taskName = allTasks[choice - 1].getName();
 
 	if(allTasks.at(choice - 1).isAssigned()) {
-	  allLists.at(index).deleteTaskFromQueue(allTasks.at(choice - 1));
+        for(int i = 0; i < allLists.size(); i++) {
+            vector<Task> queue = &allLists[i].priorityQueue;
+            for(int j = 0; j < queue.size(); i++) {
+                if(queue[j].getName() == taskName) {
+                    taskListName = allLists[i].getName();
+                    taskListIndex = i;
+                    queue.erase(queue.begin() + j);	
+                    break;
+                }
+            }
+            break;
+	    }
 	}
 
-	for(int i = 0; i < allTasks.size(); i++) {
-		if(allTasks.at(i).getName() == allTasks.at(choice - 1).getName()) {
-			index = i;
-		}
-	}
+    if(allLists[taskListIndex].isAssigned()) {
+        for(int i = 0; i < allEvents.size(); i++) {
+            vector<TaskList> queue = &allEvents[i].priorityQueue;
+            for(int j = 0; j < queue.size(); j++) {
+                if(queue[j].getName() == taskListName) {
+                    vector<Task> subTasks = & queue[j].priorityQueue;
+                    for(int l = 0; l < subTasks.size(); l++) {
+                        if(subTasks[l].getName() == taskName) {
+                            subTasks.erase(subTasks.begin() + l);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-	allTasks.erase(allTasks.begin() + index);
+	allTasks.erase(allTasks.begin() + choice - 1);
 }
 
 #endif
