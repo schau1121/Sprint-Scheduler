@@ -1,4 +1,3 @@
-![Screenshot 41](https://user-images.githubusercontent.com/43623351/120130552-52d8a500-c17b-11eb-9252-37c5698a0870.png)
 # Task Scheduler 
 Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https://github.com/AnhQNguyen), [Simon Chau](https://github.com/schau1121)
  
@@ -35,7 +34,14 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+ > To install the task scheduler, run the following commands in terminal:
+ > $git clone --recursive https://github.com/cs100/final-project-anguy589_spete020_schau014.git 
+ > $cmake3 .
+ > $make
+ > To run the task scheduler, run the following command: 
+ > $./taskScheduler
+ > Follow the provided instructions and prompts to create, edit, delete, and view tasks, tasklists, and events
+
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  [![CI](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml/badge.svg)](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml)
