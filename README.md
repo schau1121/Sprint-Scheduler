@@ -1,4 +1,4 @@
-# Task Scheduler 
+# Task Scheduler [![CI](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml/badge.svg)](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml)
 Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https://github.com/AnhQNguyen), [Simon Chau](https://github.com/schau1121)
  
 ## Project Description
@@ -39,6 +39,5 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
 
  ## Testing
  We utilized a combination of smoke testing, unit and integration testing to test our task scheduler. 
- [![CI](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml/badge.svg)](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml)
 ![Screenshot 41](https://user-images.githubusercontent.com/43623351/120132056-823ce100-c17e-11eb-82e7-24f4b9a901bc.png)
 ![Screenshot (297)](https://user-images.githubusercontent.com/66961614/120131143-9a136580-c17c-11eb-8b04-8c0a7629d195.png)
