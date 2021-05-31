@@ -212,24 +212,24 @@ void client::create() {
 	while(choice != 'q' && choice != 'Q') {
 
 	  if(choice == 'e' || choice == 'E') {
-		  createEvent();
-		  break;
+		createEvent();
+		break;
 	  }
 
 	  if(choice == 'l' || choice == 'L') {
-		  createList();
-		  break;
+		createList();
+		break;
 	  }
 
 	  if(choice == 't' || choice == 'T') {
-		  createTask();
-		  break;
+		createTask();
+		break;
 	  }
 	
 	  else{
-            cout << "Invalid character or string entered." << endl;
-	    cout << "Please enter a valid character: " << endl;
-            cin >> choice;
+          	cout << "Invalid character or string entered." << endl;
+          	cout << "Please enter a valid character: " << endl;
+          	cin >> choice;
 	  }
 	}
 }
@@ -310,24 +310,27 @@ void client::createEvent() {
 	
 	cout << "Enter a date as MM/DD/YY: " << endl;
 	cin >> date;
-	while(date[2] != '/' || date[5] != '/') {
-	  cout << "Wrong date format entered!" << endl;
-	  cout << "Enter date format as MM/DD/YY: " << endl;
-	  cin >> date;
+	if(!check_date_format(date)) {
+		cout << "Wrong date format entered!" << endl;
+		cout << "Enter date format as MM/DD/YY: " << endl;
+		cin >> date;
 	}
-    cin.ignore();
+	cin.ignore()
 	cout << "Enter an event starting time HH:MM AM/PM: " << endl;
 	getline(cin, time);
-	while(time[2] != ':' || time.substr(6,7) != "AM" && time.substr(6,7) != "PM" && time.substr(6,7) != "am" && time.substr(6,7) != "pm") {
-        cout << "Wrong time format entered!" << endl;
-        cout << "Enter time format as HH:MM AM/PM: " << endl;
-        cin.ignore();
-        getline(cin, time);
-    }
+	if(!check_time_format(time)) {
+                cout << "Wrong time format entered!" << endl;
+                cout << "Enter time format as HH:MM AM/PM: " << endl;
+                getline(cin, time);
+        }
 	
 	cout << "Enter event details: " << endl;
     cin.ignore();
 	getline(cin, details);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/scottyallenp/create-hotfix
 	cout << "Enter event duration in hours: " << endl;
 	cin >> duration; 
 	while(duration == 0) {
@@ -365,6 +368,10 @@ void client::createList(){
 	cout << "Enter task list details: " << endl;
     cin.ignore();
 	getline(cin, details);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/scottyallenp/create-hotfix
 	cout << "Enter task list priority 0-5: " << endl;
 	cin >> priority;
 	while(priority < 0 || priority > 5) {
@@ -400,16 +407,17 @@ void client::createTask() {
         getline(cin, name);
     }      
  
-    cout << "Enter a due date as MM/DD/YY: ";
-    cin >> date;
-	while(date[2] != '/' || date[5] != '/') {
-        cout << "Wrong date format entered!" << endl;
-        cout << "Enter date format as MM/DD/YY: " << endl;
+        cout << "Enter a due date as MM/DD/YY: ";
         cin >> date;
-    }
-    cin.ignore();
-    cout << "Enter task details: ";
-    getline(cin, details);
+	if(!check_date_format(date)) {
+                cout << "Wrong date format entered!" << endl;
+                cout << "Enter date format as MM/DD/YY: " << endl;
+                cin >> date;
+        }
+        cin.ignore();
+        cout << "Enter task details: ";
+        getline(cin, details);
+
 	cout << "Enter task priority as 0-5: ";
     cin >> priority;
   	while(priority < 0 || priority > 5) {

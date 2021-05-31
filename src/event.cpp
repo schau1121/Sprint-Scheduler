@@ -23,12 +23,11 @@ Event::Event(string name, string date, string time, string details, double durat
                 throw(invalid_argument("No event name entered."));
         }
 
-	if(date != "" && date[2] != '/' || date[5] != '/') {
+	if(!check_date_format(date)) {
                 throw(invalid_argument("Wrong date format entered."));
         }	
 	
-	if(time[2] != ':' || time.substr(6,7) != "AM" && time.substr(6,7) != "PM" && time.substr(6,7) != "am" && time.substr(6,7) != "pm") {
-
+	if(!check_time_format(time)) {
                 throw(invalid_argument("Wrong time format entered."));
         }
 

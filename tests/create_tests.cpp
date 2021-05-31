@@ -141,5 +141,22 @@ TEST(Invalid_Tasklist_Constructor, Invalid_Priority) {
     EXPECT_THROW(TaskList("Todos", "chores", -5), invalid_argument);
 }
 
+//					Check functions
+
+TEST(Check_Date, Valid_Date) {
+    EXPECT_EQ(check_date_format("12/11/20"), true);
+}
+
+TEST(Check_Date, Invalid_Date) {
+    EXPECT_EQ(check_date_format("5/13/20"), false);
+}
+
+TEST(Check_Time, Valid_Time) {
+    EXPECT_EQ(check_time_format("12:30 am"), true);
+}
  
+TEST(Check_Time, Invalid_Time) {
+    EXPECT_EQ(check_time_format("1:45 pm"), false);
+}
+
 #endif

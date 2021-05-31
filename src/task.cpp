@@ -12,7 +12,7 @@ Task::Task(string name, string dueDate, string details, int priority) {
         throw invalid_argument("No task name entered.");
     }
 
-    if(dueDate != "" && (dueDate[2] != '/' || dueDate[5] != '/')) {
+    if(!check_date_format(dueDate)) {
         throw invalid_argument("Wrong date format entered.");
     }
 
