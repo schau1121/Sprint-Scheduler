@@ -20,7 +20,6 @@ public:
     Event(string name, string date, string time, string details, double duration);
     ~Event() {}
     virtual void display(ostream& out) const;
-    virtual void del();
     virtual void edit(istream& in);
     void addSubTask(TaskList list);
     virtual void setCompleted(bool isComplete) {};

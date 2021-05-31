@@ -92,7 +92,7 @@ TEST(TaskList_Display_test, simple_display_subTask_Completed_test) {
 
 TEST(TaskList_test, edit_TaskList_test) {
     TaskList currList = TaskList("Homework", "Finish math and cs homework", 3);
-    string input = "House work\nChores\n4\n";
+    string input = "\nHouse work\nChores\n4\n";
     istringstream in(input);
     currList.edit(in);
     EXPECT_EQ("House work", currList.getName());
@@ -102,7 +102,7 @@ TEST(TaskList_test, edit_TaskList_test) {
 
 TEST(TaskList_test, edit_TaskList_test_invalid_priority) {
     TaskList currList = TaskList("Homework", "Finish math and cs homework", 3);
-    string input = "House work\nChores\n-1\n4\n";
+    string input = "\nHouse work\nChores\n-1\n4\n";
     istringstream in(input);
     currList.edit(in);
     EXPECT_EQ("House work", currList.getName());
@@ -112,7 +112,7 @@ TEST(TaskList_test, edit_TaskList_test_invalid_priority) {
 
 TEST(TaskList_test, edit_TaskList_test_invalid_name) {
     TaskList currList = TaskList("Homework", "Finish math and cs homework", 3);
-    string input = "\nHouse work\nChores\n4\n";
+    string input = "\n\nHouse work\nChores\n4\n";
     istringstream in(input);
     currList.edit(in);
     EXPECT_EQ("House work", currList.getName());

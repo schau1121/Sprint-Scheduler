@@ -36,7 +36,7 @@ TEST(Task_Display_test, simple_display_completed_test) {
 
 TEST(Task_test, edit_task_test) {
     Task currTask = Task("Math Homework", "05/27/21", "finish 149B homework", 5);
-    string input = "CS100\n05/30/21\nFinal project sprint\n4\n";
+    string input = "\nCS100\n05/30/21\nFinal project sprint\n4\n";
     istringstream in(input);
     currTask.edit(in);
     EXPECT_EQ("CS100", currTask.getName());
@@ -47,7 +47,7 @@ TEST(Task_test, edit_task_test) {
 
 TEST(Task_test, edit_task_test_invalid_date) {
     Task currTask = Task("Math Homework", "05/27/21", "finish 149B homework", 5);
-    string input = "CS100\n05.30.21\n05/30/21\nFinal project sprint\n4\n";
+    string input = "\nCS100\n05.30.21\n05/30/21\nFinal project sprint\n4\n";
     istringstream in(input);
     currTask.edit(in);
     EXPECT_EQ("CS100", currTask.getName());
@@ -58,7 +58,7 @@ TEST(Task_test, edit_task_test_invalid_date) {
 
 TEST(Task_test, edit_task_test_invalid_name) {
     Task currTask = Task("Math Homework", "05/27/21", "finish 149B homework", 5);
-    string input = "\nCS100\n05/30/21\nFinal project sprint\n4\n";
+    string input = "\n\nCS100\n05/30/21\nFinal project sprint\n4\n";
     istringstream in(input);
     currTask.edit(in);
     EXPECT_EQ("CS100", currTask.getName());
@@ -69,7 +69,7 @@ TEST(Task_test, edit_task_test_invalid_name) {
 
 TEST(Task_test, edit_task_test_invalid_priority) {
     Task currTask = Task("Math Homework", "05/27/21", "finish 149B homework", 5);
-    string input = "CS100\n05/30/21\nFinal project sprint\n-1\n4\n";
+    string input = "\nCS100\n05/30/21\nFinal project sprint\n-1\n4\n";
     istringstream in(input);
     currTask.edit(in);
     EXPECT_EQ("CS100", currTask.getName());

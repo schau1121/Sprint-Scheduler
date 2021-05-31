@@ -42,10 +42,6 @@ void TaskList::display(ostream& out) const {
 	return;
 }
 
-void TaskList::del() {
-
-}
-
 void TaskList::edit(istream& in) {
     string newName;
     string newDetails;
@@ -53,6 +49,7 @@ void TaskList::edit(istream& in) {
     cout << "Current Task List: "; 
     this->display(cout);
     cout << "\nEnter new list name: ";
+    in.ignore();
     getline(in, newName);
     while(newName == "") {
         cout << "Error: Need list name" << endl;

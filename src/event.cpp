@@ -31,9 +31,9 @@ Event::Event(string name, string date, string time, string details, double durat
                 throw(invalid_argument("Wrong time format entered."));
         }
 
-	if(duration == 0) {
-                throw(invalid_argument("No duration entered."));
-        }
+	if(duration <= 0) {
+        throw(invalid_argument("Invalid duration."));
+    }
 
 
         this->name = name;
@@ -63,10 +63,6 @@ void Event::display(ostream& out) const {
 	return;
 }
 
-void Event::del() {
-
-}
-
 void Event::edit(istream& in) {
     string newName;
     string newDetails;
@@ -76,6 +72,7 @@ void Event::edit(istream& in) {
     cout << "Current Event: "; 
     this->display(cout);
     cout << "\nEnter new event name: ";
+    in.ignore();
     getline(in, newName);
     while(newName == "") {
         cout << "Error: Need event name" << endl;

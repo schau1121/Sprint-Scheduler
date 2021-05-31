@@ -36,6 +36,7 @@ void Task::edit(istream& in) {
     cout << "Current Task: "; 
     this->display(cout);
     cout << "\nEnter new task name: ";
+    in.ignore();
     getline(in, newName);
     while(newName == "") {
         cout << "Error: Need task name" << endl;
@@ -79,10 +80,6 @@ void Task::display(ostream& out) const {
 	}
 
 	return;
-}
-
-void Task::del() {
-
 }
 
 void Task::setCompleted(bool isComplete) {

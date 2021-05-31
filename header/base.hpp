@@ -20,7 +20,6 @@ public:
 	Base() {};
 	virtual void edit(istream& in) = 0;
 	virtual void display(ostream& out) const = 0;
-	virtual void del() = 0;
 	//for task and taskList just set completed = isComplete
 	//for event do nothing
 	virtual void setCompleted(bool isComplete) = 0;
@@ -64,6 +63,16 @@ bool check_time_format(string time) {
 	else {
 		return true;
 	}
+}
+
+template<class T>
+bool allAssigned(vector<T> vec) {
+	for(int i = 0; i < vec.size(); i++) {
+		if(!vec[i].isAssigned()) {
+			return false;
+		}
+	}
+	return true;
 }
 
 #endif

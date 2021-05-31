@@ -9,7 +9,6 @@ public:
     ~Task() {}
     virtual void edit(istream& in);
 	virtual void display(ostream& out) const;
-	virtual void del();
 	virtual void setCompleted(bool isComplete);
 	virtual void setAssigned(bool isAssigned);
 	virtual bool isAssigned() const { return assigned; }

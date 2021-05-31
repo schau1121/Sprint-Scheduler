@@ -178,153 +178,224 @@ void client::displayMenu() {
 	int runTime = 0;
 	
 	if(runTime == 0) { cout << "Welcome to your task scheduler!" << endl; }
-	
-	
 
-
-	
-
-	while(choice != 'q' && choice != 'Q') {
-		
+	while((choice != 'q' && choice != 'Q') || runTime < 1000) {
+		cout << "----Main Menu----" << endl;
 		cout << "Enter v or V to view your tasks, lists, and events." << endl;
-                cout << "Enter c or C to create new tasks, lists, or events." << endl;
-                cout << "Enter s or S to set sorting method." << endl;
-                cout << "Press q or Q to quit." << endl;
+        cout << "Enter c or C to create new tasks, lists, or events." << endl;
+        cout << "Enter s or S to set sorting method." << endl;
+        cout << "Press q or Q to quit." << endl;
 		
 		cin >> choice;
 
 
 		if(choice == 's' || choice == 'S') {
 			setSortingMethod();
+            runTime++;
+            continue;
 		}
 
 		else if(choice == 'v' || choice == 'V') {  
-			view();
-			
-				cout << "Enter e or E to edit." << endl;
-				cout << "Enter d or D to delete." << endl;
-				cout << "Enter m or M to mark as complete." << endl;
-				cin >> choice;
-				
-				if(choice == 'e' || choice == 'E') { 
-					cout << "Enter t or T to edit a task." << endl;
-					cout << "Enter l or L to edit a list." << endl;
-					cout << "Enter e or E to edit an event." << endl; 
-					cout << "Press q or Q to quit." << endl;
+            view();
 
-					cin >> choice;
-			                 
-					if(choice == 't' || choice == 'T') {  
-					       printTasks();
-					       cout << "Input the task to edit: " << endl;
-					       int thisTask;
-					       cin >> thisTask;
-					       editTask(allTasks.at(thisTask - 1));					       				       
-					}
+            cout << "Enter e or E to edit." << endl;
+            cout << "Enter d or D to delete." << endl;
+            cout << "Enter m or M to mark as complete." << endl;
+            cout << "Enter r or R to return to the main menu." << endl;
+            cin >> choice;
+            
+            if(choice == 'r' || choice == 'R') {
+                runTime++;
+                continue;
+            }
 
-					if(choice == 'l' || choice == 'L') {  
-					       printLists();
-                                               cout << "Input the list to edit: " << endl;
-                                               int thisList;
-                                               cin >> thisList;
-                                               editList(allLists.at(thisList - 1));
-					}
-                		        if(choice == 'e' || choice == 'E') {  
-					       printEvents();
-                                               cout << "Input the event to edit: " << endl;
-                                               int thisEvent;
-                                               cin >> thisEvent;
-                                               editEvent(allEvents.at(thisEvent - 1));
-					}
-				 }
-				else if(choice == 'd' || choice == 'D') {
-					Delete();
-				}
-				
-				else if(choice == 'm' || choice == 'M') {
-				        cout << "Enter t or T to mark a task." << endl;
-                                        cout << "Enter l or L to mark a list." << endl;
-                                        cout << "Enter e or E to mark an event." << endl;
-                                        cout << "Press q or Q to quit." << endl;
+            if(choice == 'e' || choice == 'E') { 
+                cout << "Enter t or T to edit a task." << endl;
+                cout << "Enter l or L to edit a list." << endl;
+                cout << "Enter e or E to edit an event." << endl; 
+                cout << "Press q or Q to quit." << endl;
 
-                                        cin >> choice;
+                cin >> choice;
+                            
+                if(choice == 't' || choice == 'T') {  
+                        printTasks();
+                        cout << "Input the task to edit: " << endl;
+                        int thisTask;
+                        cin >> thisTask;
+                        while(thisTask > allTasks.size() || thisTask < 1) {
+                            cout << "Invalid input" << endl;
+                            cout << "Please enter a valid input: " << endl;
+                            cin >> thisTask;
+                        }
+                        editTask(allTasks.at(thisTask - 1));
+                        runTime++;
+                        continue;				       				       
+                }
+
+                if(choice == 'l' || choice == 'L') {  
+                    printLists();
+                    cout << "Input the list to edit: " << endl;
+                    int thisList;
+                    cin >> thisList;
+                    while(thisList > allLists.size() || thisList < 1) {
+                        cout << "Invalid input" << endl;
+                        cout << "Please enter a valid input: " << endl;
+                        cin >> thisList;
+                    }
+                    editList(allLists.at(thisList - 1));
+                    runTime++;
+                    continue;
+                }
+                if(choice == 'e' || choice == 'E') {  
+                    printEvents();
+                    cout << "Input the event to edit: " << endl;
+                    int thisEvent;
+                    cin >> thisEvent;
+                    while(thisEvent > allEvents.size() || thisEvent < 1) {
+                            cout << "Invalid input" << endl;
+                            cout << "Please enter a valid input: " << endl;
+                            cin >> thisEvent;
+                        }
+                    editEvent(allEvents.at(thisEvent - 1));
+                    runTime++;
+                    continue;
+                }
+			}
+			else if(choice == 'd' || choice == 'D') {
+				Delete();
+                runTime++;
+                continue;
+			}
+			else if(choice == 'm' || choice == 'M') {
+                cout << "Enter t or T to mark a task." << endl;
+                cout << "Enter l or L to mark a list." << endl;
+                cout << "Enter e or E to mark an event." << endl;
+                cout << "Press q or Q to quit." << endl;
+
+                cin >> choice;
+                
+                if(choice == 'q' || choice == 'Q') { break; }	
 					
-					if(choice == 'q' || choice == 'Q') { break; }	
-					
-                                        if(choice == 't' || choice == 'T') {
-                                               if(allTasks.size() == 0) {
-							cout << "Nothing to mark." << endl;
-							break;
-					       } 
-					       printTasks();
-                                               cout << "Input the task to mark: " << endl;
-                                               int thisTaskI;
-                                               cin >> thisTaskI;
-					       markAsCompletedT(allTasks.at(thisTaskI - 1));
-                                        }
-                                        if(choice == 'l' || choice == 'L') {
-                                               if(allLists.size() == 0) {
-                                                        cout << "Nothing to mark." << endl;
-                                                        break;
-                                               }
-
-					       printLists();
-                                               cout << "Input the list to mark: " << endl;
-                                               int thisListI;
-                                               cin >> thisListI;
-                                               markAsCompletedL(allLists.at(thisListI - 1));
-                                        }
-                                        if(choice == 'e' || choice == 'E') {
-					       if(allEvents.size() == 0) {
-                                                        cout << "Nothing to mark." << endl;
-                                                        break;
-                                               }                                               
-
-					       printEvents();
-                                               cout << "Input the event to mark: " << endl;
-                                               int thisEventI;
-                                               cin >> thisEventI;
-                                               markAsCompletedE(allEvents.at(thisEventI - 1));
-
-                                        }
-
-				}
-			   
-                           
+                if(choice == 't' || choice == 'T') {
+                    if(allTasks.size() == 0) {
+                        cout << "Nothing to mark." << endl;
+                        break;
+                    } 
+					for(int i = 0; i < allTasks.size(); i++) {
+                        cout << (i+1) << ". ";
+                        allTasks[i].display(cout);
+                        cout << endl;
+                    }
+                    cout << "Input the task to mark: " << endl;
+                    int thisTaskI;
+                    cin >> thisTaskI;
+                    markAsCompletedT(allTasks.at(thisTaskI - 1));
+                    runTime++;
+                    continue;
+                }
+                if(choice == 'l' || choice == 'L') {
+                    if(allLists.size() == 0) {
+                        cout << "Nothing to mark." << endl;
+                        break;
+                    }
+					for(int i = 0; i < allLists.size(); i++) {
+                        cout << (i+1) << ". ";
+                        allLists[i].display(cout);
+                        cout << endl;
+                    }
+                    cout << "Input the list to mark: " << endl;
+                    int thisListI;
+                    cin >> thisListI;
+                    markAsCompletedL(allLists.at(thisListI - 1));
+                    runTime++;
+                    continue;
+                }
+                if(choice == 'e' || choice == 'E') {
+					if(allEvents.size() == 0) {
+                        cout << "Nothing to mark." << endl;
+                        break;
+                    }                                              
+                    printEvents();
+                    cout << "Input the event to mark: " << endl;
+                    int thisEventI;
+                    cin >> thisEventI;
+                    markAsCompletedE(allEvents.at(thisEventI - 1));
+                    runTime++;
+                    continue;
+                }
+			}                   
 		}
 
-                else if(choice == 'c' || choice == 'C') {  create(); choice = ' '; }
-		
-		else { cout << "Invalid character or string entered." << endl;
-                       cout << "Please enter a valid character: " << endl;
-                }
-				
-			
+        else if(choice == 'c' || choice == 'C') {  
+            create(); 
+            choice = ' ';
+        }
+        else if(choice == 'q' || choice == 'Q') { 
+            break;
+        }
+		else { 
+            cout << "Invalid character or string entered." << endl;
+            cout << "Please enter a valid character: " << endl;
+        }	
 		runTime++;
 	}
-
-
 	cout << "Goodbye!" << endl;
-	
-
-
-
 }
 
 void client::markAsCompletedT(Task &obj) {
-	if(!obj.isAssigned()) {
+	int index;
+    if(!obj.isAssigned()) {
 		obj.setCompleted(true);
 		cout << "Success!" << endl;
-	
 	}
+    else {
+        for(int i = 0; i < allLists.size(); i++) {
+            vector<Task> &queue = allLists[i].priorityQueue;
+            for(int j = 0; j < queue.size(); j++) {
+                if(queue[j].getName() == obj.getName()) {
+                    queue[j].setCompleted(true);
+                    index = i;
+                    break;
+                }
+            }
+            break;
+        }
+        if(allLists[index].isAssigned()) {
+            for(int i = 0; i < allEvents.size(); i++) {
+                vector<TaskList> &queue = allEvents[i].priorityQueue;
+                for(int j = 0; j < queue.size(); j++) {
+                    if(queue[j].getName() == allLists[index].getName()) {
+                        vector<Task> &subTasks = queue[j].priorityQueue;
+                        for(int l = 0; l < subTasks.size(); l++) {
+                            if(subTasks[l].getName() == obj.getName()) {
+                                subTasks[l].setCompleted(true);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 }
+
 void client::markAsCompletedL(TaskList &obj) {
-	obj.setCompleted(true);
+	if(obj.isCompleted()) {
+        obj.setCompleted(true);
+        if(obj.isAssigned()) {
+            for(int i = 0; i < allEvents.size(); i++) {
+                vector<TaskList> &queue = allEvents[i].priorityQueue;
+                for(int j = 0; j < queue.size(); j++) {
+                    if(queue[j].getName() == obj.getName()) {
+                        queue[j].setCompleted(true);
+                    }
+                }
+            }
+        }
+    }
 }
+
 void client::markAsCompletedE(Event &obj) {}
-
-
 
 void client::view() {
 	char choice = ' ';
@@ -340,15 +411,44 @@ void client::view() {
 
 		if(choice == 'a' || choice == 'A') {  printAll();    break; }
 		if(choice == 't' || choice == 'T') {  printTasks();  break; }
-		if(choice == 'l' || choice == 'L') {  printLists();  break; }
-		if(choice == 'e' || choice == 'E') {  printEvents(); break; }
+		if(choice == 'l' || choice == 'L') {
+            printLists();
+            cout << "Would you like to add a task to this list? (y/n)" << endl;
+            char newChoice;
+            int index;
+            cin >> newChoice;
+            if(newChoice == 'y') {
+                cout << "Input the list to add a sub task to: ";
+                cin >> index;
+                addTaskToTaskList(allLists[index - 1]);
+                return;
+            }
+            else {
+                break;
+            }
+        }
+		if(choice == 'e' || choice == 'E') {  
+            printEvents(); 
+            cout << "Would you like to add a list to this event? (y/n)" << endl;
+            char newChoice;
+            int index;
+            cin >> newChoice;
+            if(newChoice == 'y') {
+                cout << "Input the event to add a sub list to: ";
+                cin >> index;
+                addListToEvent(allEvents[index - 1]);
+                return;
+            }
+            else {
+                break;
+            }
+        }
 		
-		else { cout << "Invalid character or string entered." << endl;
-		       cout << "Please enter a valid character: " << endl;
-		       cin >> choice;
+		else {
+            cout << "Invalid character or string entered." << endl;
+		    cout << "Please enter a valid character: " << endl;
+	        cin >> choice;
 		}
-
-	
 	}
 }
 
@@ -405,7 +505,7 @@ void client::printAll() {
 }
 
 void client::printTasks() {
-
+    cout << "----Tasks----" << endl;
 	if(allTasks.size() == 0) { cout << "There are no tasks to display." << endl; return; }
 
 	for(int i = 0; i < allTasks.size(); i++) {
@@ -418,19 +518,23 @@ void client::printTasks() {
 }
 
 void client::printLists() {
-
+    for(int i = 0; i < allLists.size(); i++) {
+        allLists[i].setStrategy(sortingMethod);
+    }
+    cout << "----Task Lists----" << endl;
 	if(allLists.size() == 0) { cout << "There are no lists to display." << endl; return; }
 
  	for(int i = 0; i < allLists.size(); i++) {
-		cout << (i+1) << ". ";
-		allLists.at(i).display(cout);
-		cout << endl;
-
+        if(!allLists[i].isAssigned()) {
+            cout << (i+1) << ". ";
+            allLists.at(i).display(cout);
+            cout << endl;
+        }
 	}   
 }
 
 void client::printEvents() {
-
+    cout << "----Events----" << endl;
 	if(allEvents.size() == 0) { cout << "There are no events to display." << endl; return; }
 
 	for(int i = 0; i < allEvents.size(); i++) {
@@ -452,7 +556,7 @@ void client::createEvent() {
 	double duration = 0;
 		
 	cout << "Creating an event..." << endl;
-	
+	cin.ignore();
 	cout << "Enter a name: " << endl;
 	getline(cin, name);
 	while(name == "") {
@@ -472,17 +576,16 @@ void client::createEvent() {
 	cout << "Enter an event starting time HH:MM AM/PM: " << endl;
 	getline(cin, time);
 	if(!check_time_format(time)) {
-                cout << "Wrong time format entered!" << endl;
-                cout << "Enter time format as HH:MM AM/PM: " << endl;
-                getline(cin, time);
-        }
-	
+        cout << "Wrong time format entered!" << endl;
+        cout << "Enter time format as HH:MM AM/PM: " << endl;
+        getline(cin, time);
+    }
+	cin.ignore();
 	cout << "Enter event details: " << endl;
-    cin.ignore();
 	getline(cin, details);
 	cout << "Enter event duration in hours: " << endl;
 	cin >> duration; 
-	while(duration == 0) {
+	while(duration <= 0) {
         cout << "No event duration entered!" << endl;
         cout << "Please enter event duration: " << endl;
         cin >> duration;
@@ -505,7 +608,7 @@ void client::createList(){
 	int priority = -1;
 
 	cout << "Creating task list..." << endl;
-  
+    cin.ignore();
 	cout << "Enter a task list name: " << endl;
 	getline(cin, name);	
 	while(name == "") {
@@ -513,9 +616,8 @@ void client::createList(){
         cout << "Please enter a task list name: " << endl;
         getline(cin, name);
     }
-
-	cout << "Enter task list details: " << endl;
     cin.ignore();
+	cout << "Enter task list details: " << endl;
 	getline(cin, details);
 	cout << "Enter task list priority 0-5: " << endl;
 	cin >> priority;
@@ -543,7 +645,7 @@ void client::createTask() {
     int priority = -1;
         
 	cout << "Creating a task..." << endl;
- 
+    cin.ignore();
     cout << "Enter a name: ";
     getline(cin, name);
 	while(name == "") {
@@ -598,66 +700,63 @@ void client::setSortingMethod() {
 }
 
 void client::addTaskToTaskList(TaskList &currList) {
-    char userInput = ' ';
-    while(userInput != 'q' || userInput != 'Q') {
-        if(allTasks.empty() == true) {
-            cout << "ERROR: There are no tasks created" << endl;
-            //can add option to create a task
-            return;
-        }
-        cout << "Printing all unassigned tasks..." << endl;
-        printTasks();
+    int userInput;
+
+    if(allTasks.empty() == true) {
+        cout << "ERROR: There are no tasks created" << endl;
+        //can add option to create a task
+        return;
+    }
+    cout << "Printing all unassigned tasks..." << endl;
+    printTasks();
+    if(allAssigned(allTasks)) {
+        return;
+    }
+    cout << "Enter the number of the task you would like to add to this list: ";
+    cin >> userInput;
+    while(userInput > allTasks.size() || userInput < 0) {
+        cout << "ERROR: Invalid input" << endl;
         cout << "Enter the number of the task you would like to add to this list: ";
         cin >> userInput;
-        while((int)userInput > allTasks.size() || (int)userInput < 0) {
-            cout << "ERROR: Invalid input" << endl;
-            cout << "Enter the number of the task you would like to add to this list: ";
-            cin >> userInput;
-        }
-        if(!allTasks[userInput - 1].isAssigned()) {
-            cout << "Adding " << '\"' << allTasks[(int)userInput - 1].getName() << '\"...' << endl;
-            currList.addSubTask(allTasks[(int)userInput - 1]);
-            allTasks[(int)userInput - 1].setAssigned(true);
-            cout << "Successfully added to this list!" << endl;
-            cout << "Enter 'q' to quit or 'c' to continue adding tasks to this list: ";
-            cin >> userInput;
-        }
-        else {
-            cout << "ERROR: Task is assigned already" << endl;
-            userInput = 'q';
-        }
+    }
+    if(!allTasks[userInput - 1].isAssigned()) {
+        cout << "Adding " << allTasks[userInput - 1].getName() << "..." << endl;
+        currList.addSubTask(allTasks[userInput - 1]);
+        allTasks[userInput - 1].setAssigned(true);
+        cout << "Successfully added to this list!" << endl;
+    }
+    else {
+        cout << "ERROR: Task is assigned already" << endl;
     }
 }
 
 void client::addListToEvent(Event &currEvent) {
-    char userInput = ' ';
-    while(userInput != 'q' || userInput != 'Q') {
-        if(allLists.empty() == true) {
-            cout << "ERROR: There are no lists created" << endl;
-            return;
-        }
-        cout << "Printing all unassigned lists..." << endl;
-        printLists();
-        cout << "Enter the number of the list you would like to add to this list (or enter 'q' to quit): ";
-        cin >> userInput;
-        while((int)userInput > allTasks.size() || (int)userInput < 0) {
-            cout << "ERROR: Invalid input" << endl;
-            cout << "Enter the number of the list you would like to add to this event: ";
-            cin >> userInput;
-        }
-        if(!allLists[userInput - 1].isAssigned()) {
-            cout << "Adding " << '\"' << allLists[(int)userInput - 1].getName() << '\"...' << endl;
-            currEvent.addSubTask(allLists[(int)userInput - 1]);
-            allLists[(int)userInput - 1].setAssigned(true);
-            cout << "Successfully added to this event!" << endl;
-            cout << "Enter 'q' to quit or 'c' to continue adding lists to this event: ";
-            cin >> userInput;
-        }
-        else {
-            cout << "ERROR: List is assigned already" << endl;
-            userInput = 'q';
-        } 
+    int userInput;
+    if(allLists.empty() == true) {
+        cout << "ERROR: There are no lists created" << endl;
+        return;
     }
+    cout << "Printing all unassigned lists..." << endl;
+    printLists();
+    if(allAssigned(allLists)) {
+        return;
+    }
+    cout << "Enter the number of the list you would like to add to this list: ";
+    cin >> userInput;
+    while(userInput > allTasks.size() || userInput < 0) {
+        cout << "ERROR: Invalid input" << endl;
+        cout << "Enter the number of the list you would like to add to this event: ";
+        cin >> userInput;
+    }
+    if(!allLists[userInput - 1].isAssigned()) {
+        cout << "Adding " << allLists[userInput - 1].getName() << "..." << endl;
+        currEvent.addSubTask(allLists[userInput - 1]);
+        allLists[userInput - 1].setAssigned(true);
+        cout << "Successfully added to this event!" << endl;
+    }
+    else {
+        cout << "ERROR: List is assigned already" << endl;
+    } 
 }
 
 /*
@@ -792,7 +891,7 @@ void client::deleteTask(){
 	cout << "Please enter the index of which task you would like to delete: " << endl;
  	cin >> choice;
 
-	while(choice < 1 || choice > allLists.size()) {
+	while(choice < 1 || choice > allTasks.size()) {
 	  cout << "Choice is out of range." << endl;
 	  cout << "Please enter a number between 1 and last index available." << endl;
 	  cin >> choice;

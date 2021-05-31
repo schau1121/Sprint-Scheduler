@@ -62,7 +62,7 @@ TEST(Event_Display_test, simple_display_test2) {
 
 TEST(Event_test, edit_event_test) {
     Event currEvent = Event("Productivity Block", "05/27/21", "09:00 AM", "Some details", 3);
-    string input = "Errands\n05/30/21\n10:30 AM\nGet stuff done\n2\n";
+    string input = "\nErrands\n05/30/21\n10:30 AM\nGet stuff done\n2\n";
     istringstream in(input);
     currEvent.edit(in);
     EXPECT_EQ("Errands", currEvent.getName());
@@ -74,7 +74,7 @@ TEST(Event_test, edit_event_test) {
 
 TEST(Event_test, edit_event_test_invalid_date) {
     Event currEvent = Event("Productivity Block", "05/27/21", "09:00 AM", "Some details", 3);
-    string input = "Errands\n05.30.21\n05/30/21\n10:30 AM\nGet stuff done\n2\n";
+    string input = "\nErrands\n05.30.21\n05/30/21\n10:30 AM\nGet stuff done\n2\n";
     istringstream in(input);
     currEvent.edit(in);
     EXPECT_EQ("Errands", currEvent.getName());
@@ -86,7 +86,7 @@ TEST(Event_test, edit_event_test_invalid_date) {
 
 TEST(Event_test, edit_event_test_invalid_time) {
     Event currEvent = Event("Productivity Block", "05/27/21", "09:00 AM", "Some details", 3);
-    string input = "Errands\n05/30/21\n10:30\n10:30 AM\nGet stuff done\n2\n";
+    string input = "\nErrands\n05/30/21\n10:30\n10:30 AM\nGet stuff done\n2\n";
     istringstream in(input);
     currEvent.edit(in);
     EXPECT_EQ("Errands", currEvent.getName());
@@ -98,7 +98,7 @@ TEST(Event_test, edit_event_test_invalid_time) {
 
 TEST(Event_test, edit_event_test_invalid_duration) {
     Event currEvent = Event("Productivity Block", "05/27/21", "09:00 AM", "Some details", 3);
-    string input = "Errands\n05/30/21\n10:30 AM\nGet stuff done\n-1\n2\n";
+    string input = "\nErrands\n05/30/21\n10:30 AM\nGet stuff done\n-1\n2\n";
     istringstream in(input);
     currEvent.edit(in);
     EXPECT_EQ("Errands", currEvent.getName());
@@ -110,7 +110,7 @@ TEST(Event_test, edit_event_test_invalid_duration) {
 
 TEST(Event_test, edit_event_test_invalid_name) {
     Event currEvent = Event("Productivity Block", "05/27/21", "09:00 AM", "Some details", 3);
-    string input = "\nErrands\n05/30/21\n10:30 AM\nGet stuff done\n2\n";
+    string input = "\n\nErrands\n05/30/21\n10:30 AM\nGet stuff done\n2\n";
     istringstream in(input);
     currEvent.edit(in);
     EXPECT_EQ("Errands", currEvent.getName());
