@@ -587,7 +587,7 @@ void client::createEvent() {
         cout << "Enter time format as HH:MM AM/PM: " << endl;
         getline(cin, time);
     }
-	cin.ignore();
+	//cin.ignore();
 	cout << "Enter event details: " << endl;
 	getline(cin, details);
 	cout << "Enter event duration in hours: " << endl;
