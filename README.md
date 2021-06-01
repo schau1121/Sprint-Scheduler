@@ -26,9 +26,27 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  
  
  ## Screenshots
+ Creating tasks:  
+ ![create task 1](https://user-images.githubusercontent.com/46959736/120373464-3ba9cc80-c2cd-11eb-9398-ec0ab2991a4a.png) ![create task 2](https://user-images.githubusercontent.com/46959736/120373465-3ba9cc80-c2cd-11eb-9255-2b07b9920fd2.png) ![create task 3](https://user-images.githubusercontent.com/46959736/120373468-3ba9cc80-c2cd-11eb-83f6-ffda010e5dfb.png)
  
+ Creating task list:   
+ ![create task list](https://user-images.githubusercontent.com/46959736/120373469-3c426300-c2cd-11eb-94e6-e4d1921baa83.png)
  
-
+ Creating event:   
+ ![create event](https://user-images.githubusercontent.com/46959736/120373462-3b113600-c2cd-11eb-824b-6d37ae1731eb.png)
+ 
+ Viewing task list and adding task 2 & 3 to task list:   
+ ![view task list](https://user-images.githubusercontent.com/46959736/120373472-3cdaf980-c2cd-11eb-945e-85d56a833187.png) ![Adding task 2 to task list](https://user-images.githubusercontent.com/46959736/120373456-39e00900-c2cd-11eb-851b-fab030acb1fa.png) ![Adding task 3 to task list](https://user-images.githubusercontent.com/46959736/120373458-3b113600-c2cd-11eb-9ed4-ec8ccc84f51e.png)
+ 
+ Adding task list to event:  
+ ![Adding task list 1 to event](https://user-images.githubusercontent.com/46959736/120373459-3b113600-c2cd-11eb-9c3d-184cba18c764.png)
+ 
+ Setting sorting method:  
+ ![Set sorting method](https://user-images.githubusercontent.com/46959736/120373471-3c426300-c2cd-11eb-917b-3e2d3a8f7930.png)
+ 
+ Final output sorted by due date:  
+ ![Final output sorted by due date](https://user-images.githubusercontent.com/46959736/120373470-3c426300-c2cd-11eb-932e-8c6433ec3f27.png)
+ 
  ## Installation/Usage
  * To install the task scheduler, run the following commands in terminal:
    * $git clone --recursive https://github.com/cs100/final-project-anguy589_spete020_schau014.git 
