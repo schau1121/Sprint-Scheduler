@@ -615,7 +615,7 @@ void client::createList(){
 	int priority = -1;
 
 	cout << "Creating task list..." << endl;
-    cin.ignore();
+	cin.ignore();
 	cout << "Enter a task list name: " << endl;
 	getline(cin, name);	
 	while(name == "") {
@@ -623,7 +623,7 @@ void client::createList(){
         cout << "Please enter a task list name: " << endl;
         getline(cin, name);
     }
-    cin.ignore();
+//    cin.ignore();
 	cout << "Enter task list details: " << endl;
 	getline(cin, details);
 	cout << "Enter task list priority 0-5: " << endl;
