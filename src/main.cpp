@@ -13,9 +13,4 @@ int main() {
   return 0;
 }
 
-/*
-delete out of range error
-need to call add task to taskList somewhere
-and add taskList to event
-*/
 

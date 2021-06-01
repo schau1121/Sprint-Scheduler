@@ -919,23 +919,22 @@ void client::deleteTask(){
             }
             break;
 	    }
-	}
-
-    if(allLists[taskListIndex].isAssigned()) {
-        for(int i = 0; i < allEvents.size(); i++) {
-            vector<TaskList> &queue = allEvents[i].priorityQueue;
-            for(int j = 0; j < queue.size(); j++) {
-                if(queue[j].getName() == taskListName) {
-                    vector<Task> &subTasks = queue[j].priorityQueue;
-                    for(int l = 0; l < subTasks.size(); l++) {
-                        if(subTasks[l].getName() == taskName) {
-                            subTasks.erase(subTasks.begin() + l);
+        if(allLists[taskListIndex].isAssigned()) {
+            for(int i = 0; i < allEvents.size(); i++) {
+                vector<TaskList> &queue = allEvents[i].priorityQueue;
+                for(int j = 0; j < queue.size(); j++) {
+                    if(queue[j].getName() == taskListName) {
+                        vector<Task> &subTasks = queue[j].priorityQueue;
+                        for(int l = 0; l < subTasks.size(); l++) {
+                            if(subTasks[l].getName() == taskName) {
+                                subTasks.erase(subTasks.begin() + l);
+                            }
                         }
                     }
                 }
             }
         }
-    }
+	}
 
 	allTasks.erase(allTasks.begin() + choice - 1);
 }
