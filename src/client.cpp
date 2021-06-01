@@ -534,6 +534,11 @@ void client::printLists() {
 }
 
 void client::printEvents() {
+    for(int i = 0; i < allEvents.size(); i++) {
+        for(int j = 0; j < allEvents[i].priorityQueue.size(); j++) {
+            allEvents[i].priorityQueue[j].setStrategy(sortingMethod);
+        }
+    }
     cout << "----Events----" << endl;
 	if(allEvents.size() == 0) { cout << "There are no events to display." << endl; return; }
 
