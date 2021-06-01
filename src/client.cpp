@@ -506,7 +506,7 @@ void client::printAll() {
 
 void client::printTasks() {
     cout << "----Tasks----" << endl;
-	if(allTasks.size() == 0) { cout << "There are no tasks to display." << endl; return; }
+	if(allTasks.size() == 0 || allAssigned(allTasks)) { cout << "There are no tasks to display." << endl; return; }
 
 	for(int i = 0; i < allTasks.size(); i++) {
 		if(!(allTasks.at(i).isAssigned())) {
@@ -522,7 +522,7 @@ void client::printLists() {
         allLists[i].setStrategy(sortingMethod);
     }
     cout << "----Task Lists----" << endl;
-	if(allLists.size() == 0) { cout << "There are no lists to display." << endl; return; }
+	if(allLists.size() == 0 || allAssigned(allLists)) { cout << "There are no lists to display." << endl; return; }
 
  	for(int i = 0; i < allLists.size(); i++) {
         if(!allLists[i].isAssigned()) {

@@ -94,7 +94,6 @@ class client {
 		void deleteList();
 		void deleteEvent();
 
-
 };
 
 #endif //MENU_HPP
