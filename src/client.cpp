@@ -415,7 +415,7 @@ void client::view() {
 		if(choice == 't' || choice == 'T') {  printTasks();  break; }
 		if(choice == 'l' || choice == 'L') {
             printLists();
-            cout << "Would you like to add a task to this list? (y/n)" << endl;
+            cout << "Would you like to add a task to a list? (y/n)" << endl;
             char newChoice;
             int index;
             cin >> newChoice;
