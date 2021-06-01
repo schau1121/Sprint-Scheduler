@@ -282,9 +282,11 @@ void client::displayMenu() {
                         break;
                     } 
 					for(int i = 0; i < allTasks.size(); i++) {
-                        cout << (i+1) << ". ";
-                        allTasks[i].display(cout);
-                        cout << endl;
+                        if(!allTasks[i].isCompleted()) {
+                            cout << (i+1) << ". ";
+                            allTasks[i].display(cout);
+                            cout << endl;
+                        }
                     }
                     cout << "Input the task to mark: " << endl;
                     int thisTaskI;
