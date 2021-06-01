@@ -431,7 +431,7 @@ void client::view() {
         }
 		if(choice == 'e' || choice == 'E') {  
             printEvents(); 
-            cout << "Would you like to add a list to this event? (y/n)" << endl;
+            cout << "Would you like to add a list to a event? (y/n)" << endl;
             char newChoice;
             int index;
             cin >> newChoice;
