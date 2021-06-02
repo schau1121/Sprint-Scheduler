@@ -3,7 +3,7 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  
 ## Project Description
 ### User Experience
- We plan on building a task management application where users can create and view personal tasks and events. This allows them to edit, mark as complete, and schedule these objects. Additionally, our application helps users visualize and prioritize their tasks by either due date or priority. Lastly, this task scheduler saves the user's data when exiting, and loads this data when opening the application. 
+ We built a task management application where users can create and view personal tasks and events. This allows them to edit, mark as complete, and schedule these objects. Additionally, our application helps users visualize and prioritize their tasks by either due date or priority. Lastly, this task scheduler saves the user's data when exiting, and loads this data when opening the application. 
  ### Importance
  We find this project really important because it is a very practical application for us as college students. With classes, clubs, and our careers, it becomes increasingly difficult to manage our time, and we are sure that plenty of people can relate. By grouping tasks together and creating an "event" based productivity block, we believe that users of our service can maximize their productivity to the fullest. Additionally, we are interested in familiarizing ourselves with an API and since the documentation is very thorough, we thought this project would be a perfect opportunity to learn and a great place to start.
  ### Tools and Technology
