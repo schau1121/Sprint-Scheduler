@@ -406,6 +406,7 @@ void client::view() {
 	cout << "Enter t or T to view tasks." << endl;
 	cout << "Enter l or L to view tasklists." << endl;
 	cout << "Enter e or E to view events." << endl;
+    cout << "Enter p or P to push an event." << endl;
 
 	cin >> choice;
 
@@ -445,7 +446,15 @@ void client::view() {
                 break;
             }
         }
-		
+		if(choice == 'p' || choice == 'P') {
+            printEvents();
+            cout << "Which event would you like to push?" << endl;
+            int eventIndex;
+            cin >> eventIndex;
+            allEvents[eventIndex - 1].pushEvent();
+            return;
+        }
+
 		else {
             cout << "Invalid character or string entered." << endl;
 		    cout << "Please enter a valid character: " << endl;
@@ -602,7 +611,6 @@ void client::createEvent() {
 	allEvents.push_back(newEvent);
 	cout << "Event created!" << endl;
     cin.ignore();
-
 }
 
 /*
