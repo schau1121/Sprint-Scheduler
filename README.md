@@ -11,6 +11,7 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  * Nlohmann/json - A c++ library for parsing and creating json objects
  * Valgrind - A programming tool used for code profiling and debugging
  * Gtest - A unit and integration testing library for C++
+ * CMake3 - A build automation tool
  ### Application Input / Output
  The user will be able to create customized tasks inside an event by including: a string used for a short title, a string for a task description, a string for a classification tag, an integer determining the task’s priority, an integer for estimated task duration in hours, and a datetime string labeling the event time. Depending on the component that the user is creating (event/task) there will be different prompts for the user's input. For example, if a user creates an event, they will be prompted to input a datetime to schedule. Our application will output a list of tasks and events including their details, events will be prioritized based on their deadlines while tasks will be prioritized based on their rank in the priority queue. 
  ### Design Patterns
