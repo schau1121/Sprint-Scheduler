@@ -149,23 +149,20 @@ void Event::pushEvent() {
         else {
             description += "\nTask List:";
             for(int i = 0; i < priorityQueue.size(); i++) {
-                for(int j = 0; i < priorityQueue[i].priorityQueue.size(); j++) {
-                    description += "\n";
-                    description += priorityQueue[i].priorityQueue[j].getName();
-                }
+                description += priorityQueue[i].printSubTasks();
             }
             j["description"] = description;
         }
         
         //load start time
-        if(this->time[6] == 'P' || this->time[6] == 'p') {
+        if((this->time[6] == 'P' || this->time[6] == 'p')) {
             AM = false;
         } 
         startDateTime = "20" + this->date.substr(6,2);
         startDateTime += "-" + this->date.substr(0,2);
         startDateTime += "-" + this->date.substr(3,2);
         startDateTime += "T";
-        if(!AM) {
+        if(!AM && (stoi(this->time.substr(0,2)) != 12)) {
             int hour = 12;
             hour += stoi(this->time.substr(0,2));
             startDateTime += std::to_string(hour);
