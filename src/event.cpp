@@ -115,6 +115,15 @@ void Event::setStrategy(string strategy) {
     this->strat = new SortByPriority<TaskList>();
 }
 
+void Event::runPyScript() {
+    //run python script/executable
+    pybind11::initialize_interpreter();
+    auto scope = pybind11::module::import("__main__").attr("__dict__");
+    pybind11::eval_file("push-event.py", scope);
+    cout << "Pushed to Google Calendar!" << endl;
+    pybind11::finalize_interpreter();
+}
+
 //create json and set to event.json file
 //call python executable push-event.py
 //try: turning python script into executable to avoid users needed python/dependencies
@@ -149,7 +158,7 @@ void Event::pushEvent() {
         }
         
         //load start time
-        if(this->time[6] == 'P') {
+        if(this->time[6] == 'P' || this->time[6] == 'p') {
             AM = false;
         } 
         startDateTime = "20" + this->date.substr(6,2);
@@ -187,7 +196,14 @@ void Event::pushEvent() {
         }
         //cout << "New hour: " << hour << endl;
         endTime.replace(0,2,to_string(hour));
+        if(hour < 10) {
+            endTime.insert(0, "0");
+        }
         endTime.replace(3,2,to_string(min));
+        if(min < 10) {
+            endTime.insert(3, "0");
+        }
+        //cout << endTime << endl;
         startDateTime.replace(11,8,endTime);
         end["dateTime"] = startDateTime;
         end["timeZone"] = timeZone;
@@ -198,8 +214,9 @@ void Event::pushEvent() {
     else {
         std::cout << "cant open event.json\n";
     }
+    out.close();
 
-    //run python script/executable
+    runPyScript();
 }
 
 #endif

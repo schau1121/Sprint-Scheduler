@@ -4,6 +4,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 #include <fstream>
+#include <pybind11/embed.h>
 #include "base.hpp"
 #include "../src/sortdate.cpp"
 #include "../src/sortpriority.cpp"
@@ -35,6 +36,7 @@ public:
     void setStrategy(string strategy);
     vector<TaskList> priorityQueue;
     void pushEvent();
+    void runPyScript();
 };
 
 /*
