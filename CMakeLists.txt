@@ -11,6 +11,7 @@ ADD_EXECUTABLE(taskScheduler src/main.cpp)
 ADD_EXECUTABLE(test tests/test.cpp)
 
 TARGET_LINK_LIBRARIES(test gtest nlohmann_json::nlohmann_json)
+TARGET_LINK_LIBRARIES(test PRIVATE pybind11::embed)
 TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)
 
 TARGET_LINK_LIBRARIES(taskScheduler PRIVATE nlohmann_json::nlohmann_json)
