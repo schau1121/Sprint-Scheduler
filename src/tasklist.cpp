@@ -107,5 +107,16 @@ bool TaskList::isCompleted() const {
     return true;
 }
 
+string TaskList::printSubTasks() {
+    string out;
+    for(int i = 0; i < this->priorityQueue.size(); i++) {
+        out += "\n";
+        out += std::to_string(i + 1);
+        out += ". ";
+        out += priorityQueue[i].getName();
+    }
+    return out;
+}
+
 #endif
 

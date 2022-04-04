@@ -95,7 +95,7 @@ void client::save() {
     ofstream out;
     out.open("save.json", ofstream::out | ofstream::trunc);
     if(out.is_open()) {
-        cout << "Saving..." << endl;
+        //cout << "Saving..." << endl;
         json j;
         for(int i = 0; i < allTasks.size(); i++) {
             json currTask;
@@ -263,8 +263,6 @@ void client::displayMenu() {
 			}
 			else if(choice == 'd' || choice == 'D') {
 				Delete();
-                runTime++;
-                continue;
 			}
 			else if(choice == 'm' || choice == 'M') {
                 cout << "Enter t or T to mark a task." << endl;
@@ -329,8 +327,9 @@ void client::displayMenu() {
 		}
 
         else if(choice == 'c' || choice == 'C') {  
-            create(); 
-            choice = ' ';
+            create();
+            runTime++; 
+            continue;
         }
         else if(choice == 'q' || choice == 'Q') { 
             break;
@@ -406,6 +405,7 @@ void client::view() {
 	cout << "Enter t or T to view tasks." << endl;
 	cout << "Enter l or L to view tasklists." << endl;
 	cout << "Enter e or E to view events." << endl;
+    cout << "Enter p or P to push an event." << endl;
 
 	cin >> choice;
 
@@ -445,7 +445,15 @@ void client::view() {
                 break;
             }
         }
-		
+		if(choice == 'p' || choice == 'P') {
+            printEvents();
+            cout << "Which event would you like to push?" << endl;
+            int eventIndex;
+            cin >> eventIndex;
+            allEvents[eventIndex - 1].pushEvent();
+            return;
+        }
+
 		else {
             cout << "Invalid character or string entered." << endl;
 		    cout << "Please enter a valid character: " << endl;
@@ -602,7 +610,6 @@ void client::createEvent() {
 	allEvents.push_back(newEvent);
 	cout << "Event created!" << endl;
     cin.ignore();
-
 }
 
 /*
@@ -937,6 +944,11 @@ void client::deleteTask(){
 	}
 
 	allTasks.erase(allTasks.begin() + choice - 1);
+}
+
+void client::restart() {
+    save();
+    displayMenu();
 }
 
 #endif

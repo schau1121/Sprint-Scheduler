@@ -2,6 +2,9 @@
 #define __EVENT_HPP__
 
 #include <string>
+#include <nlohmann/json.hpp>
+#include <fstream>
+#include <pybind11/embed.h>
 #include "base.hpp"
 #include "../src/sortdate.cpp"
 #include "../src/sortpriority.cpp"
@@ -32,6 +35,8 @@ public:
     vector<TaskList> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(string strategy);
     vector<TaskList> priorityQueue;
+    void pushEvent();
+    void runPyScript();
 };
 
 /*

@@ -32,6 +32,7 @@ public:
     vector<Task> getQueue() const { return strat->sort(priorityQueue); }
     void setStrategy(string strategy);
     vector<Task> priorityQueue;
+    string printSubTasks();
 };
 
 //this task list is initialized with two task mocks

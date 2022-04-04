@@ -1,0 +1,17 @@
+Major issues/solutions:
+- wanted users to be able to choose sorting algo during runtime 
+    => utilizing strategy design pattern
+- want users to be able to push events to google calendar using API but no RestAPI support in c++ since microsoft SDK (casablanca) wasnt installing correctly with vcpkg
+    => wrote a python script which authenticates users and posts event.json file
+- couldnt embed python into c++ file without additional libraries
+    => utilized pybind11 to embed python script execution since its lightweight and has cmake compatibility
+
+- application is memory inefficent since the same objects are created in multiple places in memory. refactoring for space efficiency requires much more work than refactoring for speed
+    => next time, spend a bit extra time in planning phase and analyze space complexity from a design perspective 
+
+Currently:
+- need to test for users without credentials
+
+- program crashes when performing other tasks before pushing (probably due to memory overflow)
+    gdb exits with code 03
+    pushing to google calendar right from start seems to work fine

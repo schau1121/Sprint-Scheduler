@@ -15,3 +15,5 @@ bin/
 build/
 save.json
 json/
+event.json
+token.json

@@ -94,6 +94,8 @@ class client {
 		void deleteList();
 		void deleteEvent();
 
+		//need to stop current display menu call, then call restart
+		void restart();
 };
 
 #endif //MENU_HPP
