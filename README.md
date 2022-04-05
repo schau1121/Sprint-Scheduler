@@ -76,7 +76,7 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  * To install the task scheduler, run the following commands in terminal:
    * pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
    * $git clone --recursive https://github.com/cs100/final-project-anguy589_spete020_schau014.git 
-   * $cmake3 .
+   * $cmake .
    * $make 
    * $./taskScheduler
   * Follow the provided instructions and prompts to create, edit, delete, and view tasks, tasklists, and events
