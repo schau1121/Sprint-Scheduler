@@ -59,12 +59,12 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  Final output sorted by due date:  
  ![Final output sorted by due date](https://user-images.githubusercontent.com/46959736/120373470-3c426300-c2cd-11eb-932e-8c6433ec3f27.png)
  
- Pushing an event:
- ![Push event](https://user-images.githubusercontent.com/46959736/161829130-c8dc81b5-b365-4d36-a64e-9a7344118927.png)
+ Pushing an event:    
+ ![Push event](https://user-images.githubusercontent.com/46959736/161829130-c8dc81b5-b365-4d36-a64e-9a7344118927.png)       
  ![Event Pushed](https://user-images.githubusercontent.com/46959736/161830582-84913d52-21f3-4dbe-88d7-cc25bf2b0190.png)
 
  
- Event shown on Google Calendar:
+ Event shown on Google Calendar:    
  ![Calendar event](https://user-images.githubusercontent.com/46959736/161830920-57fa2497-9a2a-4567-bd3a-8525fe251e24.png)
  
  ## Installation/Usage
