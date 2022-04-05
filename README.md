@@ -63,6 +63,8 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  ![Push event](https://user-images.githubusercontent.com/46959736/161829130-c8dc81b5-b365-4d36-a64e-9a7344118927.png)       
  ![Event Pushed](https://user-images.githubusercontent.com/46959736/161830582-84913d52-21f3-4dbe-88d7-cc25bf2b0190.png)
 
+ Authentication:       
+ ![Authentication](https://user-images.githubusercontent.com/46959736/161836232-58f2ed8e-04c8-4109-97ed-dc3986583aa4.png)
  
  Event shown on Google Calendar:    
  ![Calendar event](https://user-images.githubusercontent.com/46959736/161830920-57fa2497-9a2a-4567-bd3a-8525fe251e24.png)
@@ -76,7 +78,7 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  * To install the task scheduler, run the following commands in terminal:
    * pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
    * $git clone --recursive https://github.com/schau1121/Sprint-Scheduler.git 
-   * $cmake .
+   * $cmake . -G"MinGW Makefiles"
    * $make 
    * $./taskScheduler
   * Follow the provided instructions and prompts to create, edit, delete, and view tasks, tasklists, and events
