@@ -1,4 +1,4 @@
-# Task Scheduler [![CI](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml/badge.svg)](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml)
+# Sprint Scheduler [![CI](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml/badge.svg)](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml)
 Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https://github.com/AnhQNguyen), [Simon Chau](https://github.com/schau1121)
 
 ## Things Learned
