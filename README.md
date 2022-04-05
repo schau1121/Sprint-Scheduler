@@ -1,9 +1,18 @@
 # Task Scheduler [![CI](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml/badge.svg)](https://github.com/cs100/final-project-anguy589_spete020_schau014/actions/workflows/main.yml)
 Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https://github.com/AnhQNguyen), [Simon Chau](https://github.com/schau1121)
- 
+
+## Things Learned
+* Designing and Developing an application following Agile & Scrum methodologies
+* Utilizing user stories to prioritize and plan sprints
+* Implementing Object-Oriented Design principles
+* Prioritizing time and space complexity during planning
+* Authorizing requests to a Google API
+* Utilizing a REST API
+* Saving & parsing data to/from a JSON file
+
 ## Project Description
 ### User Experience
- We built a task management application where users can create and view personal tasks and events. This allows them to edit, mark as complete, and schedule these objects. Additionally, our application helps users visualize and prioritize their tasks by either due date or priority. Lastly, this task scheduler saves the user's data when exiting, and loads this data when opening the application. 
+ We built a task management application where users can create and view personal tasks and events. This allows them to edit, mark as complete, and schedule these objects. Additionally, our application helps users visualize and prioritize their tasks by either due date or priority. When exiting the application, the user's data is saved so that when opened again, all pertinent information will be available automatically. Finally, this application allows users to "push" their created events to a personal google calendar with ease.
  ### Importance
  We find this project really important because it is a very practical application for us as college students. With classes, clubs, and our careers, it becomes increasingly difficult to manage our time, and we are sure that plenty of people can relate. By grouping tasks together and creating an "event" based productivity block, we believe that users of our service can maximize their productivity to the fullest. Additionally, we are interested in familiarizing ourselves with an API and since the documentation of the Google Calendar API is very thorough, we thought this project would be a perfect opportunity to learn and a great place to start.
  ### Tools and Technology
@@ -12,11 +21,13 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  * Valgrind - A programming tool used for code profiling and debugging
  * Gtest - A unit and integration testing library for C++
  * CMake3 - A build automation tool
+ * pybind11 - A library for embedding python into C++ code
+ * Google Calendar API - An API which adds connectivity between this application and Google Calendar
  ### Application Input / Output
  The user will be able to create customized tasks inside an event by including: a string used for a short title, a string for a task description, a string for a classification tag, an integer determining the task’s priority, an integer for estimated task duration in hours, and a datetime string labeling the event time. Depending on the component that the user is creating (event/task) there will be different prompts for the user's input. For example, if a user creates an event, they will be prompted to input a datetime to schedule. Our application will output a list of tasks and events including their details, events will be prioritized based on their deadlines while tasks will be prioritized based on their rank in the priority queue. 
  ### Design Patterns
  * Composite
-   * We chose to use the composite design pattern to implement a list of tasks or events composed of smaller tasks inside of them. With this pattern we plan to implement the basic interface which consists of editing, deleting, and creating tasks/events. An issue we anticipate encountering  with our project is finding a balance between creating a simple interface for the user to interact with the components, while also maintaining separate functionality. With the composite pattern, objects are treated very similarly, and we plan on using polymorphism and recursion to our advantage to solve this problem.
+   * We chose to use the composite design pattern to implement a list of tasks or events composed of smaller tasks inside of them. With this pattern we plan to implement the basic interface which consists of editing, deleting, and creating tasks/events. An issue we anticipate encountering with our project is finding a balance between creating a simple interface for the user to interact with the components, while also maintaining separate functionality. With the composite pattern, objects are treated very similarly, and we plan on using polymorphism to our advantage to solve this problem.
  * Strategy
    * The strategy design pattern will be used to sort the priority queues within our application. Our task manager will consist of at least two different objects: tasks and events and possibly a task list in the future. This design pattern allows us to sort a user's task list by either priority or due date, depending on what the user prefers. An issue we plan on encountering with the composite design pattern is differentiating the functionality of the interface depending on component at runtime, however, with the strategy design pattern, this should be easily solved. As the user defines how he/she would like to sort their task list at runtime, our application will have the capability to sort by the specified strategy without issues. 
 
@@ -48,8 +59,22 @@ Authors: [Scott Peterson](https://github.com/scottyallenp), [Anh Nguyen](https:/
  Final output sorted by due date:  
  ![Final output sorted by due date](https://user-images.githubusercontent.com/46959736/120373470-3c426300-c2cd-11eb-932e-8c6433ec3f27.png)
  
+ Pushing an event:
+ ![Push event](https://user-images.githubusercontent.com/46959736/161829130-c8dc81b5-b365-4d36-a64e-9a7344118927.png)
+ ![Event Pushed](https://user-images.githubusercontent.com/46959736/161830582-84913d52-21f3-4dbe-88d7-cc25bf2b0190.png)
+
+ 
+ Event shown on Google Calendar:
+ ![Calendar event](https://user-images.githubusercontent.com/46959736/161830920-57fa2497-9a2a-4567-bd3a-8525fe251e24.png)
+ 
  ## Installation/Usage
+ * Requirements:
+   * Python3
+   * pip package management tool
+   * C++11 or greater
+   * cmake3
  * To install the task scheduler, run the following commands in terminal:
+   * pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
    * $git clone --recursive https://github.com/cs100/final-project-anguy589_spete020_schau014.git 
    * $cmake3 .
    * $make 
